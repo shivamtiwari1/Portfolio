@@ -10,7 +10,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <!-- Corrected 'integrity' attribute below -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
@@ -25,12 +24,42 @@
             </button>
             <nav id="main-nav">
                 <a href="#about">About</a>
-                <a href="#skills">Skills</a>
-                <a href="#projects">Projects</a>
-                <a href="#certificates">Certificates</a>
-                <a href="#experience">Journey</a>
-                <a href="#resume">Resume</a>
-                <a href="#contact">Contact</a>
+                <div class="nav-item">
+                    <a href="#skills">Skills</a>
+                    <div class="dropdown-content" id="skills-dropdown">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="#projects">Projects</a>
+                    <div class="dropdown-content" id="projects-dropdown">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="#certificates">Certificates</a>
+                    <div class="dropdown-content" id="certificates-dropdown">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="#experience">Journey</a>
+                    <div class="dropdown-content" id="experience-dropdown">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="#resume">Resume</a>
+                    <div class="dropdown-content" id="resume-dropdown">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="#contact">Contact</a>
+                    <div class="dropdown-content" id="contact-dropdown">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
             </nav>
         </div>
     </header>

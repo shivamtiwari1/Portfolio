@@ -4,16 +4,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // === EDIT YOUR PORTFOLIO CONTENT HERE ==============================================
     // ===================================================================================
     // To edit your portfolio, change the values in the variables below.
-    // For Google Drive links, use the format: https://drive.google.com/uc?export=view&id=YOUR_FILE_ID
-    // For downloadable files, use the format: https://drive.google.com/uc?export=download&id=YOUR_FILE_ID
+    // Use local paths for your images and downloadable files.
+    // For example: 'assets/images/profile.jpg' or 'assets/pdf/resume.pdf'
     // -----------------------------------------------------------------------------------
 
     // --- 1. HERO SECTION & PROFILE PICTURE ---
-    const profilePicUrl = "https://drive.google.com/uc?export=view&id=1WHe_w40_mrH0-pqiNF7ZUcA9duqWb9AV";
+    // Replace with the path to your profile picture
+    const profilePicUrl = "/Portfolio/Photo.png"; 
     
     const heroData = {
         title: "Shivam Tiwari",
-        subtitle: "Data & Business Analyst",
+        subtitle: "Business Analyst",
         description: "Bridging data insights with business strategy. I transform complex datasets into actionable narratives using Python, SQL, and Power BI."
     };
 
@@ -57,17 +58,18 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     // --- 5. CERTIFICATES SECTION ---
+    // Replace with paths to your certificate images
     const certificatesData = [
         {
             name: "Data Analysis with Python",
             date: "Issued: July 2023",
-            imageUrl: "https://drive.google.com/uc?export=view&id=YOUR_PYTHON_CERTIFICATE_ID", // <-- REPLACE YOUR_PYTHON_CERTIFICATE_ID
+            imageUrl: "E:\newfolder\Business analysis with excel.jpg", 
             verifyLink: "https://example.com/verify/123"
         },
         {
-            name: "Microsoft Power BI Desktop for Business Intelligence",
+            name: "Microsoft Power BI Desktop",
             date: "Issued: May 2023",
-            imageUrl: "https://drive.google.com/uc?export=view&id=YOUR_POWERBI_CERTIFICATE_ID", // <-- REPLACE YOUR_POWERBI_CERTIFICATE_ID
+            imageUrl: "assets/images/powerbi_certificate.jpg", 
             verifyLink: ""
         }
     ];
@@ -81,15 +83,17 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     // --- 7. RESUME & COVER LETTER SECTION ---
+    // Replace with paths to your resume preview image and PDF file
     const resumeData = {
-        previewImageUrl: "https://drive.google.com/uc?export=view&id=YOUR_RESUME_PREVIEW_IMAGE_ID", // <-- REPLACE with image preview ID
-        downloadFileUrl: "https://drive.google.com/uc?export=download&id=YOUR_RESUME_PDF_ID",   // <-- REPLACE with PDF download ID
+        previewImageUrl: "assets/images/resume_preview.png", 
+        downloadFileUrl: "assets/pdf/Shivam_Tiwari_Resume.pdf",   
         fileName: "Shivam_Tiwari_Resume.pdf"
     };
 
+    // Replace with paths to your cover letter preview image and PDF file
     const coverLetterData = {
-        previewImageUrl: "https://drive.google.com/uc?export=view&id=YOUR_COVER_LETTER_PREVIEW_IMAGE_ID", // <-- REPLACE with image preview ID
-        downloadFileUrl: "https://drive.google.com/uc?export=download&id=YOUR_COVER_LETTER_PDF_ID",   // <-- REPLACE with PDF download ID
+        previewImageUrl: "assets/images/cover_letter_preview.png", 
+        downloadFileUrl: "assets/pdf/Shivam_Tiwari_Cover_Letter.pdf",
         fileName: "Shivam_Tiwari_Cover_Letter.pdf"
     };
 
@@ -124,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderSkills() {
         const grid = document.getElementById('skills-grid');
         grid.innerHTML = skillsData.map((category, index) => `
-            <div class="skill-card" data-index="${index}">
+            <div class="skill-card" data-index="${index}" id="skill-category-${index}">
                 <h3>${category.category}</h3>
                 <ul>${category.skills.map(skill => `<li>${skill}</li>`).join('')}</ul>
             </div>`).join('');
@@ -132,8 +136,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderProjects() {
         const container = document.getElementById('projects-container');
-        container.innerHTML = projectsData.map(project => `
-            <div class="project-card fade-in">
+        container.innerHTML = projectsData.map((project, index) => `
+            <div class="project-card fade-in" id="project-${index}">
                 <h3>${project.title}</h3>
                 <p>${project.description}</p>
                 <div class="project-tools">${project.tools.map(tool => `<span>${tool}</span>`).join('')}</div>
@@ -147,8 +151,8 @@ document.addEventListener('DOMContentLoaded', () => {
             container.innerHTML = '<p>No certificates have been added yet.</p>';
             return;
         }
-        container.innerHTML = certificatesData.map(cert => `
-            <div class="certificate-card fade-in">
+        container.innerHTML = certificatesData.map((cert, index) => `
+            <div class="certificate-card fade-in" id="certificate-${index}">
                 <img src="${cert.imageUrl}" alt="${cert.name} Certificate">
                 <div class="certificate-info">
                     <h3>${cert.name}</h3>
@@ -161,7 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderJourney() {
         const container = document.getElementById('timeline-container');
         container.innerHTML = journeyData.map((item, index) => `
-            <div class="timeline-item ${index % 2 === 0 ? 'timeline-left' : 'timeline-right'} fade-in">
+            <div class="timeline-item ${index % 2 === 0 ? 'timeline-left' : 'timeline-right'} fade-in" id="journey-${index}">
                 <div class="timeline-content">
                     <h3>${item.role}</h3>
                     <p>${item.company}</p>
@@ -176,7 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (resumeData.previewImageUrl && resumeData.downloadFileUrl) {
             content += `
-                <div class="resume-card fade-in">
+                <div class="resume-card fade-in" id="resume-card">
                     <a href="${resumeData.downloadFileUrl}" class="download-icon" download="${resumeData.fileName}"><i class="fas fa-download"></i></a>
                     <div class="resume-image-container">
                         <img src="${resumeData.previewImageUrl}" alt="Resume Preview">
@@ -187,7 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (coverLetterData.previewImageUrl && coverLetterData.downloadFileUrl) {
             content += `
-                <div class="resume-card fade-in">
+                <div class="resume-card fade-in" id="cover-letter-card">
                     <a href="${coverLetterData.downloadFileUrl}" class="download-icon" download="${coverLetterData.fileName}"><i class="fas fa-download"></i></a>
                     <div class="resume-image-container">
                         <img src="${coverLetterData.previewImageUrl}" alt="Cover Letter Preview">
@@ -210,6 +214,48 @@ document.addEventListener('DOMContentLoaded', () => {
         ).join('');
     }
 
+    // --- Dropdown Render Functions ---
+    function renderAllDropdowns() {
+        // Skills Dropdown
+        const skillsDropdown = document.getElementById('skills-dropdown');
+        skillsDropdown.innerHTML = skillsData.map((category, index) => 
+            `<a href="#skill-category-${index}">${category.category}</a>`
+        ).join('');
+
+        // Projects Dropdown
+        const projectsDropdown = document.getElementById('projects-dropdown');
+        projectsDropdown.innerHTML = projectsData.map((project, index) => 
+            `<a href="#project-${index}">${project.title}</a>`
+        ).join('');
+
+        // Certificates Dropdown
+        const certificatesDropdown = document.getElementById('certificates-dropdown');
+        certificatesDropdown.innerHTML = certificatesData.map((cert, index) => 
+            `<a href="#certificate-${index}">${cert.name}</a>`
+        ).join('');
+
+        // Experience/Journey Dropdown
+        const experienceDropdown = document.getElementById('experience-dropdown');
+        experienceDropdown.innerHTML = journeyData.map((item, index) => 
+            `<a href="#journey-${index}">${item.role}</a>`
+        ).join('');
+
+        // Resume Dropdown
+        const resumeDropdown = document.getElementById('resume-dropdown');
+        let resumeLinks = '';
+        if (resumeData.previewImageUrl) resumeLinks += `<a href="#resume-card">Resume</a>`;
+        if (coverLetterData.previewImageUrl) resumeLinks += `<a href="#cover-letter-card">Cover Letter</a>`;
+        resumeDropdown.innerHTML = resumeLinks;
+
+        // Contact Dropdown
+        const contactDropdown = document.getElementById('contact-dropdown');
+        contactDropdown.innerHTML = `
+            <a href="#contact-email-link">Email</a>
+            <a href="#social-icons-container">Socials</a>
+        `;
+    }
+
+
     // --- UI & EVENT LISTENERS ---
 
     function setupMobileNav() {
@@ -224,9 +270,40 @@ document.addEventListener('DOMContentLoaded', () => {
 
         mainNav.addEventListener('click', (e) => {
             if (e.target.tagName === 'A') {
-                hamburgerBtn.setAttribute('aria-expanded', 'false');
-                document.body.classList.remove('mobile-nav-open');
+                if (window.innerWidth <= 768) {
+                    // Close all open mobile dropdowns
+                    document.querySelectorAll('#main-nav .nav-item.open').forEach(item => item.classList.remove('open'));
+                    
+                    // If the clicked link is inside a dropdown, close the main nav
+                    if (e.target.parentElement.classList.contains('dropdown-content')) {
+                        hamburgerBtn.setAttribute('aria-expanded', 'false');
+                        document.body.classList.remove('mobile-nav-open');
+                    }
+                }
             }
+        });
+    }
+
+    function setupDropdowns() {
+        const navItems = document.querySelectorAll('#main-nav .nav-item');
+
+        navItems.forEach(item => {
+            const link = item.querySelector('a');
+            link.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768) {
+                    // Prevent default scroll only for the main nav item link on mobile
+                    if (!e.target.parentElement.classList.contains('dropdown-content')) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                    }
+                    
+                    const wasOpen = item.classList.contains('open');
+                    navItems.forEach(otherItem => otherItem.classList.remove('open'));
+                    if (!wasOpen) {
+                        item.classList.add('open');
+                    }
+                }
+            });
         });
     }
 
@@ -273,28 +350,80 @@ document.addEventListener('DOMContentLoaded', () => {
         zoomOutBtn.addEventListener('click', (e) => { e.stopPropagation(); currentScale = Math.max(1, currentScale - 0.1); modalImg.style.transform = `scale(${currentScale})`; });
     }
 
+    // --- MODIFIED FUNCTION ---
     function setupNavHighlighting() {
-        document.body.addEventListener('click', function(e) {
+        document.body.addEventListener('click', function (e) {
             const link = e.target.closest('a');
             if (!link) return;
-
+    
             const href = link.getAttribute('href');
-            if (href && href.startsWith('#')) {
+            // Check if it's a valid link that points to an ID
+            const isInternalLink = href && href.startsWith('#');
+    
+            if (isInternalLink) {
                 e.preventDefault();
-                const targetId = href.substring(1);
-                const targetElement = document.getElementById(targetId);
-
+                const targetElement = document.getElementById(href.substring(1));
+    
                 if (targetElement) {
-                    const headerHeight = document.getElementById('sticky-header').offsetHeight;
-                    const offsetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
-
-                    window.scrollTo({ top: offsetPosition, behavior: "smooth" });
                     
-                    const elementToHighlight = targetElement.querySelector('h2') || targetElement;
-                    elementToHighlight.classList.add('highlight');
-                    elementToHighlight.addEventListener('animationend', () => {
-                        elementToHighlight.classList.remove('highlight');
-                    }, { once: true });
+                    // --- APPLY CORRECT HIGHLIGHT ---
+                    const isCard = targetElement.matches('.project-card, .skill-card, .certificate-card, .resume-card, .timeline-item');
+
+                    if (isCard) {
+                        targetElement.classList.add('highlight');
+                        targetElement.addEventListener('animationend', () => {
+                            targetElement.classList.remove('highlight');
+                        }, { once: true });
+                    } else {
+                        const section = targetElement.closest('section') || targetElement;
+                        const heading = section.querySelector('h2');
+                        if (heading) {
+                            heading.classList.add('heading-highlight');
+                            heading.addEventListener('animationend', () => {
+                                heading.classList.remove('heading-highlight');
+                            }, { once: true });
+                        }
+                    }
+
+                    // --- NAV TAB BLINK LOGIC (runs for all clicks) ---
+                    const parentNavItem = link.closest('.nav-item');
+                    let mainNavLink;
+    
+                    if (parentNavItem) {
+                        mainNavLink = parentNavItem.querySelector('a');
+                    } else if (link.closest('.hero-buttons')) {
+                        mainNavLink = document.querySelector(`#main-nav a[href="${href}"]`);
+                    } else if (link.closest('#main-nav')) {
+                        mainNavLink = link;
+                    }
+    
+                    if (mainNavLink) {
+                        document.querySelectorAll('#main-nav a').forEach(navLink => navLink.classList.remove('active-link'));
+                        mainNavLink.classList.add('active-link');
+                        mainNavLink.addEventListener('animationend', () => {
+                            mainNavLink.classList.remove('active-link');
+                        }, { once: true });
+                    }
+    
+                    // Close mobile nav if it's open
+                    if (document.body.classList.contains('mobile-nav-open')) {
+                        document.getElementById('hamburger-menu').click();
+                    }
+                    
+                    // --- CORRECTED SMOOTH SCROLL LOGIC ---
+                    const headerHeight = document.getElementById('sticky-header').offsetHeight;
+                    const offsetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - 40;
+    
+                    document.body.style.pointerEvents = 'none';
+    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: "smooth"
+                    });
+    
+                    setTimeout(() => {
+                        document.body.style.pointerEvents = 'auto';
+                    }, 1000);
                 }
             }
         });
@@ -338,7 +467,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- INITIALIZATION ---
     function init() {
-        // Render all page content from data
         renderHero();
         renderAbout();
         renderSkills();
@@ -347,15 +475,15 @@ document.addEventListener('DOMContentLoaded', () => {
         renderJourney();
         renderResumeAndCoverLetter();
         renderContact();
+        renderAllDropdowns();
 
-        // Setup interactive UI elements
         setupMobileNav();
+        setupDropdowns();
         setupNavHighlighting();
         setupImageModal();
         setupAnimations();
         setupStickyHeader();
 
-        // Initialize Vanta.js background if available
         if (window.VANTA) {
             VANTA.NET({ 
                 el: "#hero", mouseControls: true, touchControls: true, gyroControls: false, 
@@ -366,6 +494,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Run initialization
     init();
 });
