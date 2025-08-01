@@ -48,7 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const dataJSON = localStorage.getItem(key);
         if (dataJSON) {
             try {
-                // For objects, we need to handle cases where new properties are added to the default
                 const saved = JSON.parse(dataJSON);
                 if (typeof defaultValue === 'object' && defaultValue !== null && !Array.isArray(defaultValue)) {
                     return {...defaultValue, ...saved};
@@ -59,7 +58,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 return defaultValue;
             }
         } else {
-            // Save the default value to localStorage for future visits
             localStorage.setItem(key, JSON.stringify(defaultValue));
             return defaultValue;
         }
@@ -236,6 +234,28 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
     }
 
+    // --- Mobile Navigation ---
+    function setupMobileNav() {
+        const hamburgerBtn = document.getElementById('hamburger-menu');
+        const mainNav = document.getElementById('main-nav');
+        
+        if (hamburgerBtn && mainNav) {
+            hamburgerBtn.addEventListener('click', () => {
+                const isExpanded = hamburgerBtn.getAttribute('aria-expanded') === 'true';
+                hamburgerBtn.setAttribute('aria-expanded', !isExpanded);
+                document.body.classList.toggle('mobile-nav-open');
+            });
+
+            mainNav.addEventListener('click', (e) => {
+                // Close nav if a link is clicked
+                if (e.target.tagName === 'A') {
+                    hamburgerBtn.setAttribute('aria-expanded', 'false');
+                    document.body.classList.remove('mobile-nav-open');
+                }
+            });
+        }
+    }
+
     // --- Image Modal ---
     function setupImageModal() {
         const modal = document.getElementById('image-modal');
@@ -306,9 +326,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 const targetElement = document.getElementById(targetId);
 
                 if (targetElement) {
-                    const headerOffset = document.getElementById('sticky-header').offsetHeight + 20;
+                    const headerHeight = document.getElementById('sticky-header').offsetHeight;
                     const elementPosition = targetElement.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerHeight - 20;
 
                     window.scrollTo({
                         top: offsetPosition,
@@ -332,17 +352,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Cursor Glow Effect ---
-    function setupCursorGlow() {
-        const glow = document.getElementById('cursor-glow');
-        if (!glow) return;
-
-        document.addEventListener('mousemove', (e) => {
-            glow.style.left = `${e.clientX}px`;
-            glow.style.top = `${e.clientY}px`;
-        });
-    }
-
     // --- INITIALIZATION ---
     function init() {
         // Render all page content from data
@@ -362,8 +371,8 @@ document.addEventListener('DOMContentLoaded', () => {
         renderContactDropdown();
 
         // Setup interactive UI elements
+        setupMobileNav();
         setupNavHighlighting();
-        setupCursorGlow();
         setupImageModal();
 
         // Event listener for "Show More" certificates button
