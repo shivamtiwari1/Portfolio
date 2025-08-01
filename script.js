@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     const heroData = {
         title: "Shivam Tiwari",
-        subtitle: "Business Analyst",
+        subtitle: "Data & Business Analyst",
         description: "Bridging data insights with business strategy. I transform complex datasets into actionable narratives using Python, SQL, and Power BI."
     };
 
@@ -25,19 +25,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const skillsData = [
         { 
             category: "Data Analysis & Programming", 
-            skills: ["SQL", "Python (Pandas, NumPy, Scikit-learn)", "DAX", "Advanced Excel & VBA"] 
+            skills: ["SQL", "Python (Pandas, NumPy, matplotlib)", "Advanced Excel & VBA"] 
         },
         { 
             category: "Data Visualization", 
-            skills: ["Power BI", "Tableau"] 
+            skills: ["Power BI", "Tableau","DAX", "Data Storytelling"] 
+        },        
+        { 
+            category: "Database Management", 
+            skills: [ "MySQL", "PostgreSQL",] 
         },
         { 
             category: "Tools & Technologies", 
-            skills: ["Git & GitHub", "Microsoft Azure", "Database Fundamentals"] 
+            skills: ["Git & GitHub", "Microsoft Azure", "Microsoft Office Suite"] 
         },
         { 
             category: "Core Competencies", 
-            skills: ["Problem-Solving", "Process Improvement", "Teamwork & Collaboration"] 
+            skills: ["Problem-Solving", "Process Improvement", "Teamwork & Collaboration","Effective Communication"] 
+        },
+        { 
+            category: "Languages", 
+            skills: ["English", "Hindi"] 
         }
     ];
 
@@ -47,13 +55,15 @@ document.addEventListener('DOMContentLoaded', () => {
             title: "Real-Time Sales Analysis (Blinkit)",
             description: "Architected an end-to-end sales analysis solution. Analyzed over 8,000 sales records to uncover key product performance trends and customer purchasing behaviors. Developed 6+ interactive Power BI dashboards that translated raw data into actionable strategies for inventory management and targeted marketing campaigns.",
             tools: ["Power BI", "SQL", "DAX", "Excel"],
-            link: "https://github.com/shivamtiwari1/Real-Time-Sales-Analysis"
+            link:  "https://github.com/shivamtiwari1/Real-Time-Sales-Analytics-of-Blinkit",
+            outcome: "The analysis led to a 15% improvement in inventory turnover and a 10% increase in sales of high-margin products through targeted promotions."
         },
         {
             title: "Handwritten Digit Recognition",
             description: "Engineered a machine learning model to recognize handwritten digits with 97% accuracy. Implemented and evaluated multiple supervised learning algorithms and classification models, demonstrating strong capabilities in model training, testing, and performance optimization.",
             tools: ["Python", "Scikit-learn", "NumPy"],
-            link: "https://github.com/shivamtiwari1/Handwritten-Digit-Recognition"
+            link: "https://github.com/shivamtiwari1/Handwritten-Digits-Recognition",
+            outcome: "The final model can be integrated into applications requiring automated digit recognition, such as postal code scanning or data entry from forms."
         }
     ];
 
@@ -61,40 +71,94 @@ document.addEventListener('DOMContentLoaded', () => {
     // Replace with paths to your certificate images
     const certificatesData = [
         {
-            name: "Data Analysis with Python",
-            date: "Issued: July 2023",
-            imageUrl: "E:\newfolder\Business analysis with excel.jpg", 
-            verifyLink: "https://example.com/verify/123"
+            name: "Data Visualisation: Empowering Business with Effective Insights",
+            date: "Issued: June 25th, 2025",
+            imageUrl: "assets/Tata data visuilation.png", 
+            verifyLink: "https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/Tata/tPqs5Jq62g2jG529D_Tata_pvg8oZidckeakusgo_1719325938838_completion_certificate.pdf"
         },
         {
-            name: "Microsoft Power BI Desktop",
-            date: "Issued: May 2023",
-            imageUrl: "assets/images/powerbi_certificate.jpg", 
-            verifyLink: ""
+            name: "Introduction to MS Excel",
+            date: "Issued: June 15th, 2025",
+            imageUrl: "assets/Introduction to excel.jpg", 
+            verifyLink: "https://www.simplilearn.com/skillup-certificate-verification?certificate_id=8469912&aws_region=us-east-1"
+        },
+        {
+            name: "Master Data Management for Beginners",
+            date: "Issued: Jan 12, 2025",
+            imageUrl: "assets/Master data management tcs.png", 
+            verifyLink: "https://www.tcsion.com/dotcom/TCSSMB/certificate-verification/index.html"
+        },
+        {
+            name: "Introduction of MS Excel",
+            date: "Issued: June 15th, 2025",
+            imageUrl: "assets/Introduction of MS Excel.png", 
+            verifyLink: "https://www.simplilearn.com/skillup-certificate-verification?certificate_id=8469913&aws_region=us-east-1"
+        },
+        {
+            name: "30-Days Power BI Micro Course",
+            date: "Issued: July 15, 2025",
+            imageUrl: "assets/Power BI.png", 
+            verifyLink: "https://skillcourse.in/certificate-verification/"
+        },
+        {
+            name: "Geodata Processing using Python and Machine Learning",
+            date: "Issued: March 13, 2025",
+            imageUrl: "assets/ISRO.png", 
+            verifyLink: "https://isrolms.iirs.gov.in/mod/customcert/verify_certificate.php?contextid=1049408"
+        },
+        {
+            name: "Data Analytics Job Simulation",
+            date: "Issued: July 2nd, 2025",
+            imageUrl: "assets/Deloitte.png", 
+            verifyLink: "https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/Deloitte/Np2M2vWqW6eWvYpde_Deloitte_DXSgFphkPWQccSeer_1719894752119_completion_certificate.pdf"
+        },
+        {
+            name: "4-week internship on Al Azure",
+            date: "Issued: May 13th 2025 to June 13th 2025",
+            imageUrl: "assets/internship.png", 
+            verifyLink: "https://www.edunetfoundation.org/certificates/validate"
+        },
+        {
+            name: "SEBI Investor Awareness Test",
+            date: "Issued: July 10, 2025",
+            imageUrl: "assets/Sebi Investor test.png", 
+            verifyLink: "https://certifications.nism.ac.in/nismaol/certificate.php"
+        },
+        {
+            name: "Introduction to Numpy",
+            date: "Issued: June 22nd, 2025",
+            imageUrl: "assets/Numpy.jpg", 
+            verifyLink: "https://www.simplilearn.com/skillup-certificate-verification?certificate_id=8499424&aws_region=us-east-1"
+        },
+        {
+            name: "Business Analytics with Excel",
+            date: "Issued: June 21st, 2025",
+            imageUrl: "assets/Business analysis with excel.jpg", 
+            verifyLink: "https://www.simplilearn.com/skillup-certificate-verification?certificate_id=8496381&aws_region=us-east-1"
         }
     ];
 
     // --- 6. MY JOURNEY SECTION (Experience/Education) ---
     const journeyData = [
-        { role: "B.Tech, Computer Science Engineering", company: "United University", date: "2022 - 2025" },
-        { role: "HMC Engineer", company: "Dixon Technologies India Limited", date: "2022" },
-        { role: "Operational Engineer Trainee", company: "Optiemus Electronics Ltd.", date: "2021 - 2022" },
-        { role: "Diploma, Electronics Engineering", company: "Government Polytechnic College", date: "2019 - 2021" },
+        { role: "Bachelor of Technology in Computer Science", company: "Shambhunath Institute of Engineering & Technology", date: "2022 - 2025" },
+        { role: "HMC Engineer", company: "Anand Haldex India Pvt. Ltd.", date: "02/2022 - 08/2022" },
+        { role: "Trainee Engineer", company: "Oppo India Pvt. Ltd.", date: "07/2021 - 01/2022" },
+        { role: "Diploma in Electronics Engineering", company: "Government Polytechnic college", date: "2019 - 2021" },
     ];
 
     // --- 7. RESUME & COVER LETTER SECTION ---
     // Replace with paths to your resume preview image and PDF file
     const resumeData = {
-        previewImageUrl: "assets/images/resume_preview.png", 
-        downloadFileUrl: "assets/pdf/Shivam_Tiwari_Resume.pdf",   
-        fileName: "Shivam_Tiwari_Resume.pdf"
+        previewImageUrl: "assets/Shivam_Tiwari_Data_Analyst_Resume_1.jpg", 
+        downloadFileUrl: "assets/Shivam_Tiwari_Data_Analyst_Resume.pdf",   
+        fileName: "Shivam_Tiwari_Data_Analyst_Resume.pdf"
     };
 
     // Replace with paths to your cover letter preview image and PDF file
     const coverLetterData = {
-        previewImageUrl: "assets/images/cover_letter_preview.png", 
-        downloadFileUrl: "assets/pdf/Shivam_Tiwari_Cover_Letter.pdf",
-        fileName: "Shivam_Tiwari_Cover_Letter.pdf"
+        previewImageUrl: "assets/Cover Latter Shivam Tiwari_1.jpg", 
+        downloadFileUrl: "assets/Cover Latter Shivam Tiwari.pdf",
+        fileName: "Cover Latter Shivam Tiwari.pdf"
     };
 
     // --- 8. GET IN TOUCH SECTION ---
@@ -140,6 +204,8 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="project-card fade-in" id="project-${index}">
                 <h3>${project.title}</h3>
                 <p>${project.description}</p>
+                <h4 class="project-outcome-title">Outcome:</h4>
+                <p>${project.outcome || 'No outcome specified.'}</p>
                 <div class="project-tools">${project.tools.map(tool => `<span>${tool}</span>`).join('')}</div>
                 ${project.link ? `<div class="hero-buttons" style="margin-top: 1.5rem;"><a href="${project.link}" class="btn btn-primary" target="_blank" rel="noopener noreferrer">View Project</a></div>` : ''}
             </div>`).join('');
@@ -151,15 +217,81 @@ document.addEventListener('DOMContentLoaded', () => {
             container.innerHTML = '<p>No certificates have been added yet.</p>';
             return;
         }
-        container.innerHTML = certificatesData.map((cert, index) => `
-            <div class="certificate-card fade-in" id="certificate-${index}">
-                <img src="${cert.imageUrl}" alt="${cert.name} Certificate">
-                <div class="certificate-info">
-                    <h3>${cert.name}</h3>
-                    <p>${cert.date}</p>
-                    ${cert.verifyLink ? `<a href="${cert.verifyLink}" target="_blank" rel="noopener noreferrer">Verify</a>` : ''}
+    
+        let html = '';
+        const visibleCount = 5;
+    
+        // Add the first 5 certificates
+        for (let i = 0; i < visibleCount && i < certificatesData.length; i++) {
+            const cert = certificatesData[i];
+            html += `
+                <div class="certificate-card fade-in" id="certificate-${i}">
+                    <img src="${cert.imageUrl}" alt="${cert.name} Certificate">
+                    <div class="certificate-info">
+                        <h3>${cert.name}</h3>
+                        <p>${cert.date}</p>
+                        <div class="certificate-verification">
+                        ${cert.verifyLink ? `<a href="${cert.verifyLink}" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Verify</a>` : ''}
+                        </div>
+                    </div>
+                </div>`;
+        }
+    
+        // Handle the 6th certificate and the "Show More" key
+        if (certificatesData.length > visibleCount) {
+            const sixthCert = certificatesData[visibleCount];
+            html += `
+                <div class="show-more-container" id="show-more-container">
+                    <div class="certificate-card fade-in" id="certificate-${visibleCount}">
+                        <img src="${sixthCert.imageUrl}" alt="${sixthCert.name} Certificate">
+                        <div class="certificate-info">
+                            <h3>${sixthCert.name}</h3>
+                            <p>${sixthCert.date}</p>
+                            <div class="certificate-verification">
+                            ${sixthCert.verifyLink ? `<a href="${sixthCert.verifyLink}" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Verify</a>` : ''}
+                            </div>
+                        </div>
+                    </div>
+                    <div id="show-more-key">See More...</div>
                 </div>
-            </div>`).join('');
+            `;
+        }
+    
+        // Add the rest of the certificates as hidden
+        for (let i = visibleCount + 1; i < certificatesData.length; i++) {
+            const cert = certificatesData[i];
+            html += `
+                <div class="certificate-card fade-in hidden-by-default" id="certificate-${i}">
+                    <img src="${cert.imageUrl}" alt="${cert.name} Certificate">
+                    <div class="certificate-info">
+                        <h3>${cert.name}</h3>
+                        <p>${cert.date}</p>
+                        <div class="certificate-verification">
+                        ${cert.verifyLink ? `<a href="${cert.verifyLink}" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Verify</a>` : ''}
+                        </div>
+                    </div>
+                </div>`;
+        }
+    
+        container.innerHTML = html;
+    
+        // Add event listener after the container is in the DOM
+        const showMoreContainer = document.getElementById('show-more-container');
+        if (showMoreContainer) {
+            showMoreContainer.addEventListener('click', () => {
+                const sixthCard = document.getElementById('certificate-5');
+                
+                // Make the 6th card fully visible and move it out of the container
+                sixthCard.style.opacity = '1';
+                showMoreContainer.parentNode.insertBefore(sixthCard, showMoreContainer);
+                showMoreContainer.remove();
+    
+                // Show the rest of the cards
+                document.querySelectorAll('.hidden-by-default').forEach(cert => {
+                    cert.classList.remove('hidden-by-default');
+                });
+            });
+        }
     }
 
     function renderJourney() {
@@ -250,8 +382,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // Contact Dropdown
         const contactDropdown = document.getElementById('contact-dropdown');
         contactDropdown.innerHTML = `
-            <a href="#contact-email-link">Email</a>
-            <a href="#social-icons-container">Socials</a>
+            <a href="mailto:${contactData.email}">Email</a>
+            <a href="${contactData.socials.find(s => s.name === 'GitHub').url}" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="${contactData.socials.find(s => s.name === 'LinkedIn').url}" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         `;
     }
 
@@ -476,7 +609,7 @@ document.addEventListener('DOMContentLoaded', () => {
         renderResumeAndCoverLetter();
         renderContact();
         renderAllDropdowns();
-
+        
         setupMobileNav();
         setupDropdowns();
         setupNavHighlighting();
