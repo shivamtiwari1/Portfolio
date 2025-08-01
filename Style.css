@@ -308,6 +308,9 @@ footer { text-align: center; padding: 2rem 0; color: var(--slate); font-size: 0.
     }
 
     /* --- General Mobile Layout --- */
+    .container {
+        padding: 0 1rem; /* Added consistent padding for mobile */
+    }
     .hero-content { 
         flex-direction: column;
         text-align: center; 
@@ -319,11 +322,14 @@ footer { text-align: center; padding: 2rem 0; color: var(--slate); font-size: 0.
     .timeline-item::after { left: 10px; }
     .timeline-left, .timeline-right { left: 0; text-align: left; }
     .resume-grid { flex-direction: column; align-items: center; }
-    #skills-grid { padding-left: 2rem; }
+    #skills-grid { 
+        padding-left: 1rem; /* Adjusted to match container padding */
+        padding-right: 1rem; /* Adjusted to match container padding */
+    }
 }
 
 @media (max-width: 480px) {
-    .container { padding: 0 1rem; }
+    /* .container rule is now in the (max-width: 768px) block, no need to repeat */
     .section-padding { padding: 60px 0; }
     #skills.section-padding { padding-top: 100px; padding-bottom: 100px; }
     .resume-card {
