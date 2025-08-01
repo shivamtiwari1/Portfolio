@@ -2,15 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Shivam Tiwari | Data & Business Analyst</title>
-    <!-- FAVICON ADDED HERE -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2215%22 fill=%22%2364ffda%22></rect><text x=%2250%%22 y=%2250%%22 dominant-baseline=%22central%22 text-anchor=%22middle%22 font-size=%2260%22 font-family=%22sans-serif%22 fill=%22%230a192f%22>S</text></svg>">
     <link rel="stylesheet" href="Style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        document.addEventListener('wheel', function(e) {
+            if (e.ctrlKey) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && (e.key === '+' || e.key === '-' || e.key === '0')) {
+                e.preventDefault();
+            }
+        });
+    </script>
 </head>
 <body>
 
@@ -27,38 +39,32 @@
                 <div class="nav-item">
                     <a href="#skills">Skills</a>
                     <div class="dropdown-content" id="skills-dropdown">
-                        <!-- Populated by JS -->
-                    </div>
+                        </div>
                 </div>
                 <div class="nav-item">
                     <a href="#projects">Projects</a>
                     <div class="dropdown-content" id="projects-dropdown">
-                        <!-- Populated by JS -->
-                    </div>
+                        </div>
                 </div>
                 <div class="nav-item">
                     <a href="#certificates">Certificates</a>
                     <div class="dropdown-content" id="certificates-dropdown">
-                        <!-- Populated by JS -->
-                    </div>
+                        </div>
                 </div>
                 <div class="nav-item">
                     <a href="#experience">Journey</a>
                     <div class="dropdown-content" id="experience-dropdown">
-                        <!-- Populated by JS -->
-                    </div>
+                        </div>
                 </div>
                 <div class="nav-item">
                     <a href="#resume">Resume</a>
                     <div class="dropdown-content" id="resume-dropdown">
-                        <!-- Populated by JS -->
-                    </div>
+                        </div>
                 </div>
                 <div class="nav-item">
                     <a href="#contact">Contact</a>
                     <div class="dropdown-content" id="contact-dropdown">
-                        <!-- Populated by JS -->
-                    </div>
+                        </div>
                 </div>
             </nav>
         </div>
@@ -74,9 +80,9 @@
                 </div>
             </div>
             <div class="hero-right">
-                <h1 class="fade-in" id="hero-title"><!-- Populated by JS --></h1>
-                <h2 class="fade-in" id="hero-subtitle"><!-- Populated by JS --></h2>
-                <p class="fade-in" id="hero-comment"><!-- Populated by JS --></p>
+                <h1 class="fade-in" id="hero-title"></h1>
+                <h2 class="fade-in" id="hero-subtitle"></h2>
+                <p class="fade-in" id="hero-comment"></p>
                 <div class="hero-buttons fade-in">
                     <a href="#projects" class="btn btn-primary">View Projects</a>
                     <a href="#contact" class="btn btn-secondary">Contact Me</a>
@@ -90,7 +96,7 @@
                 <h2>About Me</h2>
             </div>
             <div class="about-content">
-                <p><!-- Populated by JS --></p>
+                <p></p>
             </div>
         </section>
 
@@ -99,8 +105,7 @@
                 <h2>Skills</h2>
             </div>
             <div id="skills-grid">
-                <!-- Populated by JS -->
-            </div>
+                </div>
         </section>
 
         <section id="projects" class="container section-padding fade-in">
@@ -108,8 +113,7 @@
                 <h2>My Projects</h2>
             </div>
             <div id="projects-container">
-                <!-- Populated by JS -->
-            </div>
+                </div>
         </section>
 
         <section id="certificates" class="container section-padding fade-in">
@@ -117,8 +121,7 @@
                 <h2>Certificates</h2>
             </div>
             <div id="certificates-container" class="image-zoom-container">
-                <!-- Populated by JS -->
-            </div>
+                </div>
         </section>
 
         <section id="experience" class="container section-padding fade-in">
@@ -126,8 +129,7 @@
                 <h2>My Journey</h2>
             </div>
             <div id="timeline-container">
-                <!-- Populated by JS -->
-            </div>
+                </div>
         </section>
         
         <section id="resume" class="container section-padding fade-in">
@@ -135,17 +137,15 @@
                 <h2>Resume & Cover Letter</h2>
             </div>
             <div id="resume-cover-letter-container" class="resume-grid image-zoom-container">
-                <!-- Populated by JS -->
-            </div>
+                </div>
         </section>
 
         <section id="contact" class="container section-padding fade-in">
             <h2>Get In Touch</h2>
-            <p id="contact-text"><!-- Populated by JS --></p>
-            <a href="" id="contact-email-link" class="email-link"><!-- Populated by JS --></a>
+            <p id="contact-text"></p>
+            <a href="" id="contact-email-link" class="email-link"></a>
             <div class="social-icons" id="social-icons-container">
-                <!-- Populated by JS -->
-            </div>
+                </div>
         </section>
     </main>
 
