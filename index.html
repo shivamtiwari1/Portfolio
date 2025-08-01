@@ -11,7 +11,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css">
 </head>
 <body>
 
@@ -25,39 +24,31 @@
                 <div class="dropdown">
                     <a href="#skills">Skills</a>
                     <div class="dropdown-content" id="skills-dropdown">
-                        </div>
+                        <!-- Skills will be populated by JS -->
+                    </div>
                 </div>
                 <div class="dropdown">
                     <a href="#projects">Projects</a>
                     <div class="dropdown-content" id="projects-dropdown">
-                        </div>
+                        <!-- Projects will be populated by JS -->
+                    </div>
                 </div>
                 <div class="dropdown">
                     <a href="#certificates">Certificates</a>
                     <div class="dropdown-content" id="certificates-dropdown">
-                        </div>
+                        <!-- Certificates will be populated by JS -->
+                    </div>
                 </div>
                 <div class="dropdown">
                     <a href="#resume">Resume</a>
                     <div class="dropdown-content" id="resume-dropdown">
-                        </div>
+                        <!-- Resume links will be populated by JS -->
+                    </div>
                 </div>
                 <div class="dropdown">
                     <a href="#contact">Contact</a>
                     <div class="dropdown-content" id="contact-dropdown">
-                        </div>
-                </div>
-                <div class="dropdown admin-only">
-                    <a href="#" class="dropbtn">Manage</a>
-                    <div class="dropdown-content">
-                        <a href="#" id="manage-title-dropdown">Hero Section</a>
-                        <a href="#" id="manage-profile-pic-dropdown">Profile Picture</a>
-                        <a href="#" id="manage-about-dropdown">About Me</a>
-                        <a href="#" id="manage-skills-dropdown">Skills</a>
-                        <a href="#" id="manage-projects-dropdown">Projects</a>
-                        <a href="#" id="manage-certificates-dropdown">Certificates</a>
-                        <a href="#" id="manage-journey-dropdown">Journey</a>
-                        <a href="#" id="manage-resume-cover-letter-dropdown">Resume/CV</a>
+                        <!-- Contact links will be populated by JS -->
                     </div>
                 </div>
             </nav>
@@ -71,7 +62,6 @@
                     <div class="ring outer-ring"></div>
                     <div class="ring inner-ring"></div>
                     <div id="profile-pic-content"></div>
-                    <input type="file" id="file-input" accept="image/*" style="display:none;">
                 </div>
             </div>
             <div class="hero-right">
@@ -92,7 +82,7 @@
                 <h2>About Me</h2>
             </div>
             <div class="about-content">
-                <p>With a Bachelor's in Computer Science Engineering and a foundational Diploma in Electronics, I possess a unique, end-to-end understanding of how technology works—from the physical components to high-level data abstraction. My passion lies in decoding the stories hidden within data. I leverage powerful tools like Python, Power BI, and SQL to analyze complex information, identify critical trends, and build solutions that drive business decisions. I am driven to become a key contributor in the IT field as a professional analyst and developer, where I can apply my analytical mindset and technical skills to solve real-world challenges.</p>
+                <p><!-- About content will be populated by JS --></p>
             </div>
         </section>
 
@@ -100,28 +90,36 @@
             <div class="section-header">
                 <h2>Skills</h2>
             </div>
-            <div id="skills-grid"></div>
+            <div id="skills-grid">
+                <!-- Skill cards will be populated by JS -->
+            </div>
         </section>
 
         <section id="projects" class="container section-padding fade-in">
             <div class="section-header">
                 <h2>My Projects</h2>
             </div>
-            <div id="projects-container"></div>
+            <div id="projects-container">
+                <!-- Project cards will be populated by JS -->
+            </div>
         </section>
 
         <section id="certificates" class="container section-padding fade-in">
             <div class="section-header">
                 <h2>Certificates</h2>
             </div>
-            <div id="certificates-container" class="image-zoom-container"></div>
+            <div id="certificates-container" class="image-zoom-container">
+                <!-- Certificate cards will be populated by JS -->
+            </div>
         </section>
 
         <section id="experience" class="container section-padding fade-in">
             <div class="section-header">
                 <h2>My Journey</h2>
             </div>
-            <div id="timeline-container"></div>
+            <div id="timeline-container">
+                <!-- Timeline items will be populated by JS -->
+            </div>
         </section>
         
         <section id="resume" class="container section-padding fade-in">
@@ -129,36 +127,7 @@
                 <h2>Resume & Cover Letter</h2>
             </div>
             <div id="resume-cover-letter-container" class="resume-grid image-zoom-container">
-            </div>
-        </section>
-
-        <section id="feedback" class="container section-padding fade-in">
-            <div class="section-header">
-                <h2>Feedback</h2>
-                <button id="toggle-feedback-form-btn" class="btn btn-primary">Provide Feedback</button>
-            </div>
-    
-            <div id="feedback-form-container">
-                <form id="feedback-form" class="fade-in">
-                     <div class="form-group">
-                        <input type="text" id="name" name="name" placeholder="Your Name" required>
-                        <input type="email" id="email" name="email" placeholder="Your Email" required>
-                    </div>
-                    <div class="form-group">
-                         <select id="project-select" name="project" required>
-                            <option value="">Select a Project to Comment On</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <textarea id="feedback" name="feedback" rows="5" placeholder="Your feedback..." required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit Feedback</button>
-                </form>
-            </div>
-    
-            <div id="feedback-display-section" class="fade-in" style="display: none;">
-                <h3 class="feedback-title">Visitor Feedback</h3>
-                <div id="feedback-list"></div>
+                <!-- Resume and Cover Letter will be populated by JS -->
             </div>
         </section>
 
@@ -188,259 +157,9 @@
         </div>
     </div>
 
-    <div id="about-form-modal" class="modal-overlay">
-         <div class="modal-content">
-            <h3>Edit About Me</h3>
-            <form id="about-form">
-                <div class="form-group" style="flex-direction: column;">
-                    <textarea id="about-text" rows="8" required></textarea>
-                </div>
-                <div class="modal-buttons">
-                    <button type="submit" class="btn btn-primary">Save</button>
-                    <button type="button" class="btn btn-secondary" id="cancel-about-form-btn">Cancel</button>
-                </div>
-            </form>
-        </div>
-    </div>
-    
-    <div id="skill-tree-modal" class="modal-overlay">
-        <div class="modal-content">
-            <div class="skill-tree-header">
-                <h3>Manage Skills</h3>
-                <button id="add-new-skill-btn" class="btn btn-primary">Add New Category</button>
-            </div>
-            <div id="skill-tree-container"></div>
-            <div class="modal-buttons">
-                <button type="button" class="btn btn-secondary" id="cancel-skill-tree-btn">Close</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="skill-form-modal" class="modal-overlay">
-        <div class="modal-content">
-            <h3 id="skill-form-modal-title">Add Skill</h3>
-            <form id="skill-form">
-                <input type="hidden" id="skill-category-index">
-                <input type="hidden" id="skill-item-index">
-                <div class="form-group">
-                    <input type="text" id="skill-category" placeholder="Skill Category" required>
-                </div>
-                <div class="form-group">
-                    <input type="text" id="skill-name" placeholder="Skill Name" required>
-                </div>
-                <div class="modal-buttons">
-                    <button type="submit" class="btn btn-primary">Save</button>
-                    <button type="button" class="btn btn-secondary" id="cancel-skill-form-btn">Cancel</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <div id="project-list-modal" class="modal-overlay">
-        <div class="modal-content">
-            <div class="project-list-header">
-                <h3>Manage Projects</h3>
-                <button id="add-new-project-btn" class="btn btn-primary">Add Project</button>
-            </div>
-            <div id="project-list-container"></div>
-            <div class="modal-buttons">
-                <button type="button" class="btn btn-secondary" id="cancel-project-list-btn">Close</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="project-form-modal" class="modal-overlay">
-        <div class="modal-content">
-            <h3 id="project-form-modal-title">Add Project</h3>
-            <form id="project-form" style="flex-direction: column;">
-                <input type="hidden" id="edit-project-index">
-                <div class="form-group">
-                    <input type="text" id="project-title" placeholder="Project Title" required>
-                </div>
-                 <div class="form-group">
-                    <textarea id="project-description" rows="4" placeholder="Description" required></textarea>
-                </div>
-                <div class="form-group">
-                    <input type="text" id="project-tools" placeholder="Tools (comma-separated, e.g., Python, SQL)" required>
-                </div>
-                <div class="form-group">
-                    <input type="url" id="project-link" placeholder="Project Link (e.g., https://github.com/...)">
-                </div>
-                <div class="modal-buttons">
-                    <button type="submit" class="btn btn-primary">Save Project</button>
-                    <button type="button" class="btn btn-secondary" id="cancel-project-form-btn">Cancel</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <div id="certificate-list-modal" class="modal-overlay">
-        <div class="modal-content">
-            <div class="certificate-list-header">
-                <h3>Manage Certificates</h3>
-                <button id="add-new-certificate-btn" class="btn btn-primary">Add Certificate</button>
-            </div>
-            <div id="certificate-list-container"></div>
-            <div class="modal-buttons">
-                <button type="button" class="btn btn-secondary" id="cancel-certificate-list-btn">Close</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="certificate-form-modal" class="modal-overlay">
-        <div class="modal-content">
-            <h3 id="certificate-form-modal-title">Add Certificate</h3>
-            <form id="certificate-form">
-                <input type="hidden" id="edit-cert-index">
-                <div class="form-group">
-                    <input type="text" id="cert-name" name="cert-name" placeholder="Certificate Name" required>
-                </div>
-                <div class="form-group">
-                    <input type="text" id="cert-date" name="cert-date" placeholder="Date (e.g., July 2025)" required>
-                </div>
-                <div class="form-group">
-                    <input type="url" id="cert-link" name="cert-link" placeholder="Verification Link (Optional)">
-                </div>
-                <div class="form-group">
-                    <label>Current Image:</label>
-                    <img id="edit-cert-current-photo" src="" alt="Current Certificate Image" style="width: 100px; height: auto; display: none;">
-                </div>
-                <div class="form-group">
-                    <label for="cert-photo">Certificate Image:</label>
-                    <input type="file" id="cert-photo" name="cert-photo" accept="image/*">
-                </div>
-                <div class="modal-buttons">
-                    <button type="submit" class="btn btn-primary">Save Certificate</button>
-                    <button type="button" class="btn btn-secondary" id="cancel-certificate-form-btn">Cancel</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <div id="journey-list-modal" class="modal-overlay">
-        <div class="modal-content">
-            <div class="journey-list-header">
-                <h3>Manage Journey</h3>
-                <button id="add-new-journey-btn" class="btn btn-primary">Add Item</button>
-            </div>
-            <div id="journey-list-container"></div>
-            <div class="modal-buttons">
-                <button type="button" class="btn btn-secondary" id="cancel-journey-list-btn">Close</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="journey-form-modal" class="modal-overlay">
-        <div class="modal-content">
-            <h3 id="journey-form-modal-title">Add Journey Item</h3>
-            <form id="journey-form">
-                <input type="hidden" id="edit-journey-index">
-                <div class="form-group">
-                    <input type="text" id="journey-role" placeholder="Role / Degree" required>
-                </div>
-                 <div class="form-group">
-                    <input type="text" id="journey-company" placeholder="Company / University" required>
-                </div>
-                <div class="form-group">
-                    <input type="text" id="journey-date" placeholder="Date Range (e.g., 2022 - 2025)" required>
-                </div>
-                <div class="modal-buttons">
-                    <button type="submit" class="btn btn-primary">Save Item</button>
-                    <button type="button" class="btn btn-secondary" id="cancel-journey-form-btn">Cancel</button>
-                </div>
-            </form>
-        </div>
-    </div>
-    
-    <div id="resume-cover-letter-modal" class="modal-overlay">
-        <div class="modal-content">
-            <h3>Manage Resume & Cover Letter</h3>
-            <form id="resume-cover-letter-form">
-                <div class="form-section">
-                    <h4>Resume</h4>
-                    <div class="form-group">
-                         <label for="resume-image">Image Preview:</label>
-                        <input type="file" id="resume-image" accept="image/*">
-                         <img id="resume-image-preview" src="" alt="Resume Preview" style="width: 100px; height: auto; display: none;">
-                    </div>
-                    <div class="form-group">
-                        <label for="resume-file">PDF File:</label>
-                        <input type="file" id="resume-file" accept=".pdf">
-                        <span id="current-resume-file"></span>
-                    </div>
-                </div>
-                <div class="form-section">
-                    <h4>Cover Letter</h4>
-                    <div class="form-group">
-                        <label for="cover-letter-image">Image Preview:</label>
-                        <input type="file" id="cover-letter-image" accept="image/*">
-                        <img id="cover-letter-image-preview" src="" alt="Cover Letter Preview" style="width: 100px; height: auto; display: none;">
-                    </div>
-                     <div class="form-group">
-                        <label for="cover-letter-file">PDF File:</label>
-                        <input type="file" id="cover-letter-file" accept=".pdf">
-                         <span id="current-cover-letter-file"></span>
-                    </div>
-                </div>
-                <div class="modal-buttons">
-                    <button type="submit" class="btn btn-primary">Save Changes</button>
-                    <button type="button" class="btn btn-secondary" id="cancel-resume-cover-letter-btn">Cancel</button>
-                </div>
-            </form>
-        </div>
-    </div>
-    
-    <div id="title-modal" class="modal-overlay">
-        <div class="modal-content">
-            <h3>Manage Title</h3>
-            <form id="title-form">
-                <div class="form-group">
-                    <label for="manage-title-input">Main Title</label>
-                    <input type="text" id="manage-title-input" required>
-                </div>
-                <div class="form-group">
-                    <label for="manage-subtitle-input">Subtitle</label>
-                    <input type="text" id="manage-subtitle-input" required>
-                </div>
-                <div class="form-group">
-                    <label for="manage-comment-input">Hero Comment</label>
-                    <textarea id="manage-comment-input" rows="4" required></textarea>
-                </div>
-                <div class="modal-buttons">
-                    <button type="submit" class="btn btn-primary">Save Changes</button>
-                    <button type="button" class="btn btn-secondary" id="cancel-title-btn">Cancel</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <div id="thank-you-modal" class="modal-overlay">
-        <div class="modal-content text-center">
-            <h3>Thank You!</h3>
-            <p>Your valuable feedback has been submitted.</p>
-            <button class="btn btn-primary" id="close-thank-you-modal-btn">Close</button>
-        </div>
-    </div>
-
-    <div id="crop-image-modal" class="modal-overlay">
-        <div class="modal-content">
-            <h3>Crop Profile Picture</h3>
-            <div id="cropper-container">
-                <img id="image-to-crop" src="" alt="Image to crop">
-            </div>
-            <div class="modal-buttons">
-                <button type="button" class="btn btn-primary" id="save-crop-btn">Save</button>
-                <button type="button" class="btn btn-secondary" id="cancel-crop-btn">Cancel</button>
-            </div>
-        </div>
-    </div>
-
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
     <script src="script.js"></script>
-    <script src="admin.js"></script>
+
 </body>
 </html>
