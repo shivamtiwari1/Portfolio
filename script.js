@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- 1. HERO SECTION & PROFILE PICTURE ---
     // Replace with the path to your profile picture
-    const profilePicUrl = "/Portfolio/Photo.png"; 
+    const profilePicUrl = "assets/Photo.png"; 
     
     const heroData = {
         title: "Shivam Tiwari",
