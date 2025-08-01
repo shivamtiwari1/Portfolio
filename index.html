@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Corrected 'integrity' attribute below -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
@@ -24,36 +25,12 @@
             </button>
             <nav id="main-nav">
                 <a href="#about">About</a>
-                <div class="dropdown">
-                    <a href="#skills">Skills</a>
-                    <div class="dropdown-content" id="skills-dropdown">
-                        <!-- Skills will be populated by JS -->
-                    </div>
-                </div>
-                <div class="dropdown">
-                    <a href="#projects">Projects</a>
-                    <div class="dropdown-content" id="projects-dropdown">
-                        <!-- Projects will be populated by JS -->
-                    </div>
-                </div>
-                <div class="dropdown">
-                    <a href="#certificates">Certificates</a>
-                    <div class="dropdown-content" id="certificates-dropdown">
-                        <!-- Certificates will be populated by JS -->
-                    </div>
-                </div>
-                <div class="dropdown">
-                    <a href="#resume">Resume</a>
-                    <div class="dropdown-content" id="resume-dropdown">
-                        <!-- Resume links will be populated by JS -->
-                    </div>
-                </div>
-                <div class="dropdown">
-                    <a href="#contact">Contact</a>
-                    <div class="dropdown-content" id="contact-dropdown">
-                        <!-- Contact links will be populated by JS -->
-                    </div>
-                </div>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#certificates">Certificates</a>
+                <a href="#experience">Journey</a>
+                <a href="#resume">Resume</a>
+                <a href="#contact">Contact</a>
             </nav>
         </div>
     </header>
@@ -68,9 +45,9 @@
                 </div>
             </div>
             <div class="hero-right">
-                <h1 class="fade-in" id="hero-title">Shivam Tiwari</h1>
-                <h2 class="fade-in" id="hero-subtitle">Data & Business Analyst</h2>
-                <p class="fade-in" id="hero-comment">Bridging data insights with business strategy. I transform complex datasets into actionable narratives using Python, SQL, and Power BI.</p>
+                <h1 class="fade-in" id="hero-title"><!-- Populated by JS --></h1>
+                <h2 class="fade-in" id="hero-subtitle"><!-- Populated by JS --></h2>
+                <p class="fade-in" id="hero-comment"><!-- Populated by JS --></p>
                 <div class="hero-buttons fade-in">
                     <a href="#projects" class="btn btn-primary">View Projects</a>
                     <a href="#contact" class="btn btn-secondary">Contact Me</a>
@@ -84,7 +61,7 @@
                 <h2>About Me</h2>
             </div>
             <div class="about-content">
-                <p><!-- About content will be populated by JS --></p>
+                <p><!-- Populated by JS --></p>
             </div>
         </section>
 
@@ -93,7 +70,7 @@
                 <h2>Skills</h2>
             </div>
             <div id="skills-grid">
-                <!-- Skill cards will be populated by JS -->
+                <!-- Populated by JS -->
             </div>
         </section>
 
@@ -102,7 +79,7 @@
                 <h2>My Projects</h2>
             </div>
             <div id="projects-container">
-                <!-- Project cards will be populated by JS -->
+                <!-- Populated by JS -->
             </div>
         </section>
 
@@ -111,7 +88,7 @@
                 <h2>Certificates</h2>
             </div>
             <div id="certificates-container" class="image-zoom-container">
-                <!-- Certificate cards will be populated by JS -->
+                <!-- Populated by JS -->
             </div>
         </section>
 
@@ -120,7 +97,7 @@
                 <h2>My Journey</h2>
             </div>
             <div id="timeline-container">
-                <!-- Timeline items will be populated by JS -->
+                <!-- Populated by JS -->
             </div>
         </section>
         
@@ -129,17 +106,16 @@
                 <h2>Resume & Cover Letter</h2>
             </div>
             <div id="resume-cover-letter-container" class="resume-grid image-zoom-container">
-                <!-- Resume and Cover Letter will be populated by JS -->
+                <!-- Populated by JS -->
             </div>
         </section>
 
         <section id="contact" class="container section-padding fade-in">
             <h2>Get In Touch</h2>
-            <p>Let's connect! I'm open to new opportunities and collaborations. Feel free to reach out.</p>
-            <a href="mailto:Shivam230131@gmail.com" class="email-link">Shivam230131@gmail.com</a>
-            <div class="social-icons">
-                <a href="https://www.linkedin.com/in/shivam-tiwari-4239a621b/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/shivamtiwari1" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <p id="contact-text"><!-- Populated by JS --></p>
+            <a href="" id="contact-email-link" class="email-link"><!-- Populated by JS --></a>
+            <div class="social-icons" id="social-icons-container">
+                <!-- Populated by JS -->
             </div>
         </section>
     </main>

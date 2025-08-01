@@ -1,19 +1,47 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- Utility to create safe IDs ---
-    function createSafeId(name) {
-        return name.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase();
-    }
+    // ===================================================================================
+    // === EDIT YOUR PORTFOLIO CONTENT HERE ==============================================
+    // ===================================================================================
+    // To edit your portfolio, change the values in the variables below.
+    // For Google Drive links, use the format: https://drive.google.com/uc?export=view&id=YOUR_FILE_ID
+    // For downloadable files, use the format: https://drive.google.com/uc?export=download&id=YOUR_FILE_ID
+    // -----------------------------------------------------------------------------------
 
-    // --- Default Data ---
-    const defaultAbout = "With a Bachelor's in Computer Science Engineering and a foundational Diploma in Electronics, I possess a unique, end-to-end understanding of how technology works—from the physical components to high-level data abstraction. My passion lies in decoding the stories hidden within data. I leverage powerful tools like Python, Power BI, and SQL to analyze complex information, identify critical trends, and build solutions that drive business decisions. I am driven to become a key contributor in the IT field as a professional analyst and developer, where I can apply my analytical mindset and technical skills to solve real-world challenges.";
-    const defaultSkills = [
-        { title: "Data Analysis & Programming", skills: ["SQL", "Python (Pandas, NumPy, Scikit-learn)", "DAX", "Advanced Excel & VBA"] },
-        { title: "Data Visualization", skills: ["Power BI", "Tableau"] },
-        { title: "Tools & Technologies", skills: ["Git & GitHub", "Microsoft Azure", "Database Fundamentals"] },
-        { title: "Core Competencies", skills: ["Problem-Solving", "Process Improvement", "Teamwork & Collaboration"] }
+    // --- 1. HERO SECTION & PROFILE PICTURE ---
+    const profilePicUrl = "https://drive.google.com/uc?export=view&id=1WHe_w40_mrH0-pqiNF7ZUcA9duqWb9AV";
+    
+    const heroData = {
+        title: "Shivam Tiwari",
+        subtitle: "Data & Business Analyst",
+        description: "Bridging data insights with business strategy. I transform complex datasets into actionable narratives using Python, SQL, and Power BI."
+    };
+
+    // --- 2. ABOUT ME SECTION ---
+    const aboutMeText = "With a Bachelor's in Computer Science Engineering and a foundational Diploma in Electronics, I possess a unique, end-to-end understanding of how technology works—from the physical components to high-level data abstraction. My passion lies in decoding the stories hidden within data. I leverage powerful tools like Python, Power BI, and SQL to analyze complex information, identify critical trends, and build solutions that drive business decisions. I am driven to become a key contributor in the IT field as a professional analyst and developer, where I can apply my analytical mindset and technical skills to solve real-world challenges.";
+
+    // --- 3. SKILLS SECTION ---
+    const skillsData = [
+        { 
+            category: "Data Analysis & Programming", 
+            skills: ["SQL", "Python (Pandas, NumPy, Scikit-learn)", "DAX", "Advanced Excel & VBA"] 
+        },
+        { 
+            category: "Data Visualization", 
+            skills: ["Power BI", "Tableau"] 
+        },
+        { 
+            category: "Tools & Technologies", 
+            skills: ["Git & GitHub", "Microsoft Azure", "Database Fundamentals"] 
+        },
+        { 
+            category: "Core Competencies", 
+            skills: ["Problem-Solving", "Process Improvement", "Teamwork & Collaboration"] 
+        }
     ];
-    const defaultProjects = [
+
+    // --- 4. MY PROJECTS SECTION ---
+    const projectsData = [
         {
             title: "Real-Time Sales Analysis (Blinkit)",
             description: "Architected an end-to-end sales analysis solution. Analyzed over 8,000 sales records to uncover key product performance trends and customer purchasing behaviors. Developed 6+ interactive Power BI dashboards that translated raw data into actionable strategies for inventory management and targeted marketing campaigns.",
@@ -27,125 +55,112 @@ document.addEventListener('DOMContentLoaded', () => {
             link: "https://github.com/shivamtiwari1/Handwritten-Digit-Recognition"
         }
     ];
-    const defaultJourney = [
+
+    // --- 5. CERTIFICATES SECTION ---
+    const certificatesData = [
+        {
+            name: "Data Analysis with Python",
+            date: "Issued: July 2023",
+            imageUrl: "https://drive.google.com/uc?export=view&id=YOUR_PYTHON_CERTIFICATE_ID", // <-- REPLACE YOUR_PYTHON_CERTIFICATE_ID
+            verifyLink: "https://example.com/verify/123"
+        },
+        {
+            name: "Microsoft Power BI Desktop for Business Intelligence",
+            date: "Issued: May 2023",
+            imageUrl: "https://drive.google.com/uc?export=view&id=YOUR_POWERBI_CERTIFICATE_ID", // <-- REPLACE YOUR_POWERBI_CERTIFICATE_ID
+            verifyLink: ""
+        }
+    ];
+
+    // --- 6. MY JOURNEY SECTION (Experience/Education) ---
+    const journeyData = [
         { role: "B.Tech, Computer Science Engineering", company: "United University", date: "2022 - 2025" },
         { role: "HMC Engineer", company: "Dixon Technologies India Limited", date: "2022" },
         { role: "Operational Engineer Trainee", company: "Optiemus Electronics Ltd.", date: "2021 - 2022" },
         { role: "Diploma, Electronics Engineering", company: "Government Polytechnic College", date: "2019 - 2021" },
     ];
-    const defaultResumeData = { image: '', file: null, fileName: '' };
-    const defaultCoverLetterData = { image: '', file: null, fileName: '' };
-    const defaultHeroData = {
-        title: 'Shivam Tiwari',
-        subtitle: 'Data & Business Analyst',
-        comment: 'Bridging data insights with business strategy. I transform complex datasets into actionable narratives using Python, SQL, and Power BI.'
+
+    // --- 7. RESUME & COVER LETTER SECTION ---
+    const resumeData = {
+        previewImageUrl: "https://drive.google.com/uc?export=view&id=YOUR_RESUME_PREVIEW_IMAGE_ID", // <-- REPLACE with image preview ID
+        downloadFileUrl: "https://drive.google.com/uc?export=download&id=YOUR_RESUME_PDF_ID",   // <-- REPLACE with PDF download ID
+        fileName: "Shivam_Tiwari_Resume.pdf"
     };
-    const defaultProfilePic = 'https://via.placeholder.com/280';
+
+    const coverLetterData = {
+        previewImageUrl: "https://drive.google.com/uc?export=view&id=YOUR_COVER_LETTER_PREVIEW_IMAGE_ID", // <-- REPLACE with image preview ID
+        downloadFileUrl: "https://drive.google.com/uc?export=download&id=YOUR_COVER_LETTER_PDF_ID",   // <-- REPLACE with PDF download ID
+        fileName: "Shivam_Tiwari_Cover_Letter.pdf"
+    };
+
+    // --- 8. GET IN TOUCH SECTION ---
+    const contactData = {
+        text: "Let's connect! I'm open to new opportunities and collaborations. Feel free to reach out.",
+        email: "Shivam230131@gmail.com",
+        socials: [
+            { name: "LinkedIn", iconClass: "fab fa-linkedin", url: "https://www.linkedin.com/in/shivam-tiwari-4239a621b/" },
+            { name: "GitHub", iconClass: "fab fa-github", url: "https://github.com/shivamtiwari1" }
+        ]
+    };
+
+    // ===================================================================================
+    // === END OF EDITABLE CONTENT =======================================================
+    // ===================================================================================
 
 
-    // --- Generic Data Storage ---
-    function getSavedData(key, defaultValue) {
-        const dataJSON = localStorage.getItem(key);
-        if (dataJSON) {
-            try {
-                const saved = JSON.parse(dataJSON);
-                if (typeof defaultValue === 'object' && defaultValue !== null && !Array.isArray(defaultValue)) {
-                    return {...defaultValue, ...saved};
-                }
-                return saved;
-            } catch (e) {
-                console.error(`Error parsing JSON from localStorage for key "${key}":`, e);
-                return defaultValue;
-            }
-        } else {
-            localStorage.setItem(key, JSON.stringify(defaultValue));
-            return defaultValue;
-        }
-    }
-
-    // --- Data Initialization ---
-    let aboutData = getSavedData('about', defaultAbout);
-    let skillData = getSavedData('skills', defaultSkills);
-    let projectData = getSavedData('projects', defaultProjects);
-    let certificateData = getSavedData('certificates', []);
-    let experienceData = getSavedData('journey', defaultJourney);
-    let resumeData = getSavedData('resume', defaultResumeData);
-    let coverLetterData = getSavedData('coverLetter', defaultCoverLetterData);
-    let heroData = getSavedData('hero', defaultHeroData);
-    let profilePicData = getSavedData('profilePic', defaultProfilePic);
-
-
-    // --- RENDER FUNCTIONS (updates the public page) ---
+    // --- RENDER FUNCTIONS (These functions build the HTML from your data) ---
+    
     function renderHero() {
         document.getElementById('hero-title').textContent = heroData.title;
         document.getElementById('hero-subtitle').textContent = heroData.subtitle;
-        document.getElementById('hero-comment').textContent = heroData.comment;
-        document.getElementById('profile-pic-content').style.backgroundImage = `url(${profilePicData})`;
+        document.getElementById('hero-comment').textContent = heroData.description;
+        document.getElementById('profile-pic-content').style.backgroundImage = `url(${profilePicUrl})`;
     }
 
     function renderAbout() {
-        document.querySelector('#about .about-content p').textContent = aboutData;
+        document.querySelector('#about .about-content p').textContent = aboutMeText;
     }
 
     function renderSkills() {
         const grid = document.getElementById('skills-grid');
-        grid.innerHTML = skillData.map((category, index) => {
-            const safeId = `skill-${createSafeId(category.title)}`;
-            return `
-            <div class="skill-card" id="${safeId}" data-index="${index}">
-                <h3>${category.title}</h3>
+        grid.innerHTML = skillsData.map((category, index) => `
+            <div class="skill-card" data-index="${index}">
+                <h3>${category.category}</h3>
                 <ul>${category.skills.map(skill => `<li>${skill}</li>`).join('')}</ul>
-            </div>`;
-        }).join('');
+            </div>`).join('');
     }
 
     function renderProjects() {
         const container = document.getElementById('projects-container');
-        container.innerHTML = projectData.map(project => {
-            const safeId = `project-${createSafeId(project.title)}`;
-            return `
-            <div class="project-card fade-in" id="${safeId}">
+        container.innerHTML = projectsData.map(project => `
+            <div class="project-card fade-in">
                 <h3>${project.title}</h3>
                 <p>${project.description}</p>
                 <div class="project-tools">${project.tools.map(tool => `<span>${tool}</span>`).join('')}</div>
-                ${project.link ? `<div class="hero-buttons" style="margin-top: 1.5rem;"><a href="${project.link}" class="btn btn-primary" target="_blank">View Project</a></div>` : ''}
-            </div>`;
-        }).join('');
+                ${project.link ? `<div class="hero-buttons" style="margin-top: 1.5rem;"><a href="${project.link}" class="btn btn-primary" target="_blank" rel="noopener noreferrer">View Project</a></div>` : ''}
+            </div>`).join('');
     }
 
     function renderCertificates() {
         const container = document.getElementById('certificates-container');
-        if (!container || certificateData.length === 0) {
-            if (container) container.innerHTML = '<p>No certificates have been added yet.</p>';
+        if (!certificatesData || certificatesData.length === 0) {
+            container.innerHTML = '<p>No certificates have been added yet.</p>';
             return;
         }
-
-        const limit = 5;
-        let content = certificateData.map((cert, index) => {
-            const safeId = `cert-${createSafeId(cert.name)}`;
-            const isHidden = index >= limit;
-            return `
-            <div class="certificate-card ${isHidden ? 'certificate-hidden' : ''}" id="${safeId}">
-                <img src="${cert.photo}" alt="${cert.name}">
+        container.innerHTML = certificatesData.map(cert => `
+            <div class="certificate-card fade-in">
+                <img src="${cert.imageUrl}" alt="${cert.name} Certificate">
                 <div class="certificate-info">
                     <h3>${cert.name}</h3>
                     <p>${cert.date}</p>
-                    ${cert.link ? `<a href="${cert.link}" target="_blank">Verify</a>` : ''}
+                    ${cert.verifyLink ? `<a href="${cert.verifyLink}" target="_blank" rel="noopener noreferrer">Verify</a>` : ''}
                 </div>
-            </div>`;
-        }).join('');
-
-        if (certificateData.length > limit) {
-            const nextCertImage = certificateData[limit].photo;
-            content += `<div class="show-more-card" id="show-more-certs-btn" style="background-image: url('${nextCertImage}')"></div>`;
-        }
-
-        container.innerHTML = content;
+            </div>`).join('');
     }
 
     function renderJourney() {
         const container = document.getElementById('timeline-container');
-        container.innerHTML = experienceData.map((item, index) => `
+        container.innerHTML = journeyData.map((item, index) => `
             <div class="timeline-item ${index % 2 === 0 ? 'timeline-left' : 'timeline-right'} fade-in">
                 <div class="timeline-content">
                     <h3>${item.role}</h3>
@@ -159,23 +174,23 @@ document.addEventListener('DOMContentLoaded', () => {
         const container = document.getElementById('resume-cover-letter-container');
         let content = '';
 
-        if (resumeData.image && resumeData.file) {
+        if (resumeData.previewImageUrl && resumeData.downloadFileUrl) {
             content += `
-                <div class="resume-card" id="resume-card">
-                    <a href="${resumeData.file}" class="download-icon" download="${resumeData.fileName || 'resume.pdf'}"><i class="fas fa-download"></i></a>
+                <div class="resume-card fade-in">
+                    <a href="${resumeData.downloadFileUrl}" class="download-icon" download="${resumeData.fileName}"><i class="fas fa-download"></i></a>
                     <div class="resume-image-container">
-                        <img src="${resumeData.image}" alt="Resume Preview">
+                        <img src="${resumeData.previewImageUrl}" alt="Resume Preview">
                     </div>
                     <div class="resume-card-title">Resume</div>
                 </div>`;
         }
 
-        if (coverLetterData.image && coverLetterData.file) {
+        if (coverLetterData.previewImageUrl && coverLetterData.downloadFileUrl) {
             content += `
-                <div class="resume-card" id="cover-letter-card">
-                    <a href="${coverLetterData.file}" class="download-icon" download="${coverLetterData.fileName || 'cover-letter.pdf'}"><i class="fas fa-download"></i></a>
+                <div class="resume-card fade-in">
+                    <a href="${coverLetterData.downloadFileUrl}" class="download-icon" download="${coverLetterData.fileName}"><i class="fas fa-download"></i></a>
                     <div class="resume-image-container">
-                        <img src="${coverLetterData.image}" alt="Cover Letter Preview">
+                        <img src="${coverLetterData.previewImageUrl}" alt="Cover Letter Preview">
                     </div>
                     <div class="resume-card-title">Cover Letter</div>
                 </div>`;
@@ -184,79 +199,37 @@ document.addEventListener('DOMContentLoaded', () => {
         container.innerHTML = content || '<p>No resume or cover letter has been added yet.</p>';
     }
 
-    // --- DROPDOWN RENDER FUNCTIONS ---
-    function renderSkillsDropdown() {
-        const dropdown = document.getElementById('skills-dropdown');
-        dropdown.innerHTML = skillData.map(category => {
-            const safeId = `skill-${createSafeId(category.title)}`;
-            return `<a href="#${safeId}">${category.title}</a>`;
-        }).join('');
+    function renderContact() {
+        document.getElementById('contact-text').textContent = contactData.text;
+        const emailLink = document.getElementById('contact-email-link');
+        emailLink.href = `mailto:${contactData.email}`;
+        emailLink.textContent = contactData.email;
+        const socialContainer = document.getElementById('social-icons-container');
+        socialContainer.innerHTML = contactData.socials.map(social => 
+            `<a href="${social.url}" target="_blank" rel="noopener noreferrer" aria-label="${social.name}"><i class="${social.iconClass}"></i></a>`
+        ).join('');
     }
 
-    function renderProjectsDropdown() {
-        const dropdown = document.getElementById('projects-dropdown');
-        dropdown.innerHTML = projectData.map(project => {
-            const safeId = `project-${createSafeId(project.title)}`;
-            return `<a href="#${safeId}">${project.title}</a>`;
-        }).join('');
-    }
+    // --- UI & EVENT LISTENERS ---
 
-    function renderCertificatesDropdown() {
-        const dropdown = document.getElementById('certificates-dropdown');
-        if (certificateData.length > 0) {
-            dropdown.innerHTML = certificateData.map(cert => {
-                const safeId = `cert-${createSafeId(cert.name)}`;
-                return `<a href="#${safeId}">${cert.name}</a>`;
-            }).join('');
-        } else {
-            dropdown.innerHTML = '<a href="#certificates">No certificates yet</a>';
-        }
-    }
-
-    function renderResumeDropdown() {
-        const dropdown = document.getElementById('resume-dropdown');
-        let content = '';
-        if (resumeData.file) {
-            content += `<a href="#resume-card">Resume</a>`;
-        }
-        if (coverLetterData.file) {
-            content += `<a href="#cover-letter-card">Cover Letter</a>`;
-        }
-        dropdown.innerHTML = content || '<a href="#resume">Not available</a>';
-    }
-
-    function renderContactDropdown() {
-        const dropdown = document.getElementById('contact-dropdown');
-        dropdown.innerHTML = `
-            <a href="mailto:Shivam230131@gmail.com">Email</a>
-            <a href="https://www.linkedin.com/in/shivam-tiwari-4239a621b/" target="_blank">LinkedIn</a>
-            <a href="https://github.com/shivamtiwari1" target="_blank">GitHub</a>
-        `;
-    }
-
-    // --- Mobile Navigation ---
     function setupMobileNav() {
         const hamburgerBtn = document.getElementById('hamburger-menu');
         const mainNav = document.getElementById('main-nav');
         
-        if (hamburgerBtn && mainNav) {
-            hamburgerBtn.addEventListener('click', () => {
-                const isExpanded = hamburgerBtn.getAttribute('aria-expanded') === 'true';
-                hamburgerBtn.setAttribute('aria-expanded', !isExpanded);
-                document.body.classList.toggle('mobile-nav-open');
-            });
+        hamburgerBtn.addEventListener('click', () => {
+            const isExpanded = hamburgerBtn.getAttribute('aria-expanded') === 'true';
+            hamburgerBtn.setAttribute('aria-expanded', !isExpanded);
+            document.body.classList.toggle('mobile-nav-open');
+        });
 
-            mainNav.addEventListener('click', (e) => {
-                // Close nav if a link is clicked
-                if (e.target.tagName === 'A') {
-                    hamburgerBtn.setAttribute('aria-expanded', 'false');
-                    document.body.classList.remove('mobile-nav-open');
-                }
-            });
-        }
+        mainNav.addEventListener('click', (e) => {
+            if (e.target.tagName === 'A') {
+                hamburgerBtn.setAttribute('aria-expanded', 'false');
+                document.body.classList.remove('mobile-nav-open');
+            }
+        });
     }
 
-    // --- Image Modal ---
     function setupImageModal() {
         const modal = document.getElementById('image-modal');
         if (!modal) return;
@@ -272,10 +245,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const resetImageState = () => {
             currentScale = 1;
             modalImg.style.transform = 'scale(1)';
-            modalImg.style.width = 'auto';
-            modalImg.style.height = 'auto';
-            modalImg.style.maxWidth = '100%';
-            modalImg.style.maxHeight = '100%';
         };
 
         document.querySelectorAll('.image-zoom-container').forEach(container => {
@@ -300,20 +269,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        zoomInBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            currentScale += 0.1;
-            modalImg.style.transform = `scale(${currentScale})`;
-        });
-
-        zoomOutBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            currentScale = Math.max(1, currentScale - 0.1);
-            modalImg.style.transform = `scale(${currentScale})`;
-        });
+        zoomInBtn.addEventListener('click', (e) => { e.stopPropagation(); currentScale += 0.1; modalImg.style.transform = `scale(${currentScale})`; });
+        zoomOutBtn.addEventListener('click', (e) => { e.stopPropagation(); currentScale = Math.max(1, currentScale - 0.1); modalImg.style.transform = `scale(${currentScale})`; });
     }
 
-    // --- Navigation Highlighting and Scrolling ---
     function setupNavHighlighting() {
         document.body.addEventListener('click', function(e) {
             const link = e.target.closest('a');
@@ -327,27 +286,52 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (targetElement) {
                     const headerHeight = document.getElementById('sticky-header').offsetHeight;
-                    const elementPosition = targetElement.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - headerHeight - 20;
+                    const offsetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
 
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: "smooth"
-                    });
+                    window.scrollTo({ top: offsetPosition, behavior: "smooth" });
                     
-                    let elementToHighlight = targetElement;
-                    if (!elementToHighlight.matches('.skill-card, .project-card, .certificate-card, .resume-card')) {
-                        elementToHighlight = targetElement.querySelector('h2');
-                    }
-                    if (!elementToHighlight) {
-                        elementToHighlight = targetElement;
-                    }
-                    
+                    const elementToHighlight = targetElement.querySelector('h2') || targetElement;
                     elementToHighlight.classList.add('highlight');
                     elementToHighlight.addEventListener('animationend', () => {
                         elementToHighlight.classList.remove('highlight');
                     }, { once: true });
                 }
+            }
+        });
+    }
+
+    function setupAnimations() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { 
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible'); 
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in').forEach(fader => observer.observe(fader));
+
+        const skillCards = document.querySelectorAll('.skill-card');
+        const skillCardObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const card = entry.target;
+                    const delay = card.getAttribute('data-index') * 150;
+                    setTimeout(() => card.classList.add('animate'), delay);
+                    observer.unobserve(card);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+        skillCards.forEach(card => skillCardObserver.observe(card));
+    }
+    
+    function setupStickyHeader() {
+        window.addEventListener('scroll', () => {
+            const stickyHeader = document.getElementById('sticky-header');
+            const heroSection = document.getElementById('hero');
+            if (window.scrollY > heroSection.offsetHeight - 70) {
+                stickyHeader.classList.add('visible');
+            } else {
+                stickyHeader.classList.remove('visible');
             }
         });
     }
@@ -362,93 +346,24 @@ document.addEventListener('DOMContentLoaded', () => {
         renderCertificates();
         renderJourney();
         renderResumeAndCoverLetter();
-
-        // Populate navigation dropdowns
-        renderSkillsDropdown();
-        renderProjectsDropdown();
-        renderCertificatesDropdown();
-        renderResumeDropdown();
-        renderContactDropdown();
+        renderContact();
 
         // Setup interactive UI elements
         setupMobileNav();
         setupNavHighlighting();
         setupImageModal();
+        setupAnimations();
+        setupStickyHeader();
 
-        // Event listener for "Show More" certificates button
-        const certsContainer = document.getElementById('certificates-container');
-        if (certsContainer) {
-            certsContainer.addEventListener('click', (e) => {
-                const showMoreBtn = e.target.closest('#show-more-certs-btn');
-                if (showMoreBtn) {
-                    showMoreBtn.remove();
-                    document.querySelectorAll('.certificate-hidden').forEach(cert => {
-                        cert.classList.add('visible');
-                    });
-                }
-            });
-        }
-
-        // Initialize Vanta.js background
+        // Initialize Vanta.js background if available
         if (window.VANTA) {
             VANTA.NET({ 
-                el: "#hero", 
-                mouseControls: true, 
-                touchControls: true, 
-                gyroControls: false, 
-                minHeight: 200.00, 
-                minWidth: 200.00, 
-                scale: 1.00, 
-                scaleMobile: 1.00, 
-                color: 0x64ffda, 
-                backgroundColor: 0x0a192f, 
-                points: 12.00, 
-                maxDistance: 25.00, 
-                spacing: 18.00 
+                el: "#hero", mouseControls: true, touchControls: true, gyroControls: false, 
+                minHeight: 200.00, minWidth: 200.00, scale: 1.00, scaleMobile: 1.00, 
+                color: 0x64ffda, backgroundColor: 0x0a192f, points: 12.00, 
+                maxDistance: 25.00, spacing: 18.00 
             });
         }
-
-        // Intersection Observer for fade-in animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => { 
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible'); 
-                }
-            });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('.fade-in').forEach(fader => observer.observe(fader));
-
-        // Intersection Observer for staggered skill card animation
-        const skillCards = document.querySelectorAll('#skills-grid .skill-card');
-        const skillCardObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const card = entry.target;
-                    const delay = card.getAttribute('data-index') * 150; // 150ms delay between cards
-                    setTimeout(() => {
-                        card.classList.add('animate');
-                    }, delay);
-                    observer.unobserve(card); // Animate only once
-                }
-            });
-        }, { 
-            threshold: 0.1,
-            rootMargin: "0px 0px -50px 0px"
-        });
-        skillCards.forEach(card => {
-            skillCardObserver.observe(card);
-        });
-
-        // Sticky header visibility on scroll
-        window.addEventListener('scroll', () => {
-            const stickyHeader = document.getElementById('sticky-header');
-            const heroSection = document.getElementById('hero');
-            if (window.scrollY > heroSection.offsetHeight - 70) {
-                stickyHeader.classList.add('visible');
-            } else {
-                stickyHeader.classList.remove('visible');
-            }
-        });
     }
 
     // Run initialization
