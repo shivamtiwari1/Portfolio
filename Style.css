@@ -240,28 +240,15 @@ h2::after { content: ''; position: absolute; bottom: 0; left: 0; width: 80px; he
     cursor: pointer;
     opacity: 0;
     transform: translateX(100px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.3s ease;
 }
 
 .skill-card.animate { opacity: 1; transform: translateX(0); }
-
-.skill-card:hover,
-.project-card:hover,
-.certificate-card:hover,
-.timeline-content:hover,
-.resume-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2), 0 0 25px rgba(100, 255, 218, 0.5);
-}
-
 .skill-card.animate:hover { transform: translateY(-10px) translateX(0); }
-
 .skill-card h3 { color: var(--lightest-slate); margin-bottom: 1rem; }
 .skill-card ul { list-style: none; padding: 0; }
 .skill-card li { color: var(--slate); margin-bottom: 0.5rem; }
 #projects-container { display: grid; grid-template-columns: 1fr; gap: 2rem; }
-.project-card { background-color: var(--light-navy); padding: 2rem; border-radius: 8px; border: 1px solid var(--lightest-navy); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer; }
-
+.project-card { background-color: var(--light-navy); padding: 2rem; border-radius: 8px; border: 1px solid var(--lightest-navy); cursor: pointer; }
 .project-card h3 { color: var(--vibrant-teal); margin-bottom: 0.5rem; }
 .project-outcome-title {
     color: var(--lightest-slate);
@@ -278,8 +265,7 @@ h2::after { content: ''; position: absolute; bottom: 0; left: 0; width: 80px; he
 .timeline-left { left: 0; text-align: right; }
 .timeline-right { left: 50%; }
 .timeline-right::after { left: -10px; }
-.timeline-content { padding: 20px 30px; background-color: var(--light-navy); position: relative; border-radius: 6px; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; }
-
+.timeline-content { padding: 20px 30px; background-color: var(--light-navy); position: relative; border-radius: 6px; cursor: pointer; }
 .timeline-content h3 { color: var(--lightest-slate); margin-bottom: 0.2rem; }
 .timeline-content .date { font-size: 0.9rem; color: var(--vibrant-teal); font-weight: bold; }
 #resume-cover-letter-container { text-align: center; }
@@ -300,7 +286,6 @@ footer { text-align: center; padding: 2rem 0; color: var(--slate); font-size: 0.
     overflow: hidden; 
     position: relative; 
     cursor: pointer; 
-    transition: all 0.3s ease; 
     display: flex;
     flex-direction: column;
 }
@@ -345,8 +330,7 @@ footer { text-align: center; padding: 2rem 0; color: var(--slate); font-size: 0.
     background-color: rgba(100, 255, 218, 0.1); 
 }
 .resume-grid { display: flex; justify-content: center; flex-wrap: wrap; gap: 2rem; }
-.resume-card { width: 391px; height: 520px; background-color: var(--light-navy); border-radius: 8px; border: 1px solid var(--lightest-navy); overflow: hidden; position: relative; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; flex-shrink: 0; }
-
+.resume-card { width: 391px; height: 520px; background-color: var(--light-navy); border-radius: 8px; border: 1px solid var(--lightest-navy); overflow: hidden; position: relative; cursor: pointer; flex-shrink: 0; }
 .resume-image-container { width: 100%; height: 100%; overflow: hidden; }
 .resume-card img { width: 100%; height: 100%; display: block; object-fit: cover; }
 .resume-card .download-icon { position: absolute; top: 1rem; right: 1rem; font-size: 1.5rem; color: var(--white); text-decoration: none; transition: color 0.3s; z-index: 2; }
@@ -363,6 +347,34 @@ footer { text-align: center; padding: 2rem 0; color: var(--slate); font-size: 0.
 .image-modal-controls { position: absolute; top: 20px; right: 80px; display: flex; gap: 1rem; z-index: 3001; }
 .image-modal-control-btn { background-color: rgba(10, 25, 47, 0.7); border: 1px solid var(--vibrant-teal); color: var(--vibrant-teal); padding: 0.5rem 1rem; border-radius: 4px; font-size: 1.2rem; text-decoration: none; cursor: pointer; }
 .image-modal-control-btn:hover { background-color: var(--vibrant-teal); color: var(--navy-blue); }
+
+/* =============================================== */
+/* ============== UNIFIED CARD STYLES ============ */
+/* =============================================== */
+
+/* --- Base Card Transition (FIXED) --- */
+/* Applies a smooth transition to all card types, including the 'show-more' container. */
+.skill-card,
+.project-card,
+.certificate-card,
+.timeline-content,
+.resume-card,
+.show-more-container {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.6s ease-out;
+}
+
+/* --- Card Hover Effect (FIXED) --- */
+/* This single, unified rule applies the pop-up and glow effect to all cards on hover, including the 'show-more' container. */
+.skill-card:hover,
+.project-card:hover,
+.certificate-card:hover,
+.timeline-content:hover,
+.resume-card:hover,
+.show-more-container:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2), 0 0 25px rgba(100, 255, 218, 0.5);
+}
+
 
 /* --- BLINKING/HIGHLIGHTING ANIMATIONS --- */
 
@@ -421,6 +433,7 @@ footer { text-align: center; padding: 2rem 0; color: var(--slate); font-size: 0.
 .show-more-container {
     position: relative;
     cursor: pointer;
+    border-radius: 8px; /* Added for consistency */
 }
 
 .show-more-container .certificate-card {
@@ -544,6 +557,9 @@ footer { text-align: center; padding: 2rem 0; color: var(--slate); font-size: 0.
 
 
     /* --- General Mobile Layout --- */
+    .container {
+        padding: 0 1.5rem;
+    }
     .hero-content { 
         flex-direction: column;
         text-align: center; 
@@ -555,7 +571,51 @@ footer { text-align: center; padding: 2rem 0; color: var(--slate); font-size: 0.
     .timeline-item::after { left: 10px; }
     .timeline-left, .timeline-right { left: 0; text-align: left; }
     .resume-grid { flex-direction: column; align-items: center; }
-    #skills-grid { padding-left: 2rem; }
+    #skills-grid {
+        position: relative;
+        height: 450px;
+        perspective: 1000px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        padding: 0;
+        width: 100%;
+        left: 0;
+        transform: none;
+    }
+    .skill-card {
+        position: absolute;
+        width: 80%;
+        max-width: 320px;
+        flex-shrink: 0;
+        transition: transform 0.5s ease, opacity 0.5s ease;
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    .skill-card.active {
+        transform: translateX(0) scale(1);
+        opacity: 1;
+        z-index: 10;
+    }
+    .skill-card.prev {
+        transform: translateX(-100%) rotateY(30deg) scale(0.8);
+        opacity: 0.5;
+        z-index: 5;
+    }
+    .skill-card.next {
+        transform: translateX(100%) rotateY(-30deg) scale(0.8);
+        opacity: 0.5;
+        z-index: 5;
+    }
+    .skill-card.hidden-left {
+        transform: translateX(-150%);
+        opacity: 0;
+    }
+    .skill-card.hidden-right {
+        transform: translateX(150%);
+        opacity: 0;
+    }
 }
 
 @media (max-width: 480px) {

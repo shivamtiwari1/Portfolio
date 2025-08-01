@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script>
+        // Prevents zooming on the page, which can interfere with the layout.
         document.addEventListener('wheel', function(e) {
             if (e.ctrlKey) {
                 e.preventDefault();
@@ -26,6 +27,7 @@
 </head>
 <body>
 
+    <!-- Header: Contains navigation links that become sticky on scroll -->
     <header id="sticky-header">
         <div class="container">
             <a href="#hero" class="logo">Shivam Tiwari</a>
@@ -39,37 +41,44 @@
                 <div class="nav-item">
                     <a href="#skills">Skills</a>
                     <div class="dropdown-content" id="skills-dropdown">
-                        </div>
+                        <!-- Skill links will be populated by JavaScript -->
+                    </div>
                 </div>
                 <div class="nav-item">
                     <a href="#projects">Projects</a>
                     <div class="dropdown-content" id="projects-dropdown">
-                        </div>
+                        <!-- Project links will be populated by JavaScript -->
+                    </div>
                 </div>
                 <div class="nav-item">
                     <a href="#certificates">Certificates</a>
                     <div class="dropdown-content" id="certificates-dropdown">
-                        </div>
+                        <!-- Certificate links will be populated by JavaScript -->
+                    </div>
                 </div>
                 <div class="nav-item">
                     <a href="#experience">Journey</a>
                     <div class="dropdown-content" id="experience-dropdown">
-                        </div>
+                        <!-- Journey links will be populated by JavaScript -->
+                    </div>
                 </div>
                 <div class="nav-item">
                     <a href="#resume">Resume</a>
                     <div class="dropdown-content" id="resume-dropdown">
-                        </div>
+                        <!-- Resume links will be populated by JavaScript -->
+                    </div>
                 </div>
                 <div class="nav-item">
                     <a href="#contact">Contact</a>
                     <div class="dropdown-content" id="contact-dropdown">
-                        </div>
+                        <!-- Contact links will be populated by JavaScript -->
+                    </div>
                 </div>
             </nav>
         </div>
     </header>
 
+    <!-- Hero Section: The main landing view with profile picture and introduction -->
     <section id="hero">
         <div class="hero-content container">
             <div class="hero-left">
@@ -91,6 +100,7 @@
         </section>
 
     <main>
+        <!-- About Me Section -->
         <section id="about" class="container section-padding fade-in">
              <div class="section-header">
                 <h2>About Me</h2>
@@ -100,59 +110,73 @@
             </div>
         </section>
 
+        <!-- Skills Section -->
         <section id="skills" class="container section-padding fade-in">
             <div class="section-header">
                 <h2>Skills</h2>
             </div>
             <div id="skills-grid">
-                </div>
+                <!-- Skill cards will be populated by JavaScript -->
+            </div>
         </section>
 
+        <!-- Projects Section -->
         <section id="projects" class="container section-padding fade-in">
             <div class="section-header">
                 <h2>My Projects</h2>
             </div>
             <div id="projects-container">
-                </div>
+                <!-- Project cards will be populated by JavaScript -->
+            </div>
         </section>
 
+        <!-- Certificates Section -->
         <section id="certificates" class="container section-padding fade-in">
             <div class="section-header">
                 <h2>Certificates</h2>
             </div>
             <div id="certificates-container" class="image-zoom-container">
-                </div>
+                <!-- Certificate cards will be populated by JavaScript -->
+            </div>
         </section>
 
+        <!-- Experience/Journey Section -->
         <section id="experience" class="container section-padding fade-in">
             <div class="section-header">
                 <h2>My Journey</h2>
             </div>
             <div id="timeline-container">
-                </div>
+                <!-- Timeline items will be populated by JavaScript -->
+            </div>
         </section>
         
+        <!-- Resume and Cover Letter Section -->
         <section id="resume" class="container section-padding fade-in">
             <div class="section-header">
                 <h2>Resume & Cover Letter</h2>
             </div>
             <div id="resume-cover-letter-container" class="resume-grid image-zoom-container">
-                </div>
+                <!-- Resume and Cover Letter cards will be populated by JavaScript -->
+            </div>
         </section>
 
+        <!-- Contact Section -->
         <section id="contact" class="container section-padding fade-in">
             <h2>Get In Touch</h2>
             <p id="contact-text"></p>
             <a href="" id="contact-email-link" class="email-link"></a>
             <div class="social-icons" id="social-icons-container">
-                </div>
+                <!-- Social media icons will be populated by JavaScript -->
+            </div>
         </section>
     </main>
 
+    <!-- Footer -->
     <footer>
         <p>&copy; 2025 Shivam Tiwari. Crafted with care.</p>
     </footer>
     
+    <!-- Image Modal for viewing certificates and resume previews -->
     <div id="image-modal" class="modal-overlay">
         <span class="close-image-modal">&times;</span>
         <div class="image-modal-controls">
@@ -160,10 +184,11 @@
             <button id="zoom-out-btn" class="image-modal-control-btn"><i class="fas fa-search-minus"></i></button>
         </div>
         <div class="image-modal-content-wrapper">
-            <img class="modal-content" id="full-size-image">
+            <img class="modal-content" id="full-size-image" alt="Full-size view of selected image">
         </div>
     </div>
 
+    <!-- External JavaScript libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
     <script src="script.js"></script>
