@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         { 
             category: "Languages", 
-            skills: ["English", "Hindi"] 
+            skills: ["English", "(Advanced)" , "Hindi", "(Native)" ] 
         }
     ];
 
@@ -372,22 +372,23 @@ document.addEventListener('DOMContentLoaded', () => {
             `<a href="#journey-${index}">${item.role}</a>`
         ).join('');
 
-        // Resume Dropdown
+        // Resume Dropdown - Add the new class here
         const resumeDropdown = document.getElementById('resume-dropdown');
+        resumeDropdown.classList.add('dropdown-fit-content'); // Add this line
         let resumeLinks = '';
         if (resumeData.previewImageUrl) resumeLinks += `<a href="#resume-card">Resume</a>`;
         if (coverLetterData.previewImageUrl) resumeLinks += `<a href="#cover-letter-card">Cover Letter</a>`;
         resumeDropdown.innerHTML = resumeLinks;
 
-        // Contact Dropdown
+        // Contact Dropdown - Add the new class here
         const contactDropdown = document.getElementById('contact-dropdown');
+        contactDropdown.classList.add('dropdown-fit-content'); // Add this line
         contactDropdown.innerHTML = `
             <a href="mailto:${contactData.email}">Email</a>
             <a href="${contactData.socials.find(s => s.name === 'GitHub').url}" target="_blank" rel="noopener noreferrer">GitHub</a>
             <a href="${contactData.socials.find(s => s.name === 'LinkedIn').url}" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         `;
     }
-
 
     // --- UI & EVENT LISTENERS ---
 
@@ -488,109 +489,146 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.addEventListener('click', function (e) {
             const link = e.target.closest('a');
             if (!link) return;
-    
+
             const href = link.getAttribute('href');
             // Check if it's a valid link that points to an ID
             const isInternalLink = href && href.startsWith('#');
-    
+
             if (isInternalLink) {
                 e.preventDefault();
                 const targetElement = document.getElementById(href.substring(1));
-    
+
                 if (targetElement) {
                     
-                    // --- APPLY CORRECT HIGHLIGHT ---
-                    const isCard = targetElement.matches('.project-card, .skill-card, .certificate-card, .resume-card, .timeline-item');
-
-                    if (isCard) {
-                        targetElement.classList.add('highlight');
-                        targetElement.addEventListener('animationend', () => {
-                            targetElement.classList.remove('highlight');
-                        }, { once: true });
-                    } else {
-                        const section = targetElement.closest('section') || targetElement;
-                        const heading = section.querySelector('h2');
-                        if (heading) {
-                            heading.classList.add('heading-highlight');
-                            heading.addEventListener('animationend', () => {
-                                heading.classList.remove('heading-highlight');
-                            }, { once: true });
+                    // --- NEW LOGIC FOR HIDDEN CERTIFICATES ---
+                    const isHiddenCertificate = targetElement.classList.contains('certificate-card') && targetElement.classList.contains('hidden-by-default');
+                    if (isHiddenCertificate) {
+                        const showMoreContainer = document.getElementById('show-more-container');
+                        if (showMoreContainer) {
+                            showMoreContainer.click();
                         }
                     }
 
-                    // --- NAV TAB BLINK LOGIC (runs for all clicks) ---
-                    const parentNavItem = link.closest('.nav-item');
-                    let mainNavLink;
-    
-                    if (parentNavItem) {
-                        mainNavLink = parentNavItem.querySelector('a');
-                    } else if (link.closest('.hero-buttons')) {
-                        mainNavLink = document.querySelector(`#main-nav a[href="${href}"]`);
-                    } else if (link.closest('#main-nav')) {
-                        mainNavLink = link;
-                    }
-    
-                    if (mainNavLink) {
-                        document.querySelectorAll('#main-nav a').forEach(navLink => navLink.classList.remove('active-link'));
-                        mainNavLink.classList.add('active-link');
-                        mainNavLink.addEventListener('animationend', () => {
-                            mainNavLink.classList.remove('active-link');
-                        }, { once: true });
-                    }
-    
-                    // Close mobile nav if it's open
-                    if (document.body.classList.contains('mobile-nav-open')) {
-                        document.getElementById('hamburger-menu').click();
-                    }
-                    
-                    // --- CORRECTED SMOOTH SCROLL LOGIC ---
-                    const headerHeight = document.getElementById('sticky-header').offsetHeight;
-                    const offsetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - 40;
-    
-                    document.body.style.pointerEvents = 'none';
-    
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: "smooth"
-                    });
-    
+                    // Use a timeout to allow the DOM to update, especially after revealing hidden certificates
                     setTimeout(() => {
-                        document.body.style.pointerEvents = 'auto';
-                    }, 1000);
+                        // --- APPLY CORRECT HIGHLIGHT ---
+                        const isCard = targetElement.matches('.project-card, .skill-card, .certificate-card, .resume-card, .timeline-item');
+
+                        if (isCard) {
+                            setTimeout(() => {
+                                targetElement.classList.add('highlight');
+                                targetElement.addEventListener('animationend', () => {
+                                    targetElement.classList.remove('highlight');
+                                }, { once: true });
+                            }, 160);
+                        } else {
+                            const section = targetElement.closest('section') || targetElement;
+                            const heading = section.querySelector('h2');
+                            if (heading) {
+                                heading.classList.add('heading-highlight');
+                                heading.addEventListener('animationend', () => {
+                                    heading.classList.remove('heading-highlight');
+                                }, { once: true });
+                            }
+                        }
+
+                        // --- NAV TAB BLINK LOGIC (runs for all clicks) ---
+                        const parentNavItem = link.closest('.nav-item');
+                        let mainNavLink;
+
+                        if (parentNavItem) {
+                            mainNavLink = parentNavItem.querySelector('a');
+                        } else if (link.closest('.hero-buttons')) {
+                            mainNavLink = document.querySelector(`#main-nav a[href="${href}"]`);
+                        } else if (link.closest('#main-nav')) {
+                            mainNavLink = link;
+                        }
+
+                        if (mainNavLink) {
+                            document.querySelectorAll('#main-nav a').forEach(navLink => navLink.classList.remove('active-link'));
+                            mainNavLink.classList.add('active-link');
+                            mainNavLink.addEventListener('animationend', () => {
+                                mainNavLink.classList.remove('active-link');
+                            }, { once: true });
+                        }
+
+                        // Close mobile nav if it's open
+                        if (document.body.classList.contains('mobile-nav-open')) {
+                            document.getElementById('hamburger-menu').click();
+                        }
+
+                        // --- CORRECTED SMOOTH SCROLL LOGIC ---
+                        const headerHeight = document.getElementById('sticky-header').offsetHeight;
+                        const offsetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - 40;
+
+                        document.body.style.pointerEvents = 'none';
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: "smooth"
+                        });
+
+                        setTimeout(() => {
+                            document.body.style.pointerEvents = 'auto';
+                        }, 1000);
+
+                        // --- HORIZONTAL SCROLL FOR SKILLS ---
+                        if (targetElement.classList.contains('skill-card')) {
+                            const skillsGrid = document.getElementById('skills-grid');
+                            const cardLeft = targetElement.offsetLeft;
+                            const cardWidth = targetElement.offsetWidth;
+                            const gridWidth = skillsGrid.offsetWidth;
+
+                            const scrollLeft = cardLeft - (gridWidth / 2) + (cardWidth / 2);
+
+                            skillsGrid.scrollTo({
+                                left: scrollLeft,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }, isHiddenCertificate ? 50 : 0); // Add a small delay if cards were revealed
                 }
             }
         });
     }
 
+    // --- UPDATED FUNCTION ---
     function setupAnimations() {
-        // Fade in sections on scroll
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => { 
+        const animationDelay = 150; // 300ms delay
+
+        const observerCallback = (entries) => {
+            entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('visible'); 
+                    // Add a delay before adding the animation class
+                    setTimeout(() => {
+                        if(entry.target.classList.contains('skill-card') && window.innerWidth > 768){
+                             entry.target.classList.add('animate');
+                        } else {
+                             entry.target.classList.add('visible');
+                        }
+                    }, animationDelay);
+                } else {
+                    // Remove the class immediately when it goes out of view
+                     if(entry.target.classList.contains('skill-card') && window.innerWidth > 768){
+                         entry.target.classList.remove('animate');
+                     } else {
+                         entry.target.classList.remove('visible');
+                     }
                 }
             });
-        }, { threshold: 0.1 });
+        };
+
+        const observer = new IntersectionObserver(observerCallback, { threshold: 0.1 });
+
+        // Observe all elements that should fade in
         document.querySelectorAll('.fade-in').forEach(fader => observer.observe(fader));
         
-        // Animate skill cards on desktop
+        // Observe skill cards separately for desktop animation
         if (window.innerWidth > 768) {
-            const skillCards = document.querySelectorAll('.skill-card');
-            const skillCardObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const card = entry.target;
-                        // Use the data-index for staggered animation
-                        const delay = card.getAttribute('data-index') * 150; 
-                        setTimeout(() => card.classList.add('animate'), delay);
-                        observer.unobserve(card);
-                    }
-                });
-            }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
-            skillCards.forEach(card => skillCardObserver.observe(card));
+            document.querySelectorAll('.skill-card').forEach(card => observer.observe(card));
         }
     }
-
+    
     function setupStickyHeader() {
         window.addEventListener('scroll', () => {
             const stickyHeader = document.getElementById('sticky-header');
@@ -603,7 +641,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- NEW FUNCTION FOR MOBILE SKILL SWIPER ---
+    // --- FUNCTION FOR MOBILE SKILL SWIPER ---
     function setupSkillSwiper() {
         if (window.innerWidth > 768) return; // Only run on mobile
 
@@ -678,7 +716,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setupImageModal();
         setupAnimations();
         setupStickyHeader();
-        setupSkillSwiper(); // <-- Add this call
+        setupSkillSwiper(); 
 
         if (window.VANTA) {
             VANTA.NET({ 

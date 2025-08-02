@@ -9,12 +9,25 @@
     --vibrant-teal: #64ffda;
     --header-height: 70px;
 }
+
+/* --- HIDE ALL SCROLLBARS --- */
+body::-webkit-scrollbar,
+*::-webkit-scrollbar {
+    display: none;
+}
+
+body, * {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { 
-    background-color: var(--navy-blue); 
-    color: var(--light-slate); 
-    font-family: 'Poppins', sans-serif; 
+body {
+    background-color: var(--navy-blue);
+    color: var(--light-slate);
+    font-family: 'Poppins', sans-serif;
     line-height: 1.6;
     cursor: default;
     overflow-x: hidden;
@@ -43,16 +56,16 @@ h2::after { content: ''; position: absolute; bottom: 0; left: 0; width: 80px; he
     padding-top: 120px;
     padding-bottom: 120px;
 }
-#sticky-header { 
-    position: fixed; 
-    top: -150px; 
-    left: 0; 
-    width: 100%; 
-    background-color: rgba(10, 25, 47, 0.85); 
-    backdrop-filter: blur(10px); 
-    padding: 1rem 0; 
-    z-index: 1000; 
-    transition: top 0.3s ease-in-out; 
+#sticky-header {
+    position: fixed;
+    top: -150px;
+    left: 0;
+    width: 100%;
+    background-color: rgba(10, 25, 47, 0.85);
+    backdrop-filter: blur(10px);
+    padding: 1rem 0;
+    z-index: 1000;
+    transition: top 0.3s ease-in-out;
     height: var(--header-height);
 }
 #sticky-header.visible { top: 0; }
@@ -77,12 +90,14 @@ h2::after { content: ''; position: absolute; bottom: 0; left: 0; width: 80px; he
     font-size: 0.8em;
 }
 
+/* Default style for most dropdowns */
 #main-nav .dropdown-content {
     opacity: 0;
     visibility: hidden;
     position: absolute;
     background-color: var(--light-navy);
     min-width: 220px;
+    max-width: 350px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
     border-radius: 4px;
@@ -94,13 +109,10 @@ h2::after { content: ''; position: absolute; bottom: 0; left: 0; width: 80px; he
     overflow-y: auto;
 }
 
-#main-nav .dropdown-content::-webkit-scrollbar {
-    display: none;
-}
-
-#main-nav .dropdown-content {
-    -ms-overflow-style: none;  
-    scrollbar-width: none;  
+/* Specific style for dropdowns that should shrink */
+#main-nav .dropdown-fit-content {
+    min-width: 0;
+    width: max-content;
 }
 
 #main-nav .dropdown-content a {
@@ -112,6 +124,12 @@ h2::after { content: ''; position: absolute; bottom: 0; left: 0; width: 80px; he
     text-align: left;
     transition: background-color 0.3s, color 0.3s;
 }
+
+/* Prevent text wrapping in the shrinking dropdowns */
+#main-nav .dropdown-fit-content a {
+    white-space: nowrap;
+}
+
 
 #main-nav .dropdown-content a:hover {
     background-color: var(--lightest-navy);
@@ -223,12 +241,8 @@ h2::after { content: ''; position: absolute; bottom: 0; left: 0; width: 80px; he
     padding-left: calc((100vw - 1100px) / 2 + 2rem);
     padding-right: 2rem;
     box-sizing: border-box;
-    -ms-overflow-style: none;  
-    scrollbar-width: none;  
     clip-path: inset(0 0 0 0);
 }
-
-#skills-grid::-webkit-scrollbar { display: none; }
 
 .skill-card {
     flex: 0 0 320px;
@@ -240,6 +254,8 @@ h2::after { content: ''; position: absolute; bottom: 0; left: 0; width: 80px; he
     cursor: pointer;
     opacity: 0;
     transform: translateX(100px);
+    position: relative;
+    overflow: hidden;
 }
 
 .skill-card.animate { opacity: 1; transform: translateX(0); }
@@ -247,8 +263,17 @@ h2::after { content: ''; position: absolute; bottom: 0; left: 0; width: 80px; he
 .skill-card h3 { color: var(--lightest-slate); margin-bottom: 1rem; }
 .skill-card ul { list-style: none; padding: 0; }
 .skill-card li { color: var(--slate); margin-bottom: 0.5rem; }
+
 #projects-container { display: grid; grid-template-columns: 1fr; gap: 2rem; }
-.project-card { background-color: var(--light-navy); padding: 2rem; border-radius: 8px; border: 1px solid var(--lightest-navy); cursor: pointer; }
+.project-card {
+    background-color: var(--light-navy);
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid var(--lightest-navy);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
 .project-card h3 { color: var(--vibrant-teal); margin-bottom: 0.5rem; }
 .project-outcome-title {
     color: var(--lightest-slate);
@@ -258,6 +283,7 @@ h2::after { content: ''; position: absolute; bottom: 0; left: 0; width: 80px; he
 }
 .project-tools { margin-top: 1rem; }
 .project-tools span { background-color: var(--lightest-navy); color: var(--vibrant-teal); padding: 0.3rem 0.7rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem; font-weight: 500; }
+
 #timeline-container { position: relative; max-width: 800px; margin: 3rem auto 0; }
 #timeline-container::after { content: ''; position: absolute; width: 3px; background-color: var(--lightest-navy); top: 0; bottom: 0; left: 50%; margin-left: -1.5px; }
 .timeline-item { padding: 10px 40px; position: relative; width: 50%; }
@@ -265,9 +291,17 @@ h2::after { content: ''; position: absolute; bottom: 0; left: 0; width: 80px; he
 .timeline-left { left: 0; text-align: right; }
 .timeline-right { left: 50%; }
 .timeline-right::after { left: -10px; }
-.timeline-content { padding: 20px 30px; background-color: var(--light-navy); position: relative; border-radius: 6px; cursor: pointer; }
+.timeline-content {
+    padding: 20px 30px;
+    background-color: var(--light-navy);
+    position: relative;
+    border-radius: 6px;
+    cursor: pointer;
+    overflow: hidden;
+}
 .timeline-content h3 { color: var(--lightest-slate); margin-bottom: 0.2rem; }
 .timeline-content .date { font-size: 0.9rem; color: var(--vibrant-teal); font-weight: bold; }
+
 #resume-cover-letter-container { text-align: center; }
 #contact { text-align: center; }
 #contact p { max-width: 600px; margin: 1rem auto 2rem; }
@@ -279,55 +313,55 @@ footer { text-align: center; padding: 2rem 0; color: var(--slate); font-size: 0.
 .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
 .fade-in.visible { opacity: 1; transform: translateY(0); }
 #certificates-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem; }
-.certificate-card { 
-    background-color: var(--light-navy); 
-    border-radius: 8px; 
-    border: 1px solid var(--lightest-navy); 
-    overflow: hidden; 
-    position: relative; 
-    cursor: pointer; 
+.certificate-card {
+    background-color: var(--light-navy);
+    border-radius: 8px;
+    border: 1px solid var(--lightest-navy);
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
     display: flex;
     flex-direction: column;
 }
 
-.certificate-card img { 
-    width: 100%; 
-    display: block; 
-    height: 200px; 
-    object-fit: cover; 
+.certificate-card img {
+    width: 100%;
+    display: block;
+    height: 200px;
+    object-fit: cover;
 }
-.certificate-info { 
+.certificate-info {
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     flex-grow: 1;
 }
-.certificate-info h3 { 
-    color: var(--lightest-slate); 
+.certificate-info h3 {
+    color: var(--lightest-slate);
     margin-bottom: 0.5rem;
-    font-size: 1.1rem; 
+    font-size: 1.1rem;
 }
-.certificate-info p { 
-    color: var(--vibrant-teal); 
-    margin-bottom: 1rem; 
-    font-size: 0.9rem; 
+.certificate-info p {
+    color: var(--vibrant-teal);
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
     flex-grow: 1;
 }
 .certificate-verification {
     margin-top: auto;
 }
 
-.certificate-info a { 
-    color: var(--vibrant-teal); 
-    text-decoration: none; 
-    border: 1px solid var(--vibrant-teal); 
-    padding: 0.5rem 1rem; 
-    border-radius: 4px; 
-    transition: background-color 0.3s; 
+.certificate-info a {
+    color: var(--vibrant-teal);
+    text-decoration: none;
+    border: 1px solid var(--vibrant-teal);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s;
 }
-.certificate-info a:hover { 
-    background-color: rgba(100, 255, 218, 0.1); 
+.certificate-info a:hover {
+    background-color: rgba(100, 255, 218, 0.1);
 }
 .resume-grid { display: flex; justify-content: center; flex-wrap: wrap; gap: 2rem; }
 .resume-card { width: 391px; height: 520px; background-color: var(--light-navy); border-radius: 8px; border: 1px solid var(--lightest-navy); overflow: hidden; position: relative; cursor: pointer; flex-shrink: 0; }
@@ -354,7 +388,6 @@ footer { text-align: center; padding: 2rem 0; color: var(--slate); font-size: 0.
 
 /* --- Base Card Transition (FIXED) --- */
 /* Applies a smooth transition to all card types, including the 'show-more' container. */
-.skill-card,
 .project-card,
 .certificate-card,
 .timeline-content,
@@ -375,6 +408,32 @@ footer { text-align: center; padding: 2rem 0; color: var(--slate); font-size: 0.
     box-shadow: 0 10px 20px rgba(0,0,0,0.2), 0 0 25px rgba(100, 255, 218, 0.5);
 }
 
+/* Stylish underline for all cards on all devices */
+.skill-card::after,
+.project-card::after,
+.certificate-card::after,
+.timeline-content::after,
+.resume-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 25%;
+    height: 4px;
+    background-color: var(--vibrant-teal);
+    border-radius: 2px;
+    transition: width 0.4s ease;
+}
+
+.skill-card:hover::after,
+.project-card:hover::after,
+.certificate-card:hover::after,
+.timeline-content:hover::after,
+.resume-card:hover::after {
+    width: 80%;
+}
+
 
 /* --- BLINKING/HIGHLIGHTING ANIMATIONS --- */
 
@@ -391,17 +450,17 @@ footer { text-align: center; padding: 2rem 0; color: var(--slate); font-size: 0.
 }
 
 /* For Cards and other elements */
-@keyframes highlight-effect { 
-    0%, 100% { 
+@keyframes highlight-effect {
+    0%, 100% {
         box-shadow: none;
-    } 
-    50% { 
+    }
+    50% {
         box-shadow: 0 10px 20px rgba(0,0,0,0.2), 0 0 25px rgba(100, 255, 218, 0.5);
-    } 
+    }
 }
 
-.highlight { 
-    animation: highlight-effect 1.2s ease-in-out; 
+.highlight {
+    animation: highlight-effect 1.2s ease-in-out;
 }
 
 /* Special case for timeline items to highlight the inner box */
@@ -413,15 +472,15 @@ footer { text-align: center; padding: 2rem 0; color: var(--slate); font-size: 0.
 }
 
 /* For Section Headings */
-@keyframes heading-glow-effect { 
-    50% { 
+@keyframes heading-glow-effect {
+    50% {
         color: var(--vibrant-teal);
         text-shadow: 0 0 15px rgba(100, 255, 218, 0.8);
-    } 
+    }
 }
 
-.heading-highlight { 
-    animation: heading-glow-effect 1.2s ease-in-out; 
+.heading-highlight {
+    animation: heading-glow-effect 1.2s ease-in-out;
 }
 /* --- END OF ANIMATIONS --- */
 
@@ -452,6 +511,54 @@ footer { text-align: center; padding: 2rem 0; color: var(--slate); font-size: 0.
     opacity: 0.8;
     z-index: 5;
     pointer-events: none; /* The container handles the click */
+}
+
+/* --- Stylish Swipe/Scroll Indicator for ALL devices --- */
+#skills {
+    position: relative;
+    padding-bottom: 120px; /* Increased padding for the indicator */
+}
+
+#skills::after {
+    content: 'SWIPE OR SCROLL';
+    position: absolute;
+    bottom: 25px; /* Position text below the line */
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--slate);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    font-weight: 500;
+    opacity: 0.7;
+}
+
+#skills::before {
+    content: '';
+    position: absolute;
+    bottom: 50px; /* Position the line */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px; /* Width of the indicator line */
+    height: 2px;
+    background: linear-gradient(
+        90deg,
+        var(--navy-blue),
+        var(--vibrant-teal),
+        var(--navy-blue)
+    );
+    background-size: 200% 100%;
+    animation: gradient-swipe 3s linear infinite;
+    border-radius: 2px;
+    box-shadow: 0 0 8px rgba(100, 255, 218, 0.5);
+}
+
+@keyframes gradient-swipe {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
 }
 
 
@@ -544,7 +651,7 @@ footer { text-align: center; padding: 2rem 0; color: var(--slate); font-size: 0.
         max-height: 150px;
         overflow-y: auto;
     }
-    
+
     #main-nav .nav-item.open .dropdown-content {
         display: block;
     }
@@ -560,9 +667,9 @@ footer { text-align: center; padding: 2rem 0; color: var(--slate); font-size: 0.
     .container {
         padding: 0 1.5rem;
     }
-    .hero-content { 
+    .hero-content {
         flex-direction: column;
-        text-align: center; 
+        text-align: center;
     }
     .hero-right { margin-top: 2rem; }
     #profile-pic-container { width: 220px; height: 220px; }
