@@ -74,67 +74,71 @@ document.addEventListener('DOMContentLoaded', () => {
             name: "Data Visualisation: Empowering Business with Effective Insights",
             date: "Issued: June 25th, 2025",
             imageUrl: "assets/Tata data visuilation.png", 
-            verifyLink: "https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/Tata/tPqs5Jq62g2jG529D_Tata_pvg8oZidckeakusgo_1719325938838_completion_certificate.pdf"
+            verifyLink: "https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/ifobHAoMjQs9s6bKS/MyXvBcppsW2FkNYCX_ifobHAoMjQs9s6bKS_86t2AqKszTbhYX7sP_1750851686482_completion_certificate.pdf",
+            organization: "TATA Forage"
         },
-        {
-            name: "Introduction to MS Excel",
-            date: "Issued: June 15th, 2025",
-            imageUrl: "assets/Introduction to excel.jpg", 
-            verifyLink: "https://www.simplilearn.com/skillup-certificate-verification?certificate_id=8469912&aws_region=us-east-1"
+         {
+            name: "Data Analytics Job Simulation",
+            date: "Issued: July 2nd, 2025",
+            imageUrl: "assets/Deloitte.png", 
+            verifyLink: "https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/9PBTqmSxAf6zZTseP/io9DzWKe3PTsiS6GG_9PBTqmSxAf6zZTseP_86t2AqKszTbhYX7sP_1751460404210_completion_certificate.pdf",
+            organization: "Deloitte"
         },
         {
             name: "Master Data Management for Beginners",
             date: "Issued: Jan 12, 2025",
             imageUrl: "assets/Master data management tcs.png", 
-            verifyLink: "https://www.tcsion.com/dotcom/TCSSMB/certificate-verification/index.html"
+            verifyLink: "https://www.tcsion.com/LX/vcgrade_categories/download_certificate_hub.attachment?LaunchFrom=iHUB&c_id=master-data-management-batch-01&course_id=71279&file_type=pdf&type=master-data-management-batch-01",
+            organization: "TCS iON"
         },
-        {
-            name: "Introduction of MS Excel",
-            date: "Issued: June 15th, 2025",
-            imageUrl: "assets/Introduction of MS Excel.png", 
-            verifyLink: "https://www.simplilearn.com/skillup-certificate-verification?certificate_id=8469913&aws_region=us-east-1"
-        },
-        {
-            name: "30-Days Power BI Micro Course",
-            date: "Issued: July 15, 2025",
-            imageUrl: "assets/Power BI.png", 
-            verifyLink: "https://skillcourse.in/certificate-verification/"
-        },
-        {
+         {
             name: "Geodata Processing using Python and Machine Learning",
             date: "Issued: March 13, 2025",
             imageUrl: "assets/ISRO.png", 
-            verifyLink: "https://isrolms.iirs.gov.in/mod/customcert/verify_certificate.php?contextid=1049408"
-        },
-        {
-            name: "Data Analytics Job Simulation",
-            date: "Issued: July 2nd, 2025",
-            imageUrl: "assets/Deloitte.png", 
-            verifyLink: "https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/Deloitte/Np2M2vWqW6eWvYpde_Deloitte_DXSgFphkPWQccSeer_1719894752119_completion_certificate.pdf"
+            verifyLink: "https://isrolms.iirs.gov.in/mod/customcert/verify_certificate.php?contextid=1049408",
+            organization: "ISRO"
         },
         {
             name: "4-week internship on Al Azure",
             date: "Issued: May 13th 2025 to June 13th 2025",
             imageUrl: "assets/internship.png", 
-            verifyLink: "https://www.edunetfoundation.org/certificates/validate"
+            verifyLink: "https://www.edunetfoundation.org/certificates/validate",
+            organization: "Microsoft"
         },
         {
             name: "SEBI Investor Awareness Test",
             date: "Issued: July 10, 2025",
             imageUrl: "assets/Sebi Investor test.png", 
-            verifyLink: "https://certifications.nism.ac.in/nismaol/certificate.php"
+            verifyLink: "https://certifications.nism.ac.in/nismaol/certificate.php",
+            organization: "SEBI"
+        },
+         {
+            name: "Business Analytics with Excel",
+            date: "Issued: June 21st, 2025",
+            imageUrl: "assets/Business analysis with excel.jpg", 
+            verifyLink: "https://www.simplilearn.com/",
+            organization: "Simplilearn"
+        },
+        {
+            name: "Introduction to MS Excel",
+            date: "Issued: June 15th, 2025",
+            imageUrl: "assets/Introduction to excel.jpg", 
+            verifyLink: "https://drive.google.com/file/d/1HYuh3qqvZPgAVG3-hp_2NImSZRkPOIMW/view?usp=drive_link",
+            organization: "Simplilearn"
+        },
+        {
+            name: "30-Days Power BI Micro Course",
+            date: "Issued: July 15, 2025",
+            imageUrl: "assets/Power BI.png", 
+            verifyLink: "https://skillcourse.in",
+            organization: "SkillCourse"
         },
         {
             name: "Introduction to Numpy",
             date: "Issued: June 22nd, 2025",
             imageUrl: "assets/Numpy.jpg", 
-            verifyLink: "https://www.simplilearn.com/skillup-certificate-verification?certificate_id=8499424&aws_region=us-east-1"
-        },
-        {
-            name: "Business Analytics with Excel",
-            date: "Issued: June 21st, 2025",
-            imageUrl: "assets/Business analysis with excel.jpg", 
-            verifyLink: "https://www.simplilearn.com/skillup-certificate-verification?certificate_id=8496381&aws_region=us-east-1"
+            verifyLink: "https://www.simplilearn.com",
+            organization: "Simplilearn"
         }
     ];
 
@@ -229,6 +233,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <img src="${cert.imageUrl}" alt="${cert.name} Certificate">
                     <div class="certificate-info">
                         <h3>${cert.name}</h3>
+                        <p>Issued by: ${cert.organization}</p>
                         <p>${cert.date}</p>
                         <div class="certificate-verification">
                         ${cert.verifyLink ? `<a href="${cert.verifyLink}" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Verify</a>` : ''}
@@ -246,6 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <img src="${sixthCert.imageUrl}" alt="${sixthCert.name} Certificate">
                         <div class="certificate-info">
                             <h3>${sixthCert.name}</h3>
+                            <p>Issued by: ${sixthCert.organization}</p>
                             <p>${sixthCert.date}</p>
                             <div class="certificate-verification">
                             ${sixthCert.verifyLink ? `<a href="${sixthCert.verifyLink}" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Verify</a>` : ''}
@@ -265,6 +271,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <img src="${cert.imageUrl}" alt="${cert.name} Certificate">
                     <div class="certificate-info">
                         <h3>${cert.name}</h3>
+                        <p>Issued by: ${cert.organization}</p>
                         <p>${cert.date}</p>
                         <div class="certificate-verification">
                         ${cert.verifyLink ? `<a href="${cert.verifyLink}" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Verify</a>` : ''}
