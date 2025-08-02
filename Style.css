@@ -536,9 +536,14 @@ footer { text-align: center; padding: 2rem 0; color: var(--slate); font-size: 0.
 }
 
 .show-more-container {
+    background-color: var(--light-navy);
+    border-radius: 8px;
+    border: 1px solid var(--lightest-navy);
+    overflow: hidden;
     position: relative;
     cursor: pointer;
-    border-radius: 8px; /* Added for consistency */
+    display: flex;
+    flex-direction: column;
 }
 
 .show-more-container .certificate-card {
