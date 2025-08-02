@@ -408,11 +408,9 @@ footer { text-align: center; padding: 2rem 0; color: var(--slate); font-size: 0.
     box-shadow: 0 10px 20px rgba(0,0,0,0.2), 0 0 25px rgba(100, 255, 218, 0.5);
 }
 
-/* Stylish underline for all cards on all devices */
+/* Stylish underline for specific cards on all devices */
 .skill-card::after,
 .project-card::after,
-.certificate-card::after,
-.timeline-content::after,
 .resume-card::after {
     content: '';
     position: absolute;
@@ -428,8 +426,6 @@ footer { text-align: center; padding: 2rem 0; color: var(--slate); font-size: 0.
 
 .skill-card:hover::after,
 .project-card:hover::after,
-.certificate-card:hover::after,
-.timeline-content:hover::after,
 .resume-card:hover::after {
     width: 80%;
 }
