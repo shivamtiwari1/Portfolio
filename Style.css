@@ -557,6 +557,26 @@ footer { text-align: center; padding: 2rem 0; color: var(--slate); font-size: 0.
     }
 }
 
+/* --- Styles for Certificate Underline (Desktop Only) --- */
+@media (min-width: 769px) {
+    .certificate-card::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 25%;
+        height: 4px;
+        background-color: var(--vibrant-teal);
+        border-radius: 2px;
+        transition: width 0.4s ease;
+    }
+
+    .certificate-card:hover::after {
+        width: 80%;
+    }
+}
+
 
 /* =============================================== */
 /* ============== MOBILE STYLES ================== */
