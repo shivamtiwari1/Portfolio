@@ -719,11 +719,21 @@ document.addEventListener('DOMContentLoaded', () => {
         setupSkillSwiper(); 
 
         if (window.VANTA) {
+            const isMobile = window.innerWidth <= 768;
             VANTA.NET({ 
-                el: "#hero", mouseControls: true, touchControls: true, gyroControls: false, 
-                minHeight: 200.00, minWidth: 200.00, scale: 1.00, scaleMobile: 1.00, 
-                color: 0x64ffda, backgroundColor: 0x0a192f, points: 12.00, 
-                maxDistance: 25.00, spacing: 18.00 
+                el: "#hero", 
+                mouseControls: true, 
+                touchControls: true, 
+                gyroControls: false, 
+                minHeight: 200.00, 
+                minWidth: 200.00, 
+                scale: 1.00, 
+                scaleMobile: 1.00, 
+                color: 0x64ffda, 
+                backgroundColor: 0x0a192f, 
+                points: isMobile ? 6.00 : 12.00, 
+                maxDistance: 25.00, 
+                spacing: isMobile ? 20.00 : 18.00
             });
         }
     }
