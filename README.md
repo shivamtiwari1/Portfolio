@@ -1,5 +1,3 @@
-Of course! Here is the draft for your GitHub README file with emojis.
-
 # 🚀 Data & Business Analyst Portfolio Website 🚀
 
 This repository contains the source code for my personal portfolio website, designed to showcase my skills, projects, and experience as a Data and Business Analyst. The website is a comprehensive presentation of my journey, technical abilities, and the value I can bring to a data-driven organization.
