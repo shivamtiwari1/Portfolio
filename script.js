@@ -444,47 +444,104 @@ document.addEventListener('DOMContentLoaded', () => {
     function setupImageModal() {
         const modal = document.getElementById('image-modal');
         if (!modal) return;
-
+    
         const modalImg = document.getElementById('full-size-image');
+        const modalWrapper = document.querySelector('.image-modal-content-wrapper');
         const closeBtn = document.querySelector('.close-image-modal');
-        const zoomInBtn = document.getElementById('zoom-in-btn');
-        const zoomOutBtn = document.getElementById('zoom-out-btn');
-        let currentScale = 1;
-
-        modalImg.style.transition = 'transform 0.2s ease-in-out';
-
-        const resetImageState = () => {
-            currentScale = 1;
-            modalImg.style.transform = 'scale(1)';
-        };
-
+    
+        let scale = 1,
+            panning = false,
+            pointX = 0,
+            pointY = 0,
+            startX = 0,
+            startY = 0;
+    
+        function setTransform() {
+            modalImg.style.transform = `translate(${pointX}px, ${pointY}px) scale(${scale})`;
+        }
+    
+        function resetTransform() {
+            scale = 1;
+            pointX = 0;
+            pointY = 0;
+            setTransform();
+        }
+    
+        function openModal(src) {
+            modal.classList.add('visible');
+            modalImg.src = src;
+            resetTransform();
+        }
+    
+        function closeModal() {
+            modal.classList.remove('visible');
+        }
+    
         document.querySelectorAll('.image-zoom-container').forEach(container => {
             container.addEventListener('click', function(e) {
                 if (e.target.tagName === 'IMG') {
-                    modal.classList.add('visible');
-                    modalImg.src = e.target.src;
-                    resetImageState();
+                    e.preventDefault();
+                    openModal(e.target.src);
                 }
             });
         });
-        
-        const closeAndReset = () => {
-            modal.classList.remove('visible');
-            setTimeout(resetImageState, 300); 
-        };
-
-        closeBtn.addEventListener('click', closeAndReset);
+    
+        closeBtn.addEventListener('click', closeModal);
         modal.addEventListener('click', (e) => {
-            if (e.target === modal || e.target.classList.contains('image-modal-content-wrapper')) {
-                closeAndReset();
+            if (e.target === modal) {
+                closeModal();
             }
         });
-
-        zoomInBtn.addEventListener('click', (e) => { e.stopPropagation(); currentScale += 0.1; modalImg.style.transform = `scale(${currentScale})`; });
-        zoomOutBtn.addEventListener('click', (e) => { e.stopPropagation(); currentScale = Math.max(1, currentScale - 0.1); modalImg.style.transform = `scale(${currentScale})`; });
+    
+        modalWrapper.addEventListener('mousedown', (e) => {
+            e.preventDefault();
+            panning = true;
+            startX = e.clientX - pointX;
+            startY = e.clientY - pointY;
+        });
+    
+        modalWrapper.addEventListener('mouseup', () => {
+            panning = false;
+        });
+    
+        modalWrapper.addEventListener('mouseleave', () => {
+            panning = false;
+        });
+    
+        modalWrapper.addEventListener('mousemove', (e) => {
+            if (!panning) return;
+            e.preventDefault();
+            pointX = e.clientX - startX;
+            pointY = e.clientY - startY;
+            setTransform();
+        });
+    
+        modalWrapper.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            const rect = modalImg.getBoundingClientRect();
+            const xs = (e.clientX - rect.left) / scale;
+            const ys = (e.clientY - rect.top) / scale;
+            const delta = (e.deltaY > 0) ? 0.95 : 1.05; // Slower, more controlled zoom speed
+    
+            const newScale = scale * delta;
+            
+            // Limit zoom levels
+            if (newScale < 0.5 || newScale > 15) return;
+            
+            pointX += (e.clientX - rect.left) - (xs * newScale + pointX);
+            pointY += (e.clientY - rect.top) - (ys * newScale + pointY);
+            
+            scale = newScale;
+    
+            setTransform();
+        });
+    
+        modalWrapper.addEventListener('dblclick', (e) => {
+            e.preventDefault();
+            resetTransform();
+        });
     }
 
-    // --- MODIFIED FUNCTION ---
     function setupNavHighlighting() {
         document.body.addEventListener('click', function (e) {
             const link = e.target.closest('a');
@@ -592,14 +649,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- UPDATED FUNCTION ---
     function setupAnimations() {
-        const animationDelay = 150; // 300ms delay
+        const animationDelay = 150; 
 
         const observerCallback = (entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    // Add a delay before adding the animation class
                     setTimeout(() => {
                         if(entry.target.classList.contains('skill-card') && window.innerWidth > 768){
                              entry.target.classList.add('animate');
@@ -608,7 +663,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
                     }, animationDelay);
                 } else {
-                    // Remove the class immediately when it goes out of view
                      if(entry.target.classList.contains('skill-card') && window.innerWidth > 768){
                          entry.target.classList.remove('animate');
                      } else {
@@ -620,10 +674,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const observer = new IntersectionObserver(observerCallback, { threshold: 0.1 });
 
-        // Observe all elements that should fade in
         document.querySelectorAll('.fade-in').forEach(fader => observer.observe(fader));
         
-        // Observe skill cards separately for desktop animation
         if (window.innerWidth > 768) {
             document.querySelectorAll('.skill-card').forEach(card => observer.observe(card));
         }
@@ -641,9 +693,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- FUNCTION FOR MOBILE SKILL SWIPER ---
     function setupSkillSwiper() {
-        if (window.innerWidth > 768) return; // Only run on mobile
+        if (window.innerWidth > 768) return; 
 
         const skillsGrid = document.getElementById('skills-grid');
         const skillCards = skillsGrid.querySelectorAll('.skill-card');
@@ -693,7 +744,6 @@ document.addEventListener('DOMContentLoaded', () => {
             handleGesture();
         });
 
-        // Initial setup
         updateCardPositions();
     }
 
