@@ -571,9 +571,11 @@ footer { text-align: center; padding: 2rem 0; color: var(--slate); font-size: 0.
     .timeline-item::after { left: 10px; }
     .timeline-left, .timeline-right { left: 0; text-align: left; }
     .resume-grid { flex-direction: column; align-items: center; }
+
+    /* --- Swipable Skills Section --- */
     #skills-grid {
         position: relative;
-        height: 450px;
+        height: 450px; /* Adjust height as needed */
         perspective: 1000px;
         display: flex;
         justify-content: center;

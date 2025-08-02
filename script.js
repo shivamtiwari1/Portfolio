@@ -563,6 +563,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function setupAnimations() {
+        // Fade in sections on scroll
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => { 
                 if (entry.isIntersecting) {
@@ -571,21 +572,25 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }, { threshold: 0.1 });
         document.querySelectorAll('.fade-in').forEach(fader => observer.observe(fader));
-
-        const skillCards = document.querySelectorAll('.skill-card');
-        const skillCardObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const card = entry.target;
-                    const delay = card.getAttribute('data-index') * 150;
-                    setTimeout(() => card.classList.add('animate'), delay);
-                    observer.unobserve(card);
-                }
-            });
-        }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
-        skillCards.forEach(card => skillCardObserver.observe(card));
+        
+        // Animate skill cards on desktop
+        if (window.innerWidth > 768) {
+            const skillCards = document.querySelectorAll('.skill-card');
+            const skillCardObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const card = entry.target;
+                        // Use the data-index for staggered animation
+                        const delay = card.getAttribute('data-index') * 150; 
+                        setTimeout(() => card.classList.add('animate'), delay);
+                        observer.unobserve(card);
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+            skillCards.forEach(card => skillCardObserver.observe(card));
+        }
     }
-    
+
     function setupStickyHeader() {
         window.addEventListener('scroll', () => {
             const stickyHeader = document.getElementById('sticky-header');
@@ -597,6 +602,63 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // --- NEW FUNCTION FOR MOBILE SKILL SWIPER ---
+    function setupSkillSwiper() {
+        if (window.innerWidth > 768) return; // Only run on mobile
+
+        const skillsGrid = document.getElementById('skills-grid');
+        const skillCards = skillsGrid.querySelectorAll('.skill-card');
+        let currentIndex = 0;
+        let touchstartX = 0;
+        let touchendX = 0;
+
+        function updateCardPositions() {
+            skillCards.forEach((card, index) => {
+                card.classList.remove('active', 'prev', 'next', 'hidden-left', 'hidden-right');
+
+                if (index === currentIndex) {
+                    card.classList.add('active');
+                } else if (index === currentIndex - 1) {
+                    card.classList.add('prev');
+                } else if (index === currentIndex + 1) {
+                    card.classList.add('next');
+                } else if (index < currentIndex) {
+                    card.classList.add('hidden-left');
+                } else {
+                    card.classList.add('hidden-right');
+                }
+            });
+        }
+
+        function handleGesture() {
+            if (touchendX < touchstartX) { // Swiped left
+                if (currentIndex < skillCards.length - 1) {
+                    currentIndex++;
+                    updateCardPositions();
+                }
+            }
+            if (touchendX > touchstartX) { // Swiped right
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateCardPositions();
+                }
+            }
+        }
+
+        skillsGrid.addEventListener('touchstart', e => {
+            touchstartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        skillsGrid.addEventListener('touchend', e => {
+            touchendX = e.changedTouches[0].screenX;
+            handleGesture();
+        });
+
+        // Initial setup
+        updateCardPositions();
+    }
+
 
     // --- INITIALIZATION ---
     function init() {
@@ -616,6 +678,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setupImageModal();
         setupAnimations();
         setupStickyHeader();
+        setupSkillSwiper(); // <-- Add this call
 
         if (window.VANTA) {
             VANTA.NET({ 
