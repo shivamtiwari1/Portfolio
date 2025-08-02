@@ -143,8 +143,8 @@ h2::after { content: ''; position: absolute; bottom: 0; left: 0; width: 80px; he
 }
 
 
-#hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; color: var(--white); position: relative; padding: 4rem 1rem; }
-.hero-content { display: flex; align-items: center; gap: 2rem; }
+#hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; color: var(--white); position: relative; }
+.hero-content { display: flex; align-items: center; gap: 2rem; width: 100%; padding: 4rem 1rem; }
 .hero-left { flex: 1; display: flex; justify-content: center; align-items: center; }
 
 #profile-pic-container {
@@ -683,10 +683,20 @@ footer { text-align: center; padding: 2rem 0; color: var(--slate); font-size: 0.
     .container {
         padding: 0 1.5rem;
     }
+
+    #hero {
+        align-items: flex-start;
+    }
+
     .hero-content {
         flex-direction: column;
         text-align: center;
+        justify-content: center;
+        min-height: 100vh;
+        padding-top: var(--header-height);
+        padding-bottom: 2rem;
     }
+
     .hero-right { margin-top: 2rem; }
     #profile-pic-container { width: 220px; height: 220px; }
     #timeline-container::after { left: 20px; }
