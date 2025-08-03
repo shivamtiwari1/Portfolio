@@ -153,15 +153,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 7. RESUME & COVER LETTER SECTION ---
     // Replace with paths to your resume preview image and PDF file
     const resumeData = {
-        previewImageUrl: "assets/Shivam_Tiwari_Data_Analyst_Resume_1.jpg", 
-        downloadFileUrl: "assets/Shivam_Tiwari_Data_Analyst_Resume.pdf",   
+        previewImageUrl: "assets/Shivam_Tiwari_Analyst_Resume.jpg", 
+        downloadFileUrl: "assets/Shivam_Tiwari_Analyst_Resume.pdf",   
         fileName: "Shivam_Tiwari_Data_Analyst_Resume.pdf"
     };
 
     // Replace with paths to your cover letter preview image and PDF file
     const coverLetterData = {
-        previewImageUrl: "assets/Cover Latter Shivam Tiwari_1.jpg", 
-        downloadFileUrl: "assets/Cover Latter Shivam Tiwari.pdf",
+        previewImageUrl: "assets/Cover_Latter_Shivam_Tiwari.jpg", 
+        downloadFileUrl: "assets/Cover_Latter_Shivam_Tiwari.pdf",
         fileName: "Cover Latter Shivam Tiwari.pdf"
     };
 
