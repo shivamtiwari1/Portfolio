@@ -15,21 +15,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroData = {
         title: "Shivam Tiwari",
         subtitle: "Aspiring Data & Business Analyst",
-        description: "Bridging data insights with business strategy. I transform complex datasets into actionable narratives using Python, SQL, and Power BI."
+        description: "Bridging data insights with business strategy. I love simplifying complex data into meaningful stories and visuals-whether it's through a well-crafted dashboard or a clear plot."
     };
 
     // --- 2. ABOUT ME SECTION ---
-    const aboutMeText = "With a Bachelor's in Computer Science Engineering and a foundational Diploma in Electronics, I possess a unique, end-to-end understanding of how technology works—from the physical components to high-level data abstraction. My passion lies in decoding the stories hidden within data. I leverage powerful tools like Python, Power BI, and SQL to analyze complex information, identify critical trends, and build solutions that drive business decisions. I am driven to become a key contributor in the IT field as a professional analyst and developer, where I can apply my analytical mindset and technical skills to solve real-world challenges.";
+    const aboutMeText = "Recently with a Bachelor's in Computer Science Engineering and a foundational Diploma in Electronics Engineering, I possess a unique, end-to-end understanding of how technology works—from the physical components to high-level data abstraction. My passion lies in decoding the stories hidden within data. I leverage powerful tools like Python, Power BI, SQL and other's to analyze complex information, identify critical trends, and build solutions that drive business decisions. I am driven to become a key contributor in the IT field as a professional analyst and developer, where I can apply my analytical mindset and technical skills to solve real-world challenges.";
 
     // --- 3. SKILLS SECTION ---
     const skillsData = [
         { 
             category: "Data Analysis & Programming", 
-            skills: ["SQL", "Python (Pandas, NumPy, matplotlib)", "Advanced Excel & VBA"] 
+            skills: ["SQL", "Python (Pandas, NumPy, matplotlib)","Java Script (Basic)", "Advanced Excel & VBA"] 
         },
         { 
             category: "Data Visualization", 
-            skills: ["Power BI", "Tableau","DAX", "Data Storytelling"] 
+            skills: ["Power BI", "Tableau","DAX", "Jyuper Notebook"] 
         },        
         { 
             category: "Database Management", 
@@ -164,7 +164,14 @@ document.addEventListener('DOMContentLoaded', () => {
         { role: "Diploma in Electronics Engineering", company: "Government Polytechnic college", date: "2019 - 2021" },
     ];
 
-    // --- 7. RESUME & COVER LETTER SECTION ---
+    // --- 7. WHAT I'M WORKING ON SECTION ---
+    const workingOnData = [
+        "Basics of cloud platforms like Google Cloud and AWS (for data tools).",
+        "Exploring machine learning basics to better understand predictive analytics",
+        "Building hands-on projects in data visualization, data wrangling, and exploratory data analysis (EDA)"
+    ];
+
+    // --- 8. RESUME & COVER LETTER SECTION ---
     // Replace with paths to your resume preview image and PDF file
     const resumeData = {
         previewImageUrl: "assets/Shivam_Tiwari_Analyst_Resume.jpg", 
@@ -179,7 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
         fileName: "Cover Latter Shivam Tiwari.pdf"
     };  
 
-    // --- 8. GET IN TOUCH SECTION ---
+    // --- 9. GET IN TOUCH SECTION ---
     const contactData = {
         text: "Let's connect! I'm open to new opportunities and collaborations. Feel free to reach out.",
         email: "Shivam230131@gmail.com",
@@ -377,6 +384,20 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>`).join('');
     }
     
+    function renderWorkingOn() {
+        const container = document.querySelector('#working-on .about-content');
+        if (workingOnData && workingOnData.length > 0) {
+            const list = document.createElement('ul');
+            workingOnData.forEach(itemText => {
+                const listItem = document.createElement('li');
+                listItem.textContent = itemText;
+                list.appendChild(listItem);
+            });
+            container.innerHTML = ''; // Clear existing content
+            container.appendChild(list);
+        }
+    }
+
     function renderResumeAndCoverLetter() {
         const container = document.getElementById('resume-cover-letter-container');
         let content = '';
@@ -883,6 +904,7 @@ document.addEventListener('DOMContentLoaded', () => {
         renderProjects();
         renderCertificates();
         renderJourney();
+        renderWorkingOn();
         renderResumeAndCoverLetter();
         renderContact();
         renderAllDropdowns();

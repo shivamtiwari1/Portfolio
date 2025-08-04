@@ -226,6 +226,29 @@ h2::after {
 .btn-secondary:hover { background-color: rgba(204, 214, 246, 0.1); transform: translateY(-3px); }
 .about-content { max-width: 800px; font-size: 1.1rem; }
 
+.about-content ul {
+    list-style-type: none; 
+    padding-left: 0;
+}
+
+.about-content ul li {
+    position: relative;
+    padding-left: 30px; 
+    margin-bottom: 1rem; 
+    font-size: 1.1rem; 
+    color: var(--light-slate);
+}
+
+.about-content ul li::before {
+    content: '▶'; 
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--vibrant-teal); 
+    font-size: 1em;
+    line-height: 1.6;
+}
+
 #skills-grid {
     display: flex;
     overflow-x: auto;
