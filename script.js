@@ -58,13 +58,6 @@ document.addEventListener('DOMContentLoaded', () => {
             link:  "https://github.com/shivamtiwari1/Real-Time-Sales-Analytics-of-Blinkit",
             outcome: "The analysis led to a 15% improvement in inventory turnover and a 10% increase in sales of high-margin products through targeted promotions."
         },
-        {
-            title: "Handwritten Digit Recognition",
-            description: "Engineered a machine learning model to recognize handwritten digits with 97% accuracy. Implemented and evaluated multiple supervised learning algorithms and classification models, demonstrating strong capabilities in model training, testing, and performance optimization.",
-            tools: ["tableau", "json datafiles", "Dashboard filters & actions"],
-            link: "https://github.com/shivamtiwari1/Factory-Performance-Analysis-Tableau-Project",
-            outcome: "The final model can be integrated into applications requiring automated digit recognition, such as postal code scanning or data entry from forms."
-        },
          {
             title: "Factory performance analysis",
             description: "This project presents a performance analysis of telemetry data collected across four international manufacturing facilities of Daikibo, using Tableau as the data visualization tool. The goal is to uncover patterns in machine breakdowns and identify which factory and device types experienced the most downtime during the month of May 2021 The unified dataset, originally collected from nine machine types reporting every 10 minutes, has been transformed into a JSON file by Daikibo's tech team to streamline analysis.",
@@ -78,6 +71,13 @@ document.addEventListener('DOMContentLoaded', () => {
             tools: ["Power BI", " Advanced Excel", "DAX", "Data Storytelling"],
             link: "https://github.com/shivamtiwari1/Tata-Business-Insights-Dashboard-Power-BI-Project",
             outcome: "This project successfully transformed over 541,000 data rows into an interactive Power BI dashboard for Tata, using DAX to reveal key business insights on revenue, customers, and sales performance. The outcome is a powerful intelligence hub that provides actionable clarity for strategic, data-driven decision-making and demonstrates strong data visualization skills in Power BI."
+        },
+         {
+            title: "Handwritten Digit Recognition",
+            description: "Engineered a machine learning model to recognize handwritten digits with 97% accuracy. Implemented and evaluated multiple supervised learning algorithms and classification models, demonstrating strong capabilities in model training, testing, and performance optimization.",
+            tools: ["tableau", "json datafiles", "Dashboard filters & actions"],
+            link: "https://github.com/shivamtiwari1/Factory-Performance-Analysis-Tableau-Project",
+            outcome: "The final model can be integrated into applications requiring automated digit recognition, such as postal code scanning or data entry from forms."
         }
     ];
 
@@ -120,13 +120,6 @@ document.addEventListener('DOMContentLoaded', () => {
             organization: "Microsoft"
         },
         {
-            name: "SEBI Investor Awareness Test",
-            date: "Issued: July 10, 2025",
-            imageUrl: "assets/Sebi Investor test.png", 
-            verifyLink: "https://certifications.nism.ac.in/nismaol/certificate.php",
-            organization: "SEBI"
-        },
-         {
             name: "Business Analytics with Excel",
             date: "Issued: June 21st, 2025",
             imageUrl: "assets/Business analysis with excel.jpg", 
@@ -153,6 +146,13 @@ document.addEventListener('DOMContentLoaded', () => {
             imageUrl: "assets/Numpy.jpg", 
             verifyLink: "https://www.simplilearn.com",
             organization: "Simplilearn"
+        },
+         {
+            name: "SEBI Investor Awareness Test",
+            date: "Issued: July 10, 2025",
+            imageUrl: "assets/Sebi Investor test.png", 
+            verifyLink: "https://certifications.nism.ac.in/nismaol/certificate.php",
+            organization: "SEBI"
         }
     ];
 
