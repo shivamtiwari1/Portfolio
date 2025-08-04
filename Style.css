@@ -46,7 +46,17 @@ h2 {
     display: inline-block;
     border-radius: 4px;
 }
-h2::after { content: ''; position: absolute; bottom: 0; left: 0; width: 80px; height: 3px; background-color: var(--vibrant-teal); }
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 80px;
+    height: 3px;
+    background-color: var(--vibrant-teal);
+    border-radius: 2px;
+    box-shadow: 0 0 8px rgba(100, 255, 218, 0.7);
+}
 #contact h2::after {
     width: 100%;
     left: 0;
@@ -73,24 +83,21 @@ h2::after { content: ''; position: absolute; bottom: 0; left: 0; width: 80px; he
 #sticky-header .logo { color: var(--vibrant-teal); font-weight: bold; text-decoration: none; transition: transform 0.3s ease; display: inline-block; }
 #sticky-header .logo:hover { transform: translateY(-2px); }
 
-/* Desktop Navigation */
+/* Navigation Base */
 #main-nav { display: flex; align-items: center; gap: 1rem; }
 #main-nav a { color: var(--lightest-slate); text-decoration: none; transition: color 0.3s, transform 0.3s ease; display: inline-block; cursor: pointer; padding: 5px 8px; }
 #main-nav a:hover { color: var(--vibrant-teal); transform: translateY(-2px); }
 .hamburger-menu { display: none; }
 
-/* Desktop Dropdown Styles */
+/* Dropdown Base */
 #main-nav .nav-item {
     position: relative;
     display: inline-block;
 }
-
 #main-nav .nav-item > a::after {
     content: ' ▾';
     font-size: 0.8em;
 }
-
-/* Default style for most dropdowns */
 #main-nav .dropdown-content {
     opacity: 0;
     visibility: hidden;
@@ -108,35 +115,26 @@ h2::after { content: ''; position: absolute; bottom: 0; left: 0; width: 80px; he
     max-height: 250px;
     overflow-y: auto;
 }
-
-/* Specific style for dropdowns that should shrink */
 #main-nav .dropdown-fit-content {
     min-width: 0;
     width: max-content;
 }
-
 #main-nav .dropdown-content a {
     color: var(--light-slate);
     padding: 10px 16px;
     text-decoration: none;
     display: block;
-    margin-left: 0;
-    text-align: left;
+    text-align: center; /* Center text inside all dropdowns */
     transition: background-color 0.3s, color 0.3s;
 }
-
-/* Prevent text wrapping in the shrinking dropdowns */
 #main-nav .dropdown-fit-content a {
     white-space: nowrap;
 }
-
-
 #main-nav .dropdown-content a:hover {
     background-color: var(--lightest-navy);
     color: var(--vibrant-teal);
     transform: none;
 }
-
 #main-nav .nav-item:hover .dropdown-content {
     opacity: 1;
     visibility: visible;
@@ -381,32 +379,32 @@ footer { text-align: center; padding: 2rem 0; color: var(--slate); font-size: 0.
 .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; position: relative; }
 .section-header h2, .section-header h3 { margin-bottom: 0; }
 
-.modal-overlay { 
-    display: none; 
-    position: fixed; 
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%; 
-    background-color: rgba(0,0,0,0.85); 
-    z-index: 2000; 
-    align-items: center; 
-    justify-content: center; 
-    overflow: hidden; 
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.85);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
 }
-.modal-overlay.visible { 
-    display: flex; 
+.modal-overlay.visible {
+    display: flex;
 }
-.image-modal-content-wrapper { 
-    width: 100%; 
-    height: 100%; 
+.image-modal-content-wrapper {
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden; 
+    overflow: hidden;
 }
-#image-modal .modal-content { 
-    max-width: 95%; 
+#image-modal .modal-content {
+    max-width: 95%;
     max-height: 95%;
     transform-origin: center center;
     transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -416,20 +414,20 @@ footer { text-align: center; padding: 2rem 0; color: var(--slate); font-size: 0.
 #image-modal .modal-content:active {
     cursor: grabbing;
 }
-.close-image-modal { 
-    position: absolute; 
-    top: 20px; 
-    right: 35px; 
-    color: #fff; 
-    font-size: 40px; 
-    font-weight: bold; 
-    transition: 0.3s; 
-    cursor: pointer; 
-    z-index: 2001; 
+.close-image-modal {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+    z-index: 2001;
 }
-.close-image-modal:hover, .close-image-modal:focus { 
-    color: #bbb; 
-    text-decoration: none; 
+.close-image-modal:hover, .close-image-modal:focus {
+    color: #bbb;
+    text-decoration: none;
 }
 
 /* =============================================== */
@@ -530,10 +528,68 @@ footer { text-align: center; padding: 2rem 0; color: var(--slate); font-size: 0.
 }
 /* --- END OF ANIMATIONS --- */
 
-/* --- CERTIFICATE VISIBILITY STYLES --- */
+/* --- VISIBILITY & 'SHOW MORE' STYLES --- */
 .hidden-by-default {
     display: none;
 }
+
+#show-more-projects-container {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    height: auto;
+    cursor: pointer;
+    overflow: visible;
+    transition: transform 0.3s ease; /* Add transition for smooth movement */
+}
+
+#show-more-projects-key {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 50px; /* Strip height */
+    background-color: var(--light-navy); /* Strip background color */
+    color: var(--vibrant-teal);
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 4px; /* Optional: slight rounding */
+    border: 1px solid var(--lightest-navy);
+    transition: background-color 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+#show-more-projects-key::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 25%;
+    height: 4px;
+    background-color: var(--vibrant-teal);
+    border-radius: 2px;
+    box-shadow: 0 0 8px rgba(100, 255, 218, 0.7);
+    transition: width 0.4s ease;
+}
+
+#show-more-projects-container:hover #show-more-projects-key::after {
+    width: 80%;
+}
+
+
+#show-more-projects-container:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2), 0 0 25px rgba(100, 255, 218, 0.5);
+    border-radius: 4px; /* Match the key's border radius */
+}
+
+#show-more-projects-container:hover #show-more-projects-key {
+    background-color: var(--lightest-navy);
+}
+
 
 .show-more-container {
     background-color: var(--light-navy);
@@ -551,7 +607,8 @@ footer { text-align: center; padding: 2rem 0; color: var(--slate); font-size: 0.
     pointer-events: none; /* Make the card itself non-interactive initially */
 }
 
-#show-more-key {
+
+#show-more-certificates-key {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -612,8 +669,15 @@ footer { text-align: center; padding: 2rem 0; color: var(--slate); font-size: 0.
     }
 }
 
-/* --- Styles for Certificate Underline (Desktop Only) --- */
+/* --- DESKTOP SPECIFIC STYLES --- */
 @media (min-width: 769px) {
+    /* Center the dropdown container relative to the nav item */
+    #main-nav .dropdown-content {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    /* Add stylish underline to certificate cards on hover */
     .certificate-card::after {
         content: '';
         position: absolute;
@@ -650,6 +714,7 @@ footer { text-align: center; padding: 2rem 0; color: var(--slate); font-size: 0.
         cursor: pointer;
         padding: 0;
         z-index: 1001;
+        transition: all 0.3s linear;
     }
     .hamburger-menu span {
         width: 2rem;
@@ -709,7 +774,7 @@ footer { text-align: center; padding: 2rem 0; color: var(--slate); font-size: 0.
     }
 
     #main-nav .dropdown-content {
-        position: static;
+        position: static; /* Let it be part of the normal document flow */
         display: none;
         background-color: transparent;
         box-shadow: none;
@@ -731,6 +796,7 @@ footer { text-align: center; padding: 2rem 0; color: var(--slate); font-size: 0.
         font-size: 1.2rem;
         padding: 0.8rem 0;
         color: var(--slate);
+        text-align: center; /* Center the text inside mobile dropdowns */
     }
 
 

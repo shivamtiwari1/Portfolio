@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- 1. HERO SECTION & PROFILE PICTURE ---
     // Replace with the path to your profile picture
-    const profilePicUrl = "assets/Profile_Pic.png"; 
+    const profilePicUrl = "assets/Profile_Pic_2.png"; 
     
     const heroData = {
         title: "Shivam Tiwari",
@@ -218,15 +218,65 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderProjects() {
         const container = document.getElementById('projects-container');
-        container.innerHTML = projectsData.map((project, index) => `
-            <div class="project-card fade-in" id="project-${index}">
-                <h3>${project.title}</h3>
-                <p>${project.description}</p>
-                <h4 class="project-outcome-title">Outcome:</h4>
-                <p>${project.outcome || 'No outcome specified.'}</p>
-                <div class="project-tools">${project.tools.map(tool => `<span>${tool}</span>`).join('')}</div>
-                ${project.link ? `<div class="hero-buttons" style="margin-top: 1.5rem;"><a href="${project.link}" class="btn btn-primary" target="_blank" rel="noopener noreferrer">View Project</a></div>` : ''}
-            </div>`).join('');
+        if (!projectsData || projectsData.length === 0) {
+            container.innerHTML = '<p>No projects have been added yet.</p>';
+            return;
+        }
+
+        let html = '';
+        const visibleCount = 2; // Show 2 projects initially
+
+        // Add the first 2 projects
+        for (let i = 0; i < visibleCount && i < projectsData.length; i++) {
+            const project = projectsData[i];
+            html += `
+                <div class="project-card fade-in" id="project-${i}">
+                    <h3>${project.title}</h3>
+                    <p>${project.description}</p>
+                    <h4 class="project-outcome-title">Outcome:</h4>
+                    <p>${project.outcome || 'No outcome specified.'}</p>
+                    <div class="project-tools">${project.tools.map(tool => `<span>${tool}</span>`).join('')}</div>
+                    ${project.link ? `<div class="hero-buttons" style="margin-top: 1.5rem;"><a href="${project.link}" class="btn btn-primary" target="_blank" rel="noopener noreferrer">View Project</a></div>` : ''}
+                </div>`;
+        }
+
+        // Handle the "Show More" functionality
+        if (projectsData.length > visibleCount) {
+            html += `
+                <div id="show-more-projects-container">
+                    <div id="show-more-projects-key">See More Projects...</div>
+                </div>
+            `;
+        }
+
+        // Add the rest of the projects as hidden
+        for (let i = visibleCount; i < projectsData.length; i++) {
+            const project = projectsData[i];
+            html += `
+                <div class="project-card fade-in hidden-by-default" id="project-${i}">
+                    <h3>${project.title}</h3>
+                    <p>${project.description}</p>
+                    <h4 class="project-outcome-title">Outcome:</h4>
+                    <p>${project.outcome || 'No outcome specified.'}</p>
+                    <div class="project-tools">${project.tools.map(tool => `<span>${tool}</span>`).join('')}</div>
+                    ${project.link ? `<div class="hero-buttons" style="margin-top: 1.5rem;"><a href="${project.link}" class="btn btn-primary" target="_blank" rel="noopener noreferrer">View Project</a></div>` : ''}
+                </div>`;
+        }
+
+        container.innerHTML = html;
+
+        // Add event listener after the container is in the DOM
+        const showMoreProjectsContainer = document.getElementById('show-more-projects-container');
+        if (showMoreProjectsContainer) {
+            showMoreProjectsContainer.addEventListener('click', () => {
+                showMoreProjectsContainer.remove();
+    
+                // Show the rest of the cards
+                document.querySelectorAll('.project-card.hidden-by-default').forEach(proj => {
+                    proj.classList.remove('hidden-by-default');
+                });
+            });
+        }
     }
 
     function renderCertificates() {
@@ -260,7 +310,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (certificatesData.length > visibleCount) {
             const sixthCert = certificatesData[visibleCount];
             html += `
-                <div class="show-more-container" id="show-more-container">
+                <div class="show-more-container" id="show-more-certificates-container">
                     <div class="certificate-card fade-in" id="certificate-${visibleCount}">
                         <img src="${sixthCert.imageUrl}" alt="${sixthCert.name} Certificate">
                         <div class="certificate-info">
@@ -272,7 +322,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             </div>
                         </div>
                     </div>
-                    <div id="show-more-key">See More...</div>
+                    <div id="show-more-certificates-key">See More...</div>
                 </div>
             `;
         }
@@ -297,18 +347,18 @@ document.addEventListener('DOMContentLoaded', () => {
         container.innerHTML = html;
     
         // Add event listener after the container is in the DOM
-        const showMoreContainer = document.getElementById('show-more-container');
-        if (showMoreContainer) {
-            showMoreContainer.addEventListener('click', () => {
+        const showMoreCertificatesContainer = document.getElementById('show-more-certificates-container');
+        if (showMoreCertificatesContainer) {
+            showMoreCertificatesContainer.addEventListener('click', () => {
                 const sixthCard = document.getElementById('certificate-5');
                 
                 // Make the 6th card fully visible and move it out of the container
                 sixthCard.style.opacity = '1';
-                showMoreContainer.parentNode.insertBefore(sixthCard, showMoreContainer);
-                showMoreContainer.remove();
+                showMoreCertificatesContainer.parentNode.insertBefore(sixthCard, showMoreCertificatesContainer);
+                showMoreCertificatesContainer.remove();
     
                 // Show the rest of the cards
-                document.querySelectorAll('.hidden-by-default').forEach(cert => {
+                document.querySelectorAll('.certificate-card.hidden-by-default').forEach(cert => {
                     cert.classList.remove('hidden-by-default');
                 });
             });
@@ -393,17 +443,15 @@ document.addEventListener('DOMContentLoaded', () => {
             `<a href="#journey-${index}">${item.role}</a>`
         ).join('');
 
-        // Resume Dropdown - Add the new class here
+        // Resume Dropdown
         const resumeDropdown = document.getElementById('resume-dropdown');
-        resumeDropdown.classList.add('dropdown-fit-content'); // Add this line
         let resumeLinks = '';
         if (resumeData.previewImageUrl) resumeLinks += `<a href="#resume-card">Resume</a>`;
         if (coverLetterData.previewImageUrl) resumeLinks += `<a href="#cover-letter-card">Cover Letter</a>`;
         resumeDropdown.innerHTML = resumeLinks;
 
-        // Contact Dropdown - Add the new class here
+        // Contact Dropdown
         const contactDropdown = document.getElementById('contact-dropdown');
-        contactDropdown.classList.add('dropdown-fit-content'); // Add this line
         contactDropdown.innerHTML = `
             <a href="mailto:${contactData.email}">Email</a>
             <a href="${contactData.socials.find(s => s.name === 'GitHub').url}" target="_blank" rel="noopener noreferrer">GitHub</a>
@@ -424,17 +472,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         mainNav.addEventListener('click', (e) => {
+            // Close nav if a link is clicked
             if (e.target.tagName === 'A') {
-                if (window.innerWidth <= 768) {
-                    // Close all open mobile dropdowns
-                    document.querySelectorAll('#main-nav .nav-item.open').forEach(item => item.classList.remove('open'));
-                    
-                    // If the clicked link is inside a dropdown, close the main nav
-                    if (e.target.parentElement.classList.contains('dropdown-content')) {
-                        hamburgerBtn.setAttribute('aria-expanded', 'false');
-                        document.body.classList.remove('mobile-nav-open');
-                    }
-                }
+                document.body.classList.remove('mobile-nav-open');
+                hamburgerBtn.setAttribute('aria-expanded', 'false');
             }
         });
     }
@@ -476,6 +517,9 @@ document.addEventListener('DOMContentLoaded', () => {
             pointY = 0,
             startX = 0,
             startY = 0;
+            
+        // For touch controls
+        let initialDistance = null;
     
         function setTransform() {
             modalImg.style.transform = `translate(${pointX}px, ${pointY}px) scale(${scale})`;
@@ -498,6 +542,15 @@ document.addEventListener('DOMContentLoaded', () => {
             modal.classList.remove('visible');
         }
     
+        // Specific listener for the profile picture
+        const profilePic = document.getElementById('profile-pic-container');
+        if (profilePic) {
+            profilePic.addEventListener('click', () => {
+                openModal(profilePicUrl);
+            });
+        }
+    
+        // Generic listeners for other zoomable images
         document.querySelectorAll('.image-zoom-container').forEach(container => {
             container.addEventListener('click', function(e) {
                 if (e.target.tagName === 'IMG') {
@@ -514,6 +567,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     
+        // --- MOUSE CONTROLS ---
         modalWrapper.addEventListener('mousedown', (e) => {
             e.preventDefault();
             panning = true;
@@ -561,6 +615,61 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             resetTransform();
         });
+    
+        // --- TOUCH CONTROLS FOR MOBILE ---
+        modalWrapper.addEventListener('touchstart', (e) => {
+            if (e.touches.length === 1) {
+                panning = true;
+                startX = e.touches[0].clientX - pointX;
+                startY = e.touches[0].clientY - pointY;
+            } else if (e.touches.length === 2) {
+                panning = false;
+                initialDistance = Math.hypot(
+                    e.touches[0].clientX - e.touches[1].clientX,
+                    e.touches[0].clientY - e.touches[1].clientY
+                );
+            }
+        }, { passive: true });
+        
+        modalWrapper.addEventListener('touchend', (e) => {
+            panning = false;
+            if (e.touches.length < 2) {
+                initialDistance = null;
+            }
+        });
+    
+        modalWrapper.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+            if (panning && e.touches.length === 1) {
+                pointX = e.touches[0].clientX - startX;
+                pointY = e.touches[0].clientY - startY;
+                setTransform();
+            } else if (e.touches.length === 2 && initialDistance) {
+                const newDistance = Math.hypot(
+                    e.touches[0].clientX - e.touches[1].clientX,
+                    e.touches[0].clientY - e.touches[1].clientY
+                );
+                const delta = newDistance / initialDistance;
+                
+                const rect = modalImg.getBoundingClientRect();
+                const centerX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+                const centerY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+        
+                const xs = (centerX - rect.left) / scale;
+                const ys = (centerY - rect.top) / scale;
+        
+                const newScale = scale * delta;
+                
+                if (newScale >= 0.5 && newScale <= 15) {
+                    pointX += (centerX - rect.left) - (xs * newScale + pointX);
+                    pointY += (centerY - rect.top) - (ys * newScale + pointY);
+                    scale = newScale;
+                    setTransform();
+                }
+        
+                initialDistance = newDistance;
+            }
+        }, { passive: false });
     }
 
     function setupNavHighlighting() {
@@ -578,16 +687,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (targetElement) {
                     
-                    // --- NEW LOGIC FOR HIDDEN CERTIFICATES ---
-                    const isHiddenCertificate = targetElement.classList.contains('certificate-card') && targetElement.classList.contains('hidden-by-default');
+                    // --- NEW LOGIC FOR HIDDEN ITEMS ---
+                    const isHiddenCertificate = targetElement.matches('.certificate-card.hidden-by-default');
+                    const isHiddenProject = targetElement.matches('.project-card.hidden-by-default');
+
                     if (isHiddenCertificate) {
-                        const showMoreContainer = document.getElementById('show-more-container');
-                        if (showMoreContainer) {
-                            showMoreContainer.click();
-                        }
+                        document.getElementById('show-more-certificates-container')?.click();
+                    }
+                    if (isHiddenProject) {
+                        document.getElementById('show-more-projects-container')?.click();
                     }
 
-                    // Use a timeout to allow the DOM to update, especially after revealing hidden certificates
+                    // Use a timeout to allow the DOM to update
                     setTimeout(() => {
                         // --- APPLY CORRECT HIGHLIGHT ---
                         const isCard = targetElement.matches('.project-card, .skill-card, .certificate-card, .resume-card, .timeline-item');
@@ -630,11 +741,6 @@ document.addEventListener('DOMContentLoaded', () => {
                             }, { once: true });
                         }
 
-                        // Close mobile nav if it's open
-                        if (document.body.classList.contains('mobile-nav-open')) {
-                            document.getElementById('hamburger-menu').click();
-                        }
-
                         // --- CORRECTED SMOOTH SCROLL LOGIC ---
                         const headerHeight = document.getElementById('sticky-header').offsetHeight;
                         const offsetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - 40;
@@ -664,7 +770,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 behavior: 'smooth'
                             });
                         }
-                    }, isHiddenCertificate ? 50 : 0); // Add a small delay if cards were revealed
+                    }, (isHiddenCertificate || isHiddenProject) ? 50 : 0); // Add a small delay if cards were revealed
                 }
             }
         });
