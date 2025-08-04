@@ -10,11 +10,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- 1. HERO SECTION & PROFILE PICTURE ---
     // Replace with the path to your profile picture
-    const profilePicUrl = "assets/Photo.png"; 
+    const profilePicUrl = "assets/Profile_Pic.png"; 
     
     const heroData = {
         title: "Shivam Tiwari",
-        subtitle: "Data & Business Analyst",
+        subtitle: "Aspiring Data & Business Analyst",
         description: "Bridging data insights with business strategy. I transform complex datasets into actionable narratives using Python, SQL, and Power BI."
     };
 
@@ -61,9 +61,23 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             title: "Handwritten Digit Recognition",
             description: "Engineered a machine learning model to recognize handwritten digits with 97% accuracy. Implemented and evaluated multiple supervised learning algorithms and classification models, demonstrating strong capabilities in model training, testing, and performance optimization.",
+            tools: ["tableau", "json datafiles", "Dashboard filters & actions"],
+            link: "https://github.com/shivamtiwari1/Factory-Performance-Analysis-Tableau-Project",
+            outcome: "The final model can be integrated into applications requiring automated digit recognition, such as postal code scanning or data entry from forms."
+        },
+         {
+            title: "Factory performance analysis",
+            description: "This project presents a performance analysis of telemetry data collected across four international manufacturing facilities of Daikibo, using Tableau as the data visualization tool. The goal is to uncover patterns in machine breakdowns and identify which factory and device types experienced the most downtime during the month of May 2021 The unified dataset, originally collected from nine machine types reporting every 10 minutes, has been transformed into a JSON file by Daikibo's tech team to streamline analysis.",
             tools: ["Python", "Scikit-learn", "NumPy"],
             link: "https://github.com/shivamtiwari1/Handwritten-Digits-Recognition",
-            outcome: "The final model can be integrated into applications requiring automated digit recognition, such as postal code scanning or data entry from forms."
+            outcome: "This analysis empowers stakeholders at Daikibo to Pinpoint operational inefficiencies. Prioritize maintenance strategies. Optimize machine performance across their global manufacturing network."
+        },
+        {
+            title: " Tata Business Insights Dashboard",
+            description: "This Power BI project leverages 541,000+ rows of sales and customer data to create meaningful, interactive visualizations for Tata. The objective was to empower business stakeholders with intuitive insights that support smarter, data-driven decisions. From exploring geographic sales patterns to understanding customer behavior, this dashboard acts as a centralized intelligence hub tailored for executive-level review.",
+            tools: ["Power BI", " Advanced Excel", "DAX", "Data Storytelling"],
+            link: "https://github.com/shivamtiwari1/Tata-Business-Insights-Dashboard-Power-BI-Project",
+            outcome: "This project successfully transformed over 541,000 data rows into an interactive Power BI dashboard for Tata, using DAX to reveal key business insights on revenue, customers, and sales performance. The outcome is a powerful intelligence hub that provides actionable clarity for strategic, data-driven decision-making and demonstrates strong data visualization skills in Power BI."
         }
     ];
 
@@ -163,7 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
         previewImageUrl: "assets/Cover_Latter_Shivam_Tiwari.jpg", 
         downloadFileUrl: "assets/Cover_Latter_Shivam_Tiwari.pdf",
         fileName: "Cover Latter Shivam Tiwari.pdf"
-    };
+    };  
 
     // --- 8. GET IN TOUCH SECTION ---
     const contactData = {
