@@ -911,3 +911,14 @@ footer { text-align: center; padding: 2rem 0; color: var(--slate); font-size: 0.
     }
     .social-icons a { font-size: 2.2rem; margin: 0 0.8rem; }
 }
+
+/* --- NEWLY ADDED STYLE --- */
+.btn-secondary.view-certificate-btn {
+    margin-left: 1rem;
+}
+
+@media (max-width: 480px) {
+    .btn-secondary.view-certificate-btn {
+        margin-left: 0; /* Remove the left margin on small screens */
+    }
+}

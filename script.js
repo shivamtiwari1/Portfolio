@@ -25,19 +25,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const skillsData = [
         { 
             category: "Data Analysis & Programming", 
-            skills: ["SQL", "Python (Pandas, NumPy, matplotlib)","Java Script (Basic)", "Advanced Excel & VBA"] 
+            skills: ["SQL", "Python (Pandas, NumPy, matplotlib)", "Advanced Excel & VBA","Java Script (Basic)"] 
         },
         { 
-            category: "Data Visualization", 
-            skills: ["Power BI", "Tableau","DAX", "Jyuper Notebook"] 
+            category: "Data Visualization & Database Management",
+            skills: ["Power BI (DAX)", "Tableau", "MySQL", "PostgreSQL"] 
         },        
         { 
-            category: "Database Management", 
-            skills: [ "MySQL", "PostgreSQL",] 
+            category: "Technology Stack & Skills", 
+            skills: ["Git & GitHub", "Microsoft AI Azure", "Artificial intelligence &"," Machine learning (Basic)"] 
         },
         { 
-            category: "Tools & Technologies", 
-            skills: ["Git & GitHub", "Microsoft Azure", "Microsoft Office Suite"] 
+            category: "Platforms & Software", 
+            skills: ["vs code", "Jupiter notebook", "Apache open office", "Microsoft Office Suite", "Proteus 8 Professional"] 
         },
         { 
             category: "Core Competencies", 
@@ -49,35 +49,43 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     ];
 
-    // --- 4. MY PROJECTS SECTION ---
+    // --- 4. MY PROJECTS SECTION (MODIFIED) ---
     const projectsData = [
         {
             title: "Real-Time Sales Analysis (Blinkit)",
             description: "Architected an end-to-end sales analysis solution. Analyzed over 8,000 sales records to uncover key product performance trends and customer purchasing behaviors. Developed 6+ interactive Power BI dashboards that translated raw data into actionable strategies for inventory management and targeted marketing campaigns.",
             tools: ["Power BI", "SQL", "DAX", "Excel"],
             link:  "https://github.com/shivamtiwari1/Real-Time-Sales-Analytics-of-Blinkit",
-            outcome: "The analysis led to a 15% improvement in inventory turnover and a 10% increase in sales of high-margin products through targeted promotions."
+            outcome: "The analysis led to a 15% improvement in inventory turnover and a 10% increase in sales of high-margin products through targeted promotions.",
+            certificateId: null, // Corresponds to the "30-Days Power BI Micro Course" certificate
+            certificateKeyText: "Independent Initiative" // Editable text for the button
         },
          {
             title: "Factory performance analysis",
             description: "This project presents a performance analysis of telemetry data collected across four international manufacturing facilities of Daikibo, using Tableau as the data visualization tool. The goal is to uncover patterns in machine breakdowns and identify which factory and device types experienced the most downtime during the month of May 2021 The unified dataset, originally collected from nine machine types reporting every 10 minutes, has been transformed into a JSON file by Daikibo's tech team to streamline analysis.",
             tools: ["Python", "Scikit-learn", "NumPy"],
             link: "https://github.com/shivamtiwari1/Handwritten-Digits-Recognition",
-            outcome: "This analysis empowers stakeholders at Daikibo to Pinpoint operational inefficiencies. Prioritize maintenance strategies. Optimize machine performance across their global manufacturing network."
+            outcome: "This analysis empowers stakeholders at Daikibo to Pinpoint operational inefficiencies. Prioritize maintenance strategies. Optimize machine performance across their global manufacturing network.",
+            certificateId: 1, // Set to null for self-projects
+            certificateKeyText: "View Deliotte Certificate" // Editable text for the button
         },
         {
             title: " Tata Business Insights Dashboard",
             description: "This Power BI project leverages 541,000+ rows of sales and customer data to create meaningful, interactive visualizations for Tata. The objective was to empower business stakeholders with intuitive insights that support smarter, data-driven decisions. From exploring geographic sales patterns to understanding customer behavior, this dashboard acts as a centralized intelligence hub tailored for executive-level review.",
             tools: ["Power BI", " Advanced Excel", "DAX", "Data Storytelling"],
             link: "https://github.com/shivamtiwari1/Tata-Business-Insights-Dashboard-Power-BI-Project",
-            outcome: "This project successfully transformed over 541,000 data rows into an interactive Power BI dashboard for Tata, using DAX to reveal key business insights on revenue, customers, and sales performance. The outcome is a powerful intelligence hub that provides actionable clarity for strategic, data-driven decision-making and demonstrates strong data visualization skills in Power BI."
+            outcome: "This project successfully transformed over 541,000 data rows into an interactive Power BI dashboard for Tata, using DAX to reveal key business insights on revenue, customers, and sales performance. The outcome is a powerful intelligence hub that provides actionable clarity for strategic, data-driven decision-making and demonstrates strong data visualization skills in Power BI.",
+            certificateId: 0, // Corresponds to the "Data Visualisation: Empowering Business" certificate
+            certificateKeyText: "View Tata Certificate" // Editable text for the button
         },
          {
             title: "Handwritten Digit Recognition",
             description: "Engineered a machine learning model to recognize handwritten digits with 97% accuracy. Implemented and evaluated multiple supervised learning algorithms and classification models, demonstrating strong capabilities in model training, testing, and performance optimization.",
             tools: ["tableau", "json datafiles", "Dashboard filters & actions"],
             link: "https://github.com/shivamtiwari1/Factory-Performance-Analysis-Tableau-Project",
-            outcome: "The final model can be integrated into applications requiring automated digit recognition, such as postal code scanning or data entry from forms."
+            outcome: "The final model can be integrated into applications requiring automated digit recognition, such as postal code scanning or data entry from forms.",
+            certificateId: 4, // Set to null for self-projects
+            certificateKeyText: "View Microsoft Certificate" // Editable text for the button
         }
     ];
 
@@ -223,55 +231,66 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>`).join('');
     }
 
+    // MODIFIED renderProjects FUNCTION
     function renderProjects() {
         const container = document.getElementById('projects-container');
         if (!projectsData || projectsData.length === 0) {
             container.innerHTML = '<p>No projects have been added yet.</p>';
             return;
         }
-
-        let html = '';
-        const visibleCount = 2; // Show 2 projects initially
-
-        // Add the first 2 projects
-        for (let i = 0; i < visibleCount && i < projectsData.length; i++) {
-            const project = projectsData[i];
-            html += `
-                <div class="project-card fade-in" id="project-${i}">
+    
+        const generateProjectCardHTML = (project, id) => {
+            let secondButtonHtml = '';
+            // Check if certificateId is a valid number (not undefined, not null)
+            if (project.certificateId !== undefined && project.certificateId !== null) {
+                // Project has a certificate
+                secondButtonHtml = `<button class="btn btn-secondary view-certificate-btn" data-certificate-id="${project.certificateId}">${project.certificateKeyText || 'View Certificate'}</button>`;
+            } else {
+                // Project is a "Self Project"
+                secondButtonHtml = `<button class="btn btn-secondary self-project-btn" disabled>${project.certificateKeyText || 'Self Project'}</button>`;
+            }
+    
+            return `
+                <div class="project-card fade-in" id="project-${id}">
                     <h3>${project.title}</h3>
                     <p>${project.description}</p>
                     <h4 class="project-outcome-title">Outcome:</h4>
                     <p>${project.outcome || 'No outcome specified.'}</p>
                     <div class="project-tools">${project.tools.map(tool => `<span>${tool}</span>`).join('')}</div>
-                    ${project.link ? `<div class="hero-buttons" style="margin-top: 1.5rem;"><a href="${project.link}" class="btn btn-primary" target="_blank" rel="noopener noreferrer">View Project</a></div>` : ''}
+                    <div class="hero-buttons" style="margin-top: 1.5rem;">
+                        ${project.link ? `<a href="${project.link}" class="btn btn-primary" target="_blank" rel="noopener noreferrer">View Project</a>` : ''}
+                        ${secondButtonHtml}
+                    </div>
                 </div>`;
-        }
-
-        // Handle the "Show More" functionality
+        };
+    
+        let visibleHtml = '';
+        let hiddenHtml = '';
+        const visibleCount = 2; // Show 2 projects initially
+    
+        projectsData.forEach((project, i) => {
+            const cardHtml = generateProjectCardHTML(project, i);
+            if (i < visibleCount) {
+                visibleHtml += cardHtml;
+            } else {
+                // Add hidden class to the outer div
+                const hiddenCardHtml = cardHtml.replace('class="project-card fade-in"', 'class="project-card fade-in hidden-by-default"');
+                hiddenHtml += hiddenCardHtml;
+            }
+        });
+    
+        let finalHtml = visibleHtml;
         if (projectsData.length > visibleCount) {
-            html += `
+            finalHtml += `
                 <div id="show-more-projects-container">
                     <div id="show-more-projects-key">See More Projects...</div>
                 </div>
             `;
         }
-
-        // Add the rest of the projects as hidden
-        for (let i = visibleCount; i < projectsData.length; i++) {
-            const project = projectsData[i];
-            html += `
-                <div class="project-card fade-in hidden-by-default" id="project-${i}">
-                    <h3>${project.title}</h3>
-                    <p>${project.description}</p>
-                    <h4 class="project-outcome-title">Outcome:</h4>
-                    <p>${project.outcome || 'No outcome specified.'}</p>
-                    <div class="project-tools">${project.tools.map(tool => `<span>${tool}</span>`).join('')}</div>
-                    ${project.link ? `<div class="hero-buttons" style="margin-top: 1.5rem;"><a href="${project.link}" class="btn btn-primary" target="_blank" rel="noopener noreferrer">View Project</a></div>` : ''}
-                </div>`;
-        }
-
-        container.innerHTML = html;
-
+        finalHtml += hiddenHtml;
+    
+        container.innerHTML = finalHtml;
+    
         // Add event listener after the container is in the DOM
         const showMoreProjectsContainer = document.getElementById('show-more-projects-container');
         if (showMoreProjectsContainer) {
@@ -524,6 +543,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // MODIFIED setupImageModal FUNCTION
     function setupImageModal() {
         const modal = document.getElementById('image-modal');
         if (!modal) return;
@@ -579,6 +599,19 @@ document.addEventListener('DOMContentLoaded', () => {
                     openModal(e.target.src);
                 }
             });
+        });
+
+        // Event listener for certificate buttons in project cards
+        document.body.addEventListener('click', function(e) {
+            if (e.target.classList.contains('view-certificate-btn')) {
+                const certificateId = parseInt(e.target.dataset.certificateId, 10);
+                if (!isNaN(certificateId)) {
+                    const certificate = certificatesData[certificateId];
+                    if (certificate) {
+                        openModal(certificate.imageUrl);
+                    }
+                }
+            }
         });
     
         closeBtn.addEventListener('click', closeModal);
