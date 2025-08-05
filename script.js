@@ -33,11 +33,11 @@ document.addEventListener('DOMContentLoaded', () => {
         },        
         { 
             category: "Technology Stack & Skills", 
-            skills: ["Git & GitHub", "Microsoft AI Azure", "Artificial intelligence &"," Machine learning (Basic)"] 
+            skills: ["Git & GitHub", "Microsoft AI Azure", "Artificial Intelligence &"," Machine Learning (Basic)"] 
         },
         { 
             category: "Platforms & Software", 
-            skills: ["vs code", "Jupiter notebook", "Apache open office", "Microsoft Office Suite", "Proteus 8 Professional"] 
+            skills: ["Visual Studio Code", "Jupiter Notebook", "Apache Open Office", "Microsoft Office Suite", "Proteus 8 Professional"] 
         },
         { 
             category: "Core Competencies", 
