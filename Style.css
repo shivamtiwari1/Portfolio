@@ -221,9 +221,17 @@ h2::after {
 .hero-buttons { margin-top: 2rem; }
 .btn { padding: 0.8rem 1.8rem; text-decoration: none; border-radius: 4px; font-weight: 600; transition: all 0.3s ease; margin-right: 1rem; cursor: pointer; }
 .btn-primary { background-color: transparent; border: 1px solid var(--vibrant-teal); color: var(--vibrant-teal); }
-.btn-primary:hover { background-color: rgba(100, 255, 218, 0.1); transform: translateY(-3px); box-shadow: 0 4px 15px rgba(100, 255, 218, 0.2); }
+.btn-primary:hover {
+    background-color: rgba(100, 255, 218, 0.1);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2), 0 0 25px rgba(100, 255, 218, 0.5);
+}
 .btn-secondary { background-color: transparent; color: var(--light-slate); border: 1px solid var(--light-slate); }
-.btn-secondary:hover { background-color: rgba(204, 214, 246, 0.1); transform: translateY(-3px); }
+.btn-secondary:hover {
+    background-color: rgba(204, 214, 246, 0.1);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2), 0 0 25px rgba(100, 255, 218, 0.5);
+}
 .about-content { max-width: 800px; font-size: 1.1rem; }
 
 .about-content ul {
@@ -277,7 +285,7 @@ h2::after {
     transform: translateX(100px);
     position: relative;
     overflow: hidden;
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out, background-color 0.3s ease;
 }
 
 .skill-card.animate {
@@ -293,25 +301,116 @@ h2::after {
 .skill-card ul { list-style: none; padding: 0; }
 .skill-card li { color: var(--slate); margin-bottom: 0.5rem; }
 
-#projects-container { display: grid; grid-template-columns: 1fr; gap: 2rem; }
-.project-card {
-    background-color: var(--light-navy);
-    padding: 2rem;
-    border-radius: 8px;
-    border: 1px solid var(--lightest-navy);
-    cursor: pointer;
+
+/* --- New Project Section Styles --- */
+#projects-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+    margin-top: 2rem;
+}
+
+.project-item {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    align-items: center;
+}
+
+.project-image-side.project-image-right {
+    order: 2;
+}
+
+.project-image-wrapper {
     position: relative;
     overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2), 0 0 25px rgba(100, 255, 218, 0.1);
 }
-.project-card h3 { color: var(--vibrant-teal); margin-bottom: 0.5rem; }
-.project-outcome-title {
+
+.project-image-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.6s ease;
+    z-index: 1;
+}
+
+.project-image-wrapper:hover::before {
+    left: 100%;
+}
+
+.project-image {
+    width: 100%;
+    display: block;
+    border-radius: 8px;
+    transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.project-image-wrapper:hover .project-image {
+    transform: scale(1.1);
+    filter: brightness(1.1);
+}
+
+.project-content-side.project-content-right {
+    text-align: left;
+}
+
+.project-content-side.project-content-left {
+    text-align: right;
+}
+
+.project-content-side p {
+    font-size: 0.9rem; /* ADDED */
+    line-height: 1.5; /* ADDED */
+}
+
+.project-content-side h3 {
+    color: var(--vibrant-teal);
+    margin-bottom: 0.75rem; /* MODIFIED */
+}
+
+.project-content-side .project-outcome-title {
     color: var(--lightest-slate);
-    margin-top: 1rem;
-    margin-bottom: 0.5rem;
+    margin-top: 1rem; /* MODIFIED */
+    margin-bottom: 0.25rem; /* MODIFIED */
     font-size: 1.1rem;
 }
-.project-tools { margin-top: 1rem; }
-.project-tools span { background-color: var(--lightest-navy); color: var(--vibrant-teal); padding: 0.3rem 0.7rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem; font-weight: 500; }
+
+.project-content-side .project-tools {
+    margin-top: 1rem; /* MODIFIED */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.project-content-side.project-content-left .project-tools {
+    justify-content: flex-end;
+}
+
+.project-content-side .project-tools span {
+    background-color: var(--lightest-navy);
+    color: var(--vibrant-teal);
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.project-buttons-container {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.project-content-side.project-content-left .project-buttons-container {
+    justify-content: flex-end;
+}
+
 
 #timeline-container { position: relative; max-width: 800px; margin: 3rem auto 0; }
 #timeline-container::after { content: ''; position: absolute; width: 3px; background-color: var(--lightest-navy); top: 0; bottom: 0; left: 50%; margin-left: -1.5px; }
@@ -325,11 +424,31 @@ h2::after {
     background-color: var(--light-navy);
     position: relative;
     border-radius: 6px;
-    cursor: pointer;
+    cursor: default;
     overflow: hidden;
+    min-height: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+.timeline-content.clickable {
+    cursor: pointer;
 }
 .timeline-content h3 { color: var(--lightest-slate); margin-bottom: 0.2rem; }
 .timeline-content .date { font-size: 0.9rem; color: var(--vibrant-teal); font-weight: bold; }
+
+.description-prompt {
+    font-size: 0.8rem;
+    color: var(--slate);
+    font-weight: 500;
+    margin-top: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.timeline-content.clickable:hover .description-prompt {
+    color: var(--vibrant-teal);
+}
 
 #resume-cover-letter-container { text-align: center; }
 #contact { text-align: center; }
@@ -351,6 +470,7 @@ footer { text-align: center; padding: 2rem 0; color: var(--slate); font-size: 0.
     cursor: pointer;
     display: flex;
     flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
 .certificate-card img {
@@ -393,7 +513,7 @@ footer { text-align: center; padding: 2rem 0; color: var(--slate); font-size: 0.
     background-color: rgba(100, 255, 218, 0.1);
 }
 .resume-grid { display: flex; justify-content: center; flex-wrap: wrap; gap: 2rem; }
-.resume-card { width: 391px; height: 520px; background-color: var(--light-navy); border-radius: 8px; border: 1px solid var(--lightest-navy); overflow: hidden; position: relative; cursor: pointer; flex-shrink: 0; }
+.resume-card { width: 391px; height: 520px; background-color: var(--light-navy); border-radius: 8px; border: 1px solid var(--lightest-navy); overflow: hidden; position: relative; cursor: pointer; flex-shrink: 0; transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease; }
 .resume-image-container { width: 100%; height: 100%; overflow: hidden; }
 .resume-card img { width: 100%; height: 100%; display: block; object-fit: cover; }
 .resume-card .download-icon { position: absolute; top: 1rem; right: 1rem; font-size: 1.5rem; color: var(--white); text-decoration: none; transition: color 0.3s; z-index: 2; }
@@ -452,14 +572,69 @@ footer { text-align: center; padding: 2rem 0; color: var(--slate); font-size: 0.
     color: #bbb;
     text-decoration: none;
 }
+.journey-modal-content {
+    background-color: var(--light-navy);
+    padding: 2rem;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 600px;
+    position: relative;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.5);
+    border: 1px solid var(--lightest-navy);
+}
+.close-journey-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    color: var(--light-slate);
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+.close-journey-modal:hover {
+    color: var(--vibrant-teal);
+}
+
+#journey-modal-title {
+    color: var(--vibrant-teal);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--lightest-navy);
+}
+
+#journey-modal-description ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+#journey-modal-description li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 1rem;
+    color: var(--light-slate);
+}
+
+#journey-modal-description li::before {
+    content: '▶';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--vibrant-teal);
+}
+
+.journey-modal-heading {
+    color: var(--lightest-slate);
+    font-weight: 600;
+    margin-top: 1.5rem;
+}
 
 /* =============================================== */
 /* ============== UNIFIED CARD STYLES ============ */
 /* =============================================== */
 
-/* --- Base Card Transition (FIXED) --- */
-/* Applies a smooth transition to all card types, including the 'show-more' container. */
-.project-card,
 .certificate-card,
 .timeline-content,
 .resume-card,
@@ -467,22 +642,19 @@ footer { text-align: center; padding: 2rem 0; color: var(--slate); font-size: 0.
     transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.6s ease-out;
 }
 
-/* --- Card Hover Effect (FIXED) --- */
-/* This single, unified rule applies the pop-up and glow effect to all cards on hover, including the 'show-more' container. */
 .skill-card:hover,
-.project-card:hover,
 .certificate-card:hover,
 .timeline-content:hover,
 .resume-card:hover,
 .show-more-container:hover {
     transform: translateY(-10px);
     box-shadow: 0 10px 20px rgba(0,0,0,0.2), 0 0 25px rgba(100, 255, 218, 0.5);
+    background-color: var(--lightest-navy);
 }
 
-/* Stylish underline for specific cards on all devices */
 .skill-card::after,
-.project-card::after,
-.resume-card::after {
+.resume-card::after,
+.certificate-card::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -496,15 +668,14 @@ footer { text-align: center; padding: 2rem 0; color: var(--slate); font-size: 0.
 }
 
 .skill-card:hover::after,
-.project-card:hover::after,
-.resume-card:hover::after {
+.resume-card:hover::after,
+.certificate-card:hover::after {
     width: 80%;
 }
 
 
 /* --- BLINKING/HIGHLIGHTING ANIMATIONS --- */
 
-/* For Nav Tab Background */
 @keyframes blink-background {
     50% {
         background-color: rgba(100, 255, 218, 0.15);
@@ -516,7 +687,6 @@ footer { text-align: center; padding: 2rem 0; color: var(--slate); font-size: 0.
     border-radius: 4px;
 }
 
-/* For Cards and other elements */
 @keyframes highlight-effect {
     0%, 100% {
         box-shadow: none;
@@ -530,7 +700,6 @@ footer { text-align: center; padding: 2rem 0; color: var(--slate); font-size: 0.
     animation: highlight-effect 1.2s ease-in-out;
 }
 
-/* Special case for timeline items to highlight the inner box */
 .timeline-item.highlight {
     animation: none;
 }
@@ -538,7 +707,11 @@ footer { text-align: center; padding: 2rem 0; color: var(--slate); font-size: 0.
     animation: highlight-effect 1.2s ease-in-out;
 }
 
-/* For Section Headings */
+.project-item.highlight .project-image-wrapper {
+    animation: highlight-effect 1.2s ease-in-out;
+}
+
+
 @keyframes heading-glow-effect {
     50% {
         color: var(--vibrant-teal);
@@ -564,7 +737,7 @@ footer { text-align: center; padding: 2rem 0; color: var(--slate); font-size: 0.
     height: auto;
     cursor: pointer;
     overflow: visible;
-    transition: transform 0.3s ease; /* Add transition for smooth movement */
+    transition: transform 0.3s ease;
 }
 
 #show-more-projects-key {
@@ -572,12 +745,12 @@ footer { text-align: center; padding: 2rem 0; color: var(--slate); font-size: 0.
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 50px; /* Strip height */
-    background-color: var(--light-navy); /* Strip background color */
+    height: 50px;
+    background-color: var(--light-navy);
     color: var(--vibrant-teal);
     font-size: 1rem;
     font-weight: 600;
-    border-radius: 4px; /* Optional: slight rounding */
+    border-radius: 4px;
     border: 1px solid var(--lightest-navy);
     transition: background-color 0.3s ease;
     position: relative;
@@ -605,8 +778,7 @@ footer { text-align: center; padding: 2rem 0; color: var(--slate); font-size: 0.
 
 #show-more-projects-container:hover {
     transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2), 0 0 25px rgba(100, 255, 218, 0.5);
-    border-radius: 4px; /* Match the key's border radius */
+    border-radius: 4px;
 }
 
 #show-more-projects-container:hover #show-more-projects-key {
@@ -627,7 +799,7 @@ footer { text-align: center; padding: 2rem 0; color: var(--slate); font-size: 0.
 
 .show-more-container .certificate-card {
     opacity: 0.2;
-    pointer-events: none; /* Make the card itself non-interactive initially */
+    pointer-events: none;
 }
 
 
@@ -641,19 +813,19 @@ footer { text-align: center; padding: 2rem 0; color: var(--slate); font-size: 0.
     font-weight: 600;
     opacity: 0.8;
     z-index: 5;
-    pointer-events: none; /* The container handles the click */
+    pointer-events: none;
 }
 
 /* --- Stylish Swipe/Scroll Indicator for ALL devices --- */
 #skills {
     position: relative;
-    padding-bottom: 120px; /* Increased padding for the indicator */
+    padding-bottom: 120px;
 }
 
 #skills::after {
     content: 'SWIPE OR SCROLL';
     position: absolute;
-    bottom: 25px; /* Position text below the line */
+    bottom: 25px;
     left: 50%;
     transform: translateX(-50%);
     color: var(--slate);
@@ -666,10 +838,10 @@ footer { text-align: center; padding: 2rem 0; color: var(--slate); font-size: 0.
 #skills::before {
     content: '';
     position: absolute;
-    bottom: 50px; /* Position the line */
+    bottom: 50px;
     left: 50%;
     transform: translateX(-50%);
-    width: 120px; /* Width of the indicator line */
+    width: 120px;
     height: 2px;
     background: linear-gradient(
         90deg,
@@ -694,13 +866,11 @@ footer { text-align: center; padding: 2rem 0; color: var(--slate); font-size: 0.
 
 /* --- DESKTOP SPECIFIC STYLES --- */
 @media (min-width: 769px) {
-    /* Center the dropdown container relative to the nav item */
     #main-nav .dropdown-content {
         left: 50%;
         transform: translateX(-50%);
     }
 
-    /* Add stylish underline to certificate cards on hover */
     .certificate-card::after {
         content: '';
         position: absolute;
@@ -797,7 +967,7 @@ footer { text-align: center; padding: 2rem 0; color: var(--slate); font-size: 0.
     }
 
     #main-nav .dropdown-content {
-        position: static; /* Let it be part of the normal document flow */
+        position: static;
         display: none;
         background-color: transparent;
         box-shadow: none;
@@ -819,7 +989,7 @@ footer { text-align: center; padding: 2rem 0; color: var(--slate); font-size: 0.
         font-size: 1.2rem;
         padding: 0.8rem 0;
         color: var(--slate);
-        text-align: center; /* Center the text inside mobile dropdowns */
+        text-align: center;
     }
 
 
@@ -838,11 +1008,43 @@ footer { text-align: center; padding: 2rem 0; color: var(--slate); font-size: 0.
     .timeline-item::after { left: 10px; }
     .timeline-left, .timeline-right { left: 0; text-align: left; }
     .resume-grid { flex-direction: column; align-items: center; }
+    
+    /* --- Projects Section --- */
+    .project-item {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .project-image-side {
+        order: 1;
+    }
+    
+    .project-content-side {
+        order: 2;
+        text-align: left !important; /* Ensure content is left-aligned */
+    }
+    
+    .project-content-side .project-tools,
+    .project-content-side .project-buttons-container {
+        justify-content: flex-start !important; /* Ensure items start from left */
+    }
+
+    .project-buttons-container {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .project-buttons-container .project-button,
+    .project-buttons-container .project-button-secondary {
+        flex: 1; /* Make buttons share space equally */
+        text-align: center;
+    }
+
 
     /* --- Swipable Skills Section --- */
     #skills-grid {
         position: relative;
-        height: 450px; /* Adjust height as needed */
+        height: 450px;
         perspective: 1000px;
         display: flex;
         justify-content: center;
@@ -919,6 +1121,72 @@ footer { text-align: center; padding: 2rem 0; color: var(--slate); font-size: 0.
 
 @media (max-width: 480px) {
     .btn-secondary.view-certificate-btn {
-        margin-left: 0; /* Remove the left margin on small screens */
+        margin-left: 0;
     }
+}
+
+.project-button {
+    display: block;
+    width: -moz-fit-content;
+    width: fit-content;
+    margin: 0;
+    padding: 10px 20px;
+    border: 2px solid var(--vibrant-teal);
+    color: var(--vibrant-teal);
+    background-color: transparent;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 4px; /* Added for consistency */
+    text-decoration: none;
+}
+
+.project-button:hover {
+    background-color: var(--vibrant-teal);
+    color: var(--navy-blue);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2), 0 0 25px rgba(100, 255, 218, 0.5);
+}
+
+#show-more-projects-container .project-button {
+    margin: 20px auto 0;
+}
+
+.project-button-secondary {
+    display: block;
+    width: -moz-fit-content;
+    width: fit-content;
+    margin: 0;
+    padding: 10px 20px;
+    border: 2px solid var(--slate);
+    color: var(--slate);
+    background-color: transparent;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+.project-button-secondary:hover {
+    background-color: var(--slate);
+    color: var(--navy-blue);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2), 0 0 25px rgba(136, 146, 176, 0.5);
+}
+
+.project-button-secondary:disabled {
+    border-color: var(--lightest-navy);
+    color: var(--lightest-navy);
+    cursor: not-allowed;
+}
+
+.project-button-secondary:disabled:hover {
+    background-color: transparent;
+    transform: none;
+    box-shadow: none;
 }

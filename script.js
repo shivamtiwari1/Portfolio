@@ -19,13 +19,13 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // --- 2. ABOUT ME SECTION ---
-    const aboutMeText = "Recently with a Bachelor's in Computer Science Engineering and a foundational Diploma in Electronics Engineering, I possess a unique, end-to-end understanding of how technology works—from the physical components to high-level data abstraction. My passion lies in decoding the stories hidden within data. I leverage powerful tools like Python, Power BI, SQL and other's to analyze complex information, identify critical trends, and build solutions that drive business decisions. I am driven to become a key contributor in the IT field as a professional analyst and developer, where I can apply my analytical mindset and technical skills to solve real-world challenges.";
+    const aboutMeText = "With a recent Bachelor's in Computer Science Engineering and a foundational Diploma in Electronics Engineering, I possess a unique, end-to-end understanding of how technology works—from the physical components to high-level data abstraction. My passion lies in decoding the stories hidden within data. I leverage powerful tools like Python, Power BI, SQL and other's to analyze complex information, identify critical trends, and build solutions that drive business decisions. I am driven to become a key contributor in the IT field as a professional analyst and developer, where I can apply my analytical mindset and technical skills to solve real-world challenges.";
 
     // --- 3. SKILLS SECTION ---
     const skillsData = [
         { 
             category: "Data Analysis & Programming", 
-            skills: ["SQL", "Python (Pandas, NumPy, matplotlib)", "Advanced Excel & VBA","Java Script (Basic)"] 
+            skills: ["SQL", "Python (NumPy, Pandas, matplotlib)", " DAX","Advanced Excel",] 
         },
         { 
             category: "Data Visualization & Database Management",
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         { 
             category: "Platforms & Software", 
-            skills: ["Visual Studio Code", "Jupiter Notebook", "Apache Open Office", "Microsoft Office Suite", "Proteus 8 Professional"] 
+            skills: ["Visual Studio Code", "Jupiter Notebook", "Apache Open Office", "Microsoft Office Suite", "Proteus 8 Professional"," +"] 
         },
         { 
             category: "Core Competencies", 
@@ -49,25 +49,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     ];
 
-    // --- 4. MY PROJECTS SECTION (MODIFIED) ---
+    // --- 4. MY PROJECTS SECTION ---
     const projectsData = [
         {
             title: "Real-Time Sales Analysis (Blinkit)",
-            description: "Architected an end-to-end sales analysis solution. Analyzed over 8,000 sales records to uncover key product performance trends and customer purchasing behaviors. Developed 6+ interactive Power BI dashboards that translated raw data into actionable strategies for inventory management and targeted marketing campaigns.",
+            description: "Architected an end-to-end sales analysis solution. Analyzed over 8,000+ sales records to uncover key product performance trends and customer purchasing behaviors. Developed 6+ interactive Power BI dashboards that translated raw data into actionable strategies for inventory management and targeted marketing campaigns.",
             tools: ["Power BI", "SQL", "DAX", "Excel"],
             link:  "https://github.com/shivamtiwari1/Real-Time-Sales-Analytics-of-Blinkit",
             outcome: "The analysis led to a 15% improvement in inventory turnover and a 10% increase in sales of high-margin products through targeted promotions.",
-            certificateId: null, // Corresponds to the "30-Days Power BI Micro Course" certificate
-            certificateKeyText: "Independent Initiative" // Editable text for the button
-        },
-         {
-            title: "Factory performance analysis",
-            description: "This project presents a performance analysis of telemetry data collected across four international manufacturing facilities of Daikibo, using Tableau as the data visualization tool. The goal is to uncover patterns in machine breakdowns and identify which factory and device types experienced the most downtime during the month of May 2021 The unified dataset, originally collected from nine machine types reporting every 10 minutes, has been transformed into a JSON file by Daikibo's tech team to streamline analysis.",
-            tools: ["Python", "Scikit-learn", "NumPy"],
-            link: "https://github.com/shivamtiwari1/Handwritten-Digits-Recognition",
-            outcome: "This analysis empowers stakeholders at Daikibo to Pinpoint operational inefficiencies. Prioritize maintenance strategies. Optimize machine performance across their global manufacturing network.",
-            certificateId: 1, // Set to null for self-projects
-            certificateKeyText: "View Deliotte Certificate" // Editable text for the button
+            certificateId: null, 
+            certificateKeyText: "Independent Initiative",
+            imageUrl: "assets/Blinkit.png"
         },
         {
             title: " Tata Business Insights Dashboard",
@@ -75,25 +67,36 @@ document.addEventListener('DOMContentLoaded', () => {
             tools: ["Power BI", " Advanced Excel", "DAX", "Data Storytelling"],
             link: "https://github.com/shivamtiwari1/Tata-Business-Insights-Dashboard-Power-BI-Project",
             outcome: "This project successfully transformed over 541,000 data rows into an interactive Power BI dashboard for Tata, using DAX to reveal key business insights on revenue, customers, and sales performance. The outcome is a powerful intelligence hub that provides actionable clarity for strategic, data-driven decision-making and demonstrates strong data visualization skills in Power BI.",
-            certificateId: 0, // Corresponds to the "Data Visualisation: Empowering Business" certificate
-            certificateKeyText: "View Tata Certificate" // Editable text for the button
+            certificateId: 0, 
+            certificateKeyText: "View Tata Certificate",
+            imageUrl: "assets/Tata.png"
+        },
+         {
+            title: "Factory performance analysis",
+            description: "This project presents a performance analysis of telemetry data With 11 fields & 160,000+ rows collected across four international manufacturing facilities of Daikibo, using Tableau. The goal is to uncover patterns in machine breakdowns and identify which factory and device types experienced the most downtime during the month of May 2021 The unified dataset, originally collected from nine machine types reporting every 10 minutes, has been transformed into a JSON file by Daikibo's tech team to streamline analysis.",
+            tools: ["Tableau", "JSON", "Dashboard filters & actions"],
+            link: "https://github.com/shivamtiwari1/Factory-Performance-Analysis-Tableau-Project",
+            outcome: "This analysis empowers stakeholders at Daikibo to Pinpoint operational inefficiencies. Prioritize maintenance strategies. Optimize machine performance across their global manufacturing network.",
+            certificateId: 1, 
+            certificateKeyText: "View Deloitte Certificate", 
+            imageUrl: "assets/Daikibo.png"
         },
          {
             title: "Handwritten Digit Recognition",
             description: "Engineered a machine learning model to recognize handwritten digits with 97% accuracy. Implemented and evaluated multiple supervised learning algorithms and classification models, demonstrating strong capabilities in model training, testing, and performance optimization.",
-            tools: ["tableau", "json datafiles", "Dashboard filters & actions"],
-            link: "https://github.com/shivamtiwari1/Factory-Performance-Analysis-Tableau-Project",
+            tools: ["Python", "Scikit-learn", "NumPy"],
+            link: "https://github.com/shivamtiwari1/Handwritten-Digits-Recognition",
             outcome: "The final model can be integrated into applications requiring automated digit recognition, such as postal code scanning or data entry from forms.",
-            certificateId: 4, // Set to null for self-projects
-            certificateKeyText: "View Microsoft Certificate" // Editable text for the button
+            certificateId: 4, 
+            certificateKeyText: "View Microsoft Certificate",
+            imageUrl: "assets/Handwritten.png"
         }
     ];
 
     // --- 5. CERTIFICATES SECTION ---
-    // Replace with paths to your certificate images
     const certificatesData = [
         {
-            name: "Data Visualisation: Empowering Business with Effective Insights",
+            name: "Data Visualization: Empowering Business with Effective Insights",
             date: "Issued: June 25th, 2025",
             imageUrl: "assets/Tata data visuilation.png", 
             verifyLink: "https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/ifobHAoMjQs9s6bKS/MyXvBcppsW2FkNYCX_ifobHAoMjQs9s6bKS_86t2AqKszTbhYX7sP_1750851686482_completion_certificate.pdf",
@@ -121,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
             organization: "ISRO"
         },
         {
-            name: "4-week internship on Al Azure",
+            name: "4-week internship on AI Azure",
             date: "Issued: May 13th 2025 to June 13th 2025",
             imageUrl: "assets/internship.png", 
             verifyLink: "https://www.edunetfoundation.org/certificates/validate",
@@ -166,10 +169,38 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- 6. MY JOURNEY SECTION (Experience/Education) ---
     const journeyData = [
-        { role: "Bachelor of Technology in Computer Science", company: "Shambhunath Institute of Engineering & Technology", date: "2022 - 2025" },
-        { role: "HMC Engineer", company: "Anand Haldex India Pvt. Ltd.", date: "02/2022 - 08/2022" },
-        { role: "Trainee Engineer", company: "Oppo India Pvt. Ltd.", date: "07/2021 - 01/2022" },
-        { role: "Diploma in Electronics Engineering", company: "Government Polytechnic college", date: "2019 - 2021" },
+        { 
+            role: "Bachelor of Technology in Computer Science", 
+            company: "Shambhunath Institute of Engineering & Technology", 
+            date: "2022 - 2025",
+            description: null 
+        },
+        { 
+            role: "HMC Engineer", 
+            company: "Anand Haldex India Pvt. Ltd.", 
+            date: "02/2022 - 08/2022",
+            description: ["Apprenticeship focusing on heavy vehicle parts manufacturing.",
+                "Implemented methodical approaches including Kaizen, Poka-yoke, and detailed checklists to streamline processes.",
+                "Optimized HMC for 10+product Models, improving efficiency and Quality of yield.",
+                "Mentored new teammates and follow SOPs to streamline the reporting process."
+            ]
+        },
+        { 
+            role: "Trainee Engineer", 
+            company: "Oppo India Pvt. Ltd.", 
+            date: "07/2021 - 01/2022",
+            description: [
+                "Apprenticeship focusing on mobile Assembly.",
+                "Worked in a Team Collaboration for effective and Quality Production using several productions techniques.",
+                "Show qualities like problem solving, collaboration, agile, productivity and Kaizens."
+            ]
+        },
+        { 
+            role: "Diploma in Electronics Engineering", 
+            company: "Government Polytechnic college", 
+            date: "2019 - 2021",
+            description: null
+        },
     ];
 
     // --- 7. WHAT I'M WORKING ON SECTION ---
@@ -180,24 +211,22 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     // --- 8. RESUME & COVER LETTER SECTION ---
-    // Replace with paths to your resume preview image and PDF file
     const resumeData = {
-        previewImageUrl: "assets/Shivam_Tiwari_Analyst_Resume.jpg", 
-        downloadFileUrl: "assets/Shivam_Tiwari_Analyst_Resume.pdf",   
-        fileName: "Shivam_Tiwari_Data_Analyst_Resume.pdf"
+        previewImageUrl: "assets/Shivam_Tiwari _Analyst_ Resume.jpg", 
+        downloadFileUrl: "assets/Shivam_Tiwari _ Resume.pdf",   
+        fileName: "Shivam_Tiwari_Analyst_Resume.pdf"
     };
 
-    // Replace with paths to your cover letter preview image and PDF file
     const coverLetterData = {
-        previewImageUrl: "assets/Cover_Latter_Shivam_Tiwari.jpg", 
-        downloadFileUrl: "assets/Cover_Latter_Shivam_Tiwari.pdf",
+        previewImageUrl: "assets/Cover_Letter_Shivam_Tiwari.jpg", 
+        downloadFileUrl: "assets/Cover_Letter_Shivam_Tiwari.pdf",
         fileName: "Cover Latter Shivam Tiwari.pdf"
     };  
 
     // --- 9. GET IN TOUCH SECTION ---
     const contactData = {
         text: "Let's connect! I'm open to new opportunities and collaborations. Feel free to reach out.",
-        email: "Shivam230131@gmail.com",
+        email: "hi.shivamtiwari01@gmail.com",
         socials: [
             { name: "LinkedIn", iconClass: "fab fa-linkedin", url: "https://www.linkedin.com/in/shivam-tiwari-4239a621b/" },
             { name: "GitHub", iconClass: "fab fa-github", url: "https://github.com/shivamtiwari1" }
@@ -238,69 +267,66 @@ document.addEventListener('DOMContentLoaded', () => {
             container.innerHTML = '<p>No projects have been added yet.</p>';
             return;
         }
-    
-        const generateProjectCardHTML = (project, id) => {
+
+        const generateProjectHTML = (project, id, isHidden) => {
+            const imageSide = id % 2 === 0 ? 'left' : 'right';
+            const contentSide = id % 2 === 0 ? 'right' : 'left';
             let secondButtonHtml = '';
-            // Check if certificateId is a valid number (not undefined, not null)
             if (project.certificateId !== undefined && project.certificateId !== null) {
-                // Project has a certificate
-                secondButtonHtml = `<button class="btn btn-secondary view-certificate-btn" data-certificate-id="${project.certificateId}">${project.certificateKeyText || 'View Certificate'}</button>`;
+                secondButtonHtml = `<button class="project-button-secondary view-certificate-btn" data-certificate-id="${project.certificateId}">${project.certificateKeyText || 'View Certificate'}</button>`;
             } else {
-                // Project is a "Self Project"
-                secondButtonHtml = `<button class="btn btn-secondary self-project-btn" disabled>${project.certificateKeyText || 'Self Project'}</button>`;
+                if (project.certificateKeyText) {
+                    secondButtonHtml = `<button class="project-button-secondary">${project.certificateKeyText}</button>`;
+                } else {
+                    secondButtonHtml = `<button class="project-button-secondary" disabled>Self Project</button>`;
+                }
             }
-    
+
             return `
-                <div class="project-card fade-in" id="project-${id}">
-                    <h3>${project.title}</h3>
-                    <p>${project.description}</p>
-                    <h4 class="project-outcome-title">Outcome:</h4>
-                    <p>${project.outcome || 'No outcome specified.'}</p>
-                    <div class="project-tools">${project.tools.map(tool => `<span>${tool}</span>`).join('')}</div>
-                    <div class="hero-buttons" style="margin-top: 1.5rem;">
-                        ${project.link ? `<a href="${project.link}" class="btn btn-primary" target="_blank" rel="noopener noreferrer">View Project</a>` : ''}
-                        ${secondButtonHtml}
+                <div class="project-item fade-in ${isHidden ? 'hidden-by-default' : ''}" id="project-${id}">
+                    <div class="project-image-side project-image-${imageSide}">
+                        <div class="project-image-wrapper">
+                            <img src="${project.imageUrl}" alt="${project.title}" class="project-image">
+                        </div>
+                    </div>
+                    <div class="project-content-side project-content-${contentSide}">
+                        <h3>${project.title}</h3>
+                        <p>${project.description}</p>
+                        <h4 class="project-outcome-title">Outcome:</h4>
+                        <p>${project.outcome || 'No outcome specified.'}</p>
+                        <div class="project-tools">${project.tools.map(tool => `<span>${tool}</span>`).join('')}</div>
+                        <div class="project-buttons-container">
+                            ${project.link ? `<a href="${project.link}" class="project-button" target="_blank" rel="noopener noreferrer">View Project</a>` : ''}
+                            ${secondButtonHtml}
+                        </div>
                     </div>
                 </div>`;
         };
-    
-        let visibleHtml = '';
-        let hiddenHtml = '';
-        const visibleCount = 2; // Show 2 projects initially
-    
-        projectsData.forEach((project, i) => {
-            const cardHtml = generateProjectCardHTML(project, i);
-            if (i < visibleCount) {
-                visibleHtml += cardHtml;
-            } else {
-                // Add hidden class to the outer div
-                const hiddenCardHtml = cardHtml.replace('class="project-card fade-in"', 'class="project-card fade-in hidden-by-default"');
-                hiddenHtml += hiddenCardHtml;
-            }
-        });
-    
-        let finalHtml = visibleHtml;
+
+        let finalHtml = '';
+        const visibleCount = 2;
+
+        for (let i = 0; i < projectsData.length; i++) {
+            finalHtml += generateProjectHTML(projectsData[i], i, i >= visibleCount);
+        }
+
         if (projectsData.length > visibleCount) {
             finalHtml += `
-                <div id="show-more-projects-container">
-                    <div id="show-more-projects-key">See More Projects...</div>
+                <div id="show-more-projects-container" class="fade-in">
+                    <button class="project-button">Show More Projects</button>
                 </div>
             `;
         }
-        finalHtml += hiddenHtml;
-    
+
         container.innerHTML = finalHtml;
-    
-        // Add event listener after the container is in the DOM
-        const showMoreProjectsContainer = document.getElementById('show-more-projects-container');
-        if (showMoreProjectsContainer) {
-            showMoreProjectsContainer.addEventListener('click', () => {
-                showMoreProjectsContainer.remove();
-    
-                // Show the rest of the cards
-                document.querySelectorAll('.project-card.hidden-by-default').forEach(proj => {
-                    proj.classList.remove('hidden-by-default');
+
+        const showMoreButton = document.getElementById('show-more-projects-container');
+        if (showMoreButton) {
+            showMoreButton.addEventListener('click', () => {
+                document.querySelectorAll('.project-item.hidden-by-default').forEach(project => {
+                    project.classList.remove('hidden-by-default');
                 });
+                showMoreButton.remove();
             });
         }
     }
@@ -393,14 +419,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderJourney() {
         const container = document.getElementById('timeline-container');
-        container.innerHTML = journeyData.map((item, index) => `
-            <div class="timeline-item ${index % 2 === 0 ? 'timeline-left' : 'timeline-right'} fade-in" id="journey-${index}">
-                <div class="timeline-content">
-                    <h3>${item.role}</h3>
-                    <p>${item.company}</p>
-                    <span class="date">${item.date}</span>
-                </div>
-            </div>`).join('');
+        container.innerHTML = journeyData.map((item, index) => {
+            const isClickable = item.description ? 'clickable' : '';
+            const descriptionPrompt = item.description ? '<p class="description-prompt">View Details</p>' : '';
+            const dataAttribute = item.description ? `data-journey-index="${index}"` : '';
+    
+            return `
+                <div class="timeline-item ${index % 2 === 0 ? 'timeline-left' : 'timeline-right'} fade-in" id="journey-${index}">
+                    <div class="timeline-content ${isClickable}" ${dataAttribute}>
+                        <h3>${item.role}</h3>
+                        <p>${item.company}</p>
+                        <span class="date">${item.date}</span>
+                        ${descriptionPrompt}
+                    </div>
+                </div>`;
+        }).join('');
     }
     
     function renderWorkingOn() {
@@ -492,10 +525,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Contact Dropdown
         const contactDropdown = document.getElementById('contact-dropdown');
+        const githubSocial = contactData.socials.find(s => s.name === 'GitHub');
+        const linkedinSocial = contactData.socials.find(s => s.name === 'LinkedIn');
         contactDropdown.innerHTML = `
             <a href="mailto:${contactData.email}">Email</a>
-            <a href="${contactData.socials.find(s => s.name === 'GitHub').url}" target="_blank" rel="noopener noreferrer">GitHub</a>
-            <a href="${contactData.socials.find(s => s.name === 'LinkedIn').url}" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            ${githubSocial ? `<a href="${githubSocial.url}" target="_blank" rel="noopener noreferrer">GitHub</a>` : ''}
+            ${linkedinSocial ? `<a href="${linkedinSocial.url}" target="_blank" rel="noopener noreferrer">LinkedIn</a>` : ''}
         `;
     }
 
@@ -543,7 +578,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // MODIFIED setupImageModal FUNCTION
     function setupImageModal() {
         const modal = document.getElementById('image-modal');
         if (!modal) return;
@@ -559,7 +593,6 @@ document.addEventListener('DOMContentLoaded', () => {
             startX = 0,
             startY = 0;
             
-        // For touch controls
         let initialDistance = null;
     
         function setTransform() {
@@ -583,7 +616,6 @@ document.addEventListener('DOMContentLoaded', () => {
             modal.classList.remove('visible');
         }
     
-        // Specific listener for the profile picture
         const profilePic = document.getElementById('profile-pic-container');
         if (profilePic) {
             profilePic.addEventListener('click', () => {
@@ -591,7 +623,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     
-        // Generic listeners for other zoomable images
         document.querySelectorAll('.image-zoom-container').forEach(container => {
             container.addEventListener('click', function(e) {
                 if (e.target.tagName === 'IMG') {
@@ -601,7 +632,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // Event listener for certificate buttons in project cards
         document.body.addEventListener('click', function(e) {
             if (e.target.classList.contains('view-certificate-btn')) {
                 const certificateId = parseInt(e.target.dataset.certificateId, 10);
@@ -650,11 +680,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const rect = modalImg.getBoundingClientRect();
             const xs = (e.clientX - rect.left) / scale;
             const ys = (e.clientY - rect.top) / scale;
-            const delta = (e.deltaY > 0) ? 0.95 : 1.05; // Slower, more controlled zoom speed
+            const delta = (e.deltaY > 0) ? 0.95 : 1.05;
     
             const newScale = scale * delta;
             
-            // Limit zoom levels
             if (newScale < 0.5 || newScale > 15) return;
             
             pointX += (e.clientX - rect.left) - (xs * newScale + pointX);
@@ -725,6 +754,63 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }, { passive: false });
     }
+    
+    function setupJourneyModal() {
+        const modal = document.getElementById('journey-modal');
+        if (!modal) return;
+    
+        const modalTitle = document.getElementById('journey-modal-title');
+        const modalDescription = document.getElementById('journey-modal-description');
+        const closeBtn = document.querySelector('.close-journey-modal');
+    
+        function openModal(index) {
+            const item = journeyData[index];
+            if (!item || !item.description) return;
+    
+            modalTitle.innerHTML = `${item.role} at <strong>${item.company}</strong>`;
+            
+            let descriptionHtml = '';
+            let currentList = '';
+    
+            item.description.forEach(point => {
+                if (point.startsWith('<strong>')) {
+                    if (currentList) {
+                        descriptionHtml += `<ul>${currentList}</ul>`;
+                        currentList = '';
+                    }
+                    descriptionHtml += `<p class="journey-modal-heading">${point}</p>`;
+                } else {
+                    currentList += `<li>${point}</li>`;
+                }
+            });
+    
+            if (currentList) {
+                descriptionHtml += `<ul>${currentList}</ul>`;
+            }
+    
+            modalDescription.innerHTML = descriptionHtml;
+            modal.classList.add('visible');
+        }
+    
+        function closeModal() {
+            modal.classList.remove('visible');
+        }
+    
+        document.body.addEventListener('click', function(e) {
+            const clickableCard = e.target.closest('.timeline-content.clickable');
+            if (clickableCard) {
+                const index = clickableCard.dataset.journeyIndex;
+                openModal(index);
+            }
+        });
+    
+        closeBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+    }
 
     function setupNavHighlighting() {
         document.body.addEventListener('click', function (e) {
@@ -732,7 +818,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!link) return;
 
             const href = link.getAttribute('href');
-            // Check if it's a valid link that points to an ID
             const isInternalLink = href && href.startsWith('#');
 
             if (isInternalLink) {
@@ -741,9 +826,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (targetElement) {
                     
-                    // --- NEW LOGIC FOR HIDDEN ITEMS ---
                     const isHiddenCertificate = targetElement.matches('.certificate-card.hidden-by-default');
-                    const isHiddenProject = targetElement.matches('.project-card.hidden-by-default');
+                    const isHiddenProject = targetElement.matches('.project-item.hidden-by-default');
 
                     if (isHiddenCertificate) {
                         document.getElementById('show-more-certificates-container')?.click();
@@ -752,10 +836,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         document.getElementById('show-more-projects-container')?.click();
                     }
 
-                    // Use a timeout to allow the DOM to update
                     setTimeout(() => {
-                        // --- APPLY CORRECT HIGHLIGHT ---
-                        const isCard = targetElement.matches('.project-card, .skill-card, .certificate-card, .resume-card, .timeline-item');
+                        const isCard = targetElement.matches('.project-item, .skill-card, .certificate-card, .resume-card, .timeline-item');
 
                         if (isCard) {
                             setTimeout(() => {
@@ -775,7 +857,6 @@ document.addEventListener('DOMContentLoaded', () => {
                             }
                         }
 
-                        // --- NAV TAB BLINK LOGIC (runs for all clicks) ---
                         const parentNavItem = link.closest('.nav-item');
                         let mainNavLink;
 
@@ -795,7 +876,6 @@ document.addEventListener('DOMContentLoaded', () => {
                             }, { once: true });
                         }
 
-                        // --- CORRECTED SMOOTH SCROLL LOGIC ---
                         const headerHeight = document.getElementById('sticky-header').offsetHeight;
                         const offsetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - 40;
 
@@ -810,7 +890,6 @@ document.addEventListener('DOMContentLoaded', () => {
                             document.body.style.pointerEvents = 'auto';
                         }, 1000);
 
-                        // --- HORIZONTAL SCROLL FOR SKILLS ---
                         if (targetElement.classList.contains('skill-card')) {
                             const skillsGrid = document.getElementById('skills-grid');
                             const cardLeft = targetElement.offsetLeft;
@@ -824,7 +903,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 behavior: 'smooth'
                             });
                         }
-                    }, (isHiddenCertificate || isHiddenProject) ? 50 : 0); // Add a small delay if cards were revealed
+                    }, (isHiddenCertificate || isHiddenProject) ? 50 : 0);
                 }
             }
         });
@@ -946,6 +1025,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setupDropdowns();
         setupNavHighlighting();
         setupImageModal();
+        setupJourneyModal();
         setupAnimations();
         setupStickyHeader();
         setupSkillSwiper(); 
