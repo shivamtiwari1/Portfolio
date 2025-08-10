@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         { 
             category: "Data Visualization & Database Management",
-            skills: ["Power BI (DAX)", "Tableau", "MySQL", "PostgreSQL"] 
+            skills: ["Power BI ", "Tableau", "MySQL", "PostgreSQL"] 
         },        
         { 
             category: "Technology Stack & Skills", 
@@ -56,17 +56,17 @@ document.addEventListener('DOMContentLoaded', () => {
             description: "Architected an end-to-end sales analysis solution. Analyzed over 8,000+ sales records to uncover key product performance trends and customer purchasing behaviors. Developed 6+ interactive Power BI dashboards that translated raw data into actionable strategies for inventory management and targeted marketing campaigns.",
             tools: ["Power BI", "SQL", "DAX", "Excel"],
             link:  "https://github.com/shivamtiwari1/Real-Time-Sales-Analytics-of-Blinkit",
-            outcome: "The analysis led to a 15% improvement in inventory turnover and a 10% increase in sales of high-margin products through targeted promotions.",
+            outcome: "The analysis led to a 15% speculative improvement in inventory turnover and a 10% increase in sales of high-margin products through targeted promotions.",
             certificateId: null, 
             certificateKeyText: "Independent Initiative",
             imageUrl: "assets/Blinkit.png"
         },
         {
             title: " Tata Business Insights Dashboard",
-            description: "This Power BI project leverages 541,000+ rows of sales and customer data to create meaningful, interactive visualizations for Tata. The objective was to empower business stakeholders with intuitive insights that support smarter, data-driven decisions. From exploring geographic sales patterns to understanding customer behavior, this dashboard acts as a centralized intelligence hub tailored for executive-level review.",
+            description: "This Power BI project leverages 541,000+ rows of sales and customer data to create meaningful, interactive visualizations for Tata. The objective evel reviewwas to empower business stakeholders with intuitive insights that support smarter, data-driven decisions. From exploring geographic sales patterns to understanding customer behavior.",
             tools: ["Power BI", " Advanced Excel", "DAX", "Data Storytelling"],
             link: "https://github.com/shivamtiwari1/Tata-Business-Insights-Dashboard-Power-BI-Project",
-            outcome: "This project successfully transformed over 541,000 data rows into an interactive Power BI dashboard for Tata, using DAX to reveal key business insights on revenue, customers, and sales performance. The outcome is a powerful intelligence hub that provides actionable clarity for strategic, data-driven decision-making and demonstrates strong data visualization skills in Power BI.",
+            outcome: "Using DAX to reveal key business insights on revenue, customers, and sales performance. The outcome is a powerful intelligence hub that provides actionable clarity for strategic, data-driven decision-making.",
             certificateId: 0, 
             certificateKeyText: "View Tata Certificate",
             imageUrl: "assets/Tata.png"
@@ -226,6 +226,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 9. GET IN TOUCH SECTION ---
     const contactData = {
         text: "Let's connect! I'm open to new opportunities and collaborations. Feel free to reach out.",
+        address: "Pratapgarh, Uttar Pradesh",
         email: "hi.shivamtiwari01@gmail.com",
         socials: [
             { name: "LinkedIn", iconClass: "fab fa-linkedin", url: "https://www.linkedin.com/in/shivam-tiwari-4239a621b/" },
@@ -481,6 +482,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderContact() {
         document.getElementById('contact-text').textContent = contactData.text;
+        document.getElementById('contact-address').textContent = contactData.address;
         const emailLink = document.getElementById('contact-email-link');
         emailLink.href = `mailto:${contactData.email}`;
         emailLink.textContent = contactData.email;

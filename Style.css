@@ -94,10 +94,6 @@ h2::after {
     position: relative;
     display: inline-block;
 }
-#main-nav .nav-item > a::after {
-    content: ' ▾';
-    font-size: 0.8em;
-}
 #main-nav .dropdown-content {
     opacity: 0;
     visibility: hidden;
@@ -453,6 +449,11 @@ h2::after {
 #resume-cover-letter-container { text-align: center; }
 #contact { text-align: center; }
 #contact p { max-width: 600px; margin: 1rem auto 2rem; }
+#contact-address {
+    color: var(--slate);
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
 .email-link { display: inline-block; color: var(--vibrant-teal); font-size: 1.2rem; text-decoration: none; border: 1px solid var(--vibrant-teal); padding: 1rem 2rem; border-radius: 4px; margin-bottom: 2rem; transition: background-color 0.3s; }
 .email-link:hover { background-color: rgba(100, 255, 218, 0.1); }
 .social-icons a { color: var(--light-slate); font-size: 2.5rem; margin: 0 1rem; transition: color 0.3s, transform 0.3s; cursor: pointer; }
